@@ -3,6 +3,7 @@
 
 title: CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations
 author: Dirk Englund, Hyeongrak Choi, Prajit Dhara
+logo: Images/3protocols.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -27,6 +28,13 @@ html:
 
 #Avoid unwanted files for build
 only_build_toc_files: true
+
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default! See here: https://jupyterbook.org/en/stable/customize/config.html
+    - html_image
+    - amsmath
   
 # Information about where the book exists on the web
 repository:
@@ -35,7 +43,9 @@ repository:
 
 sphinx:
   config:
-    mathjax_config:
+    html_extra_path: ['Images']
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    mathjax3_config:
       tex:
         macros:
           "ket"  : ["\\left|{#1}\\right\\rangle", 1]
