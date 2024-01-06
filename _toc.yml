@@ -9,36 +9,12 @@ options:
   numbered: true
   
 parts:
-  - caption: Introductory Material
+  - caption: Midpoint Source Protocol
     chapters:
-    - file: BASICS-quantum-optics-basics.ipynb
-#    - file: BASICS-quantum-information.ipynb
-  - caption: T3E1 -- Interference, Entanglement, Quantum-Enhanced Sensing
-    chapters:
-    - file: T3E1-TEXT--entanglement-interference-quantum-enhanced-sensing.ipynb
-    - file: T3E1-LAB--entanglement-interference-quantum-enhanced-sensing.ipynb
-    - file: T3E1-EXTRAS--rigorous-solution-MZI.ipynb
-    - file: T3E1-EXTRAS-interference-2-homodyne-detection.ipynb
-  - caption: T2E1 -- Quantum Information and Quantum Key Distribution
-    chapters:
-    - file: T2E1-TEXT-HBT.ipynb
-    - file: T2E1-LAB-HBT.ipynb
-    - file: T2E1-TEXT-QKD.ipynb
-    - file: T2E1-LAB-BB84.ipynb
-  - caption: T3E3 -- Solid State Spins
-    chapters:
-    - file: quNV-Jupyter/T3E3-PARKOUR-Quantum-Sensing-with-Solid-State-Spins.ipynb
-    - file: quNV-Jupyter/T3E3-TEXT-Quantum-Sensing-with-Solid-State-Spins.ipynb
-    - file: quNV-Jupyter/T3E3-LAB-Week1-Quantum-Sensing-with-Solid-State-Spins.ipynb
-    - file: quNV-Jupyter/T3E3-LAB-Week2-Quantum-Sensing-with-Solid-State-Spins.ipynb
-  - caption: T1E2 -- Quantum Computing w/ IBM Qiskit (OPTIONAL)
-    chapters:
-    - file: T1E2-LAB-IBM-Qiskit-Prelab.ipynb
-    - file: T1E2-LAB-IBM-Qiskit.ipynb
-    - file: T1E2-LAB-IBM-Qiskit-Solutions.ipynb
-  - caption: Final Projects
-    chapters:
-    - file: FINAL-PROJECTS.ipynb
-  - caption: Other Resources
-    chapters:
-     - file: OTHER-quantum-monte-carlo-simulation-spin-entanglement-repeaters.ipynb
+    - file: 2-1 MidpointSource_Tutorial_Prajit.ipynb
+  - caption: QuREBB - Quantum Remote Entanglement Building Block Simulations
+    chapters: 
+    - file: 3-1 QuREBB_intro.ipynb
+    - file: 3-2 QuREBB_example.ipynb
+
+    
