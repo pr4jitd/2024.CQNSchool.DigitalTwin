@@ -9,9 +9,9 @@ The course aims to provide training for quantum network simulation and modeling,
 
 ## Curriculum
 
-1. Dirk Englund: ...
-2. Prajit Dhara: ...
-3. Hyeongrak "Chuck" Choi: ...
+1. Dirk Englund: Introduction to Quantum Network Simulations
+2. Prajit Dhara: Midpoint Source Protocol Simulation
+3. Hyeongrak "Chuck" Choi:  QuREBB: Quantum Remote Entanglement Building Block Simulations
 
 ## Running Notebooks
 [![Pipenv](https://img.shields.io/badge/pipenv-locked-brightgreen)](https://pipenv.pypa.io/)
@@ -52,5 +52,5 @@ See the LICENSE.txt file for more details.
 ## Citing Relevant Works
 ![Paper Availability](https://img.shields.io/badge/paper-available-orange)
 
-If you use ... (ZALM?)
+If you use ZALM in your resarch, please cite the original [ZALM paper](https://arxiv.org/abs/2206.03670) and [Cascaded Source paper](https://arxiv.org/abs/2107.14360)
 If you use QuREBB in your research, please cite the original [QuREBB paper](https://arxiv.org/abs/2310.19878) and github repository [Repository](https://github.com/QuTech-Delft/QuREBB)
