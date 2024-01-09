@@ -11,7 +11,7 @@ options:
 parts:
   - caption: Midpoint Source Protocol
     chapters:
-    - file: 2-1 MidpointSource_Tutorial_Prajit.ipynb
+    - file: 2-1 Midpoint_Source_Tutorial.ipynb
   - caption: QuREBB - Quantum Remote Entanglement Building Block Simulations
     chapters: 
     - file: 3-1 QuREBB_intro.ipynb
