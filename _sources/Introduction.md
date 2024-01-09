@@ -45,6 +45,11 @@ The commands you now run are within this virtual enviroment, e.g.:
 ```bash
 $ jupyter lab
 ```
+To build documentation locally (you must have the jupyter-book package installed), please run (from the parent folder of your respository):
+
+```bash
+$ jupyter-book build 2024.CQNSchool.DigitalTwin/ 
+```
 
 ## License
 [![license](https://img.shields.io/badge/license-New%20BSD-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html data-content_root="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<title>Quantum mechanics and Encoding of Quantum Information — CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations</title>
+<script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+<!-- Loaded before other Sphinx assets -->
+<link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" rel="stylesheet" type="text/css"/>
+<link href="_static/togglebutton.css" rel="stylesheet" type="text/css"/>
+<link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" rel="preload"/>
+<link as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" rel="preload"/>
+<script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+<script src="_static/jquery.js"></script>
+<script src="_static/underscore.js"></script>
+<script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="_static/doctools.js"></script>
+<script src="_static/clipboard.min.js"></script>
+<script src="_static/copybutton.js"></script>
+<script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="_static/design-tabs.js"></script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+<script async="async" src="_static/sphinx-thebe.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '1-1 QMech_Intro';</script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="1-2%20QKD_Tutorial.html" rel="next" title="Exploring Quantum Networks: Practical Introduction with Examples in QKD"/>
+<link href="Introduction.html" rel="prev" title="CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<link href="_static/styles/chattutor.css" rel="stylesheet" type="text/css"/></head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content" id="pst-skip-link">Skip to main content</a>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+</div>
+<header>
+<div class="bd-header navbar navbar-expand-lg bd-navbar">
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
+<a class="navbar-brand logo" href="Introduction.html">
+<img alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home" class="logo__image only-light" src="_static/3protocols.png"/>
+<script>document.write(`<img src="_static/3protocols.png" class="logo__image only-dark" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>`);</script>
+</a></div>
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="Introduction.html">
+                    CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations
+                </a>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Quantum mechanics and Encoding of Quantum Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1-2%20QKD_Tutorial.html">Exploring Quantum Networks: Practical Introduction with Examples in QKD</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">QuREBB - Quantum Remote Entanglement Building Block Simulations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3-1%20QuREBB_intro.html">QuREBB: Quantum Remote Entanglement Building Block Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-2%20QuREBB_example.html">Example Notebook:</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midpoint Source Protocol</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-1%20Midpoint_Source_Tutorial.html">Midpoint Source Protocol for Quantum Links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">QuTiP Quickstart</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="0-1%20Intro_QuTiP.html">Lecture 0 - Introduction to QuTiP</a></li>
+</ul>
+</div>
+</nav></div>
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
+<div class="sbt-scroll-pixel-helper"></div>
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+<div class="header-article-items__start">
+<div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" for="__primary" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
+</label></div>
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
+<div class="article-header-buttons">
+<div class="dropdown dropdown-launch-buttons">
+<button aria-expanded="false" aria-label="Launch interactive content" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fas fa-rocket"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://mybinder.org/v2/gh/pr4jitd/2024.CQNSchool.DigitalTwin/main?urlpath=tree/1-1 QMech_Intro.ipynb" target="_blank" title="Launch onBinder">
+<span class="btn__icon-container">
+<img src="_static/images/logo_binder.svg"/>
+</span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+<li><a class="btn btn-sm dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://colab.research.google.com/github/pr4jitd/2024.CQNSchool.DigitalTwin/blob/main/1-1 QMech_Intro.ipynb" target="_blank" title="Launch onColab">
+<span class="btn__icon-container">
+<img src="_static/images/logo_colab.png"/>
+</span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="dropdown dropdown-source-buttons">
+<button aria-expanded="false" aria-label="Source repositories" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fab fa-github"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm btn-source-repository-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin" target="_blank" title="Source repository">
+<span class="btn__icon-container">
+<i class="fab fa-github"></i>
+</span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+<li><a class="btn btn-sm btn-source-issues-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin/issues/new?title=Issue%20on%20page%20%2F1-1 QMech_Intro.html&amp;body=Your%20issue%20content%20here." target="_blank" title="Open an issue">
+<span class="btn__icon-container">
+<i class="fas fa-lightbulb"></i>
+</span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="dropdown dropdown-download-buttons">
+<button aria-expanded="false" aria-label="Download this page" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fas fa-download"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm btn-download-source-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="_sources/1-1 QMech_Intro.ipynb" target="_blank" title="Download source file">
+<span class="btn__icon-container">
+<i class="fas fa-file"></i>
+</span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+<li>
+<button class="btn btn-sm btn-download-pdf-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" onclick="window.print()" title="Print to PDF">
+<span class="btn__icon-container">
+<i class="fas fa-file-pdf"></i>
+</span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+</ul>
+</div>
+<button class="btn btn-sm btn-fullscreen-button" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
+<span class="btn__icon-container">
+<i class="fas fa-expand"></i>
+</span>
+</button>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" for="__secondary" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+</div>
+</div>
+</div>
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Quantum mechanics and Encoding of Quantum Information</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-traveling-electromagnetic-waves">Problem 1. Traveling Electromagnetic Waves</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#number-states">1.1 Number states</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-energy">1.2 Photon energy</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate">1.2.1 Estimate</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-energy-compared-to-thermal-energy">1.2.2 Photon energy compared to thermal energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-occupation-at-microwave-frequency">1.2.3 Thermal occupation at microwave frequency</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-encoding">1.3 Logical encoding</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-unbiased-bases">1.4 Mutually unbiased bases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization">1.5 Generalization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-matrix-algebra">Problem 2. Matrix algebra</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div id="searchbox"></div>
+<article class="bd-article">
+<section id="quantum-mechanics-and-encoding-of-quantum-information">
+<h1>Quantum mechanics and Encoding of Quantum Information<a class="headerlink" href="#quantum-mechanics-and-encoding-of-quantum-information" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>How well can you see in the dark? How well does your GPS work? How do materials work? These questions are answered first and foremost by the rules of quantum mechanics.  In this tutotial, we’ll start to get acquainted with some of these effects and with methods to predict them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>qutip<span class="w"> </span>&gt;<span class="w"> </span>null
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>ipympl<span class="w"> </span>&gt;<span class="w"> </span>null
+
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">exp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>^C
+<span class="-Color -Color-Red">ERROR: Operation cancelled by user</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<section id="problem-1-traveling-electromagnetic-waves">
+<h3>Problem 1. Traveling Electromagnetic Waves<a class="headerlink" href="#problem-1-traveling-electromagnetic-waves" title="Permalink to this heading">#</a></h3>
+<p>In class, we discussed electromagnetic fields propagating in a direction $\mathbf{z}$ with electric and magnetic fields in the transverse ($x-y$) plane. We can describe any electric field vector in that plane by recording its projection onto two orthogonal basis vectors – such as the $\mathbf{x}$ and $\mathbf{y}$ unit vectors, which humans like to denote as the ‘horizontal’ (H) and ‘vertical’ (V) polarization vectors in their earth-centric reference frames.</p>
+<p>Mathematically, we can describe a transverse electromagnetic field of arbitrary polarization as a sum of two modes (solutions to Maxwell’s equations) that are individually polarized in these directions – for example, $\vec{E}\propto E_x(\vec{r},t) \mathbf{x} + E_y(\vec{r},t) \mathbf{y}$, where in classical electromagnetism, $E_x(\vec{r},t),E_y(\vec{r},t)$ denote the field amplitudes at coordinates $\vec{r},t$. For example, a laser field could be approximated by $E_x(\vec{r},t)=E_{x,0} \cos(\omega t - k z + \phi_x)$ and $E_y(\vec{r},t)=E_{y,0} \cos(\omega t - k z + \phi_y)$, where $E_{x/y,0} \in \mathbb R $ is a ‘slowly varying envelope’. But if we turn down their amplitudes, measurements of these fields eventually show some unusual behavior, including the discreteness of optical energy – the `quantization’ of the EM field.</p>
+<p>Thus, Maxwell’s equation describes the shape of a field; quantum mechanics describes a field’s excitation.</p>
+<section id="number-states">
+<h4>1.1 Number states<a class="headerlink" href="#number-states" title="Permalink to this heading">#</a></h4>
+<p>We can express the instantaneous state of the transverse EM field, $|\psi\rangle $, by reference to the modes that constitute it, as well as their excitation. If we restrict ourselves to exactly one quantum (photon) of excitation between modes H and V, then we could write the state as $|\psi\rangle = \alpha |1_H 0_V\rangle + \beta |0_H 1_V\rangle $, where $|m_H n_V\rangle$ is the Dirac notation for $m$ photons in mode $H$ and $n$ photons in mode $V$, respectively, and  $m,n\in  \mathbb N $.</p>
+<p>In the case of a single-photon excitation, it’s common to abbreviate the logical-qubit notation to $|V\rangle \equiv |0_H 1_V\rangle$ and $|H\rangle \equiv |1_H 0_V\rangle$ to write the state as $|\psi\rangle = \alpha |H\rangle + \beta |V\rangle $. Be careful what’s written in the bracket: it’s purely notation, no algebra.</p>
+<ul class="simple">
+<li><p>Q: Given the constraints imposed by $|\langle \psi | \psi \rangle|=1$, how many degrees of freedom remain in $\alpha$ and $\beta$ to describe an arbitrary $ | \psi \rangle$ ?</p></li>
+</ul>
+<p>####&gt;</p>
+<ul class="simple">
+<li><p>A: $\alpha$ and $\beta$ are complex amplitudes so we start with 4 degrees of freedom.
+The constraint $|\alpha|^2 + |\beta|^2 = 1$ leaves us with 3 degrees of freedom. However,
+as mentioned in class, the global phase can in this case be dropped, so in this problem
+2 degrees of freedom would suffice to accurately describe the state evolution and measurements.</p></li>
+</ul>
+<p>Let’s start to use qutip, the premier quantum mechanics package in python!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qutip</span> <span class="kn">import</span> <span class="n">basis</span><span class="p">,</span> <span class="n">tensor</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">exp</span>
+
+<span class="c1"># Let's start to use qutip, the premier quantum mechanics package in python</span>
+
+<span class="c1"># Define basis states</span>
+<span class="n">ket_H</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># |1_H 0_V&gt;</span>
+<span class="n">ket_V</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># |0_H 1_V&gt;</span>
+
+<span class="c1"># Define arbitrary α and β such that |α|^2 + |β|^2 = 1</span>
+<span class="n">α</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># Setting α as cos(pi/4)</span>
+<span class="n">β</span> <span class="o">=</span> <span class="n">sin</span><span class="p">(</span><span class="n">pi</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span>   <span class="c1"># Setting β as sin(pi/4)</span>
+
+<span class="c1"># Construct the state |ψ&gt;</span>
+<span class="n">ψ</span> <span class="o">=</span> <span class="n">α</span> <span class="o">*</span> <span class="n">tensor</span><span class="p">(</span><span class="n">ket_H</span><span class="p">,</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span> <span class="o">+</span> <span class="n">β</span> <span class="o">*</span> <span class="n">tensor</span><span class="p">(</span><span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ket_V</span><span class="p">)</span>  <span class="c1"># Constructing the state |ψ&gt;</span>
+
+<span class="c1"># A: α and β are complex amplitudes so we start with 4 degrees of freedom.</span>
+<span class="c1"># The constraint |α|^2 + |β|^2 = 1 leaves us with 3 degrees of freedom. However,</span>
+<span class="c1"># as mentioned in class, the global phase can in this case be dropped, so in this problem</span>
+<span class="c1"># 2 degrees of freedom would suffice to accurately describe the state evolution and measurements.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.10/dist-packages/qutip/__init__.py:65: UserWarning: The new version of Cython, (&gt;= 3.0.0) is not supported.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># interactive plotting</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">interactive</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">output</span>
+<span class="n">output</span><span class="o">.</span><span class="n">enable_custom_widget_manager</span><span class="p">()</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">exp</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> ipympl
+
+<span class="kn">from</span> <span class="nn">qutip</span> <span class="kn">import</span> <span class="n">Bloch</span><span class="p">,</span> <span class="n">basis</span>
+
+<span class="c1"># Set the text font size to 8 pt</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">'font.size'</span><span class="p">:</span> <span class="mi">10</span><span class="p">})</span>  <span class="c1"># Set the overall font size to 10 pt</span>
+
+<span class="c1"># Initialize the Bloch sphere outside the function</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Bloch</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Customize Bloch sphere labels</span>
+<span class="n">b</span><span class="o">.</span><span class="n">xlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'$|H+V⟩$'</span><span class="p">,</span> <span class="s1">'$|H-V⟩$'</span><span class="p">]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">ylabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'$|H+iV⟩$'</span><span class="p">,</span> <span class="s1">'$|H-iV⟩$'</span><span class="p">]</span>
+<span class="n">b</span><span class="o">.</span><span class="n">zlabel</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'$|H⟩$'</span><span class="p">,</span> <span class="s1">'$|V⟩$'</span><span class="p">]</span>
+
+<span class="c1"># Set the font size for the annotation</span>
+<span class="n">b</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1"># Set the font size to 8 pt</span>
+
+<span class="c1">#def f(theta, phi, time=0):</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">phi</span><span class="p">):</span>
+
+    <span class="n">theta</span><span class="p">,</span> <span class="n">phi</span> <span class="o">=</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">theta</span> <span class="o">/</span> <span class="mi">180</span><span class="p">,</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">phi</span> <span class="o">/</span> <span class="mi">180</span>  <span class="c1"># Convert angles from degrees to radians</span>
+
+    <span class="c1"># Define quantum states |0&gt; and |1&gt;</span>
+    <span class="n">ket0</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">ket1</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Create a quantum state on the Bloch sphere using theta and phi</span>
+    <span class="n">psi</span> <span class="o">=</span> <span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">ket0</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">phi</span><span class="p">)</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">ket1</span>
+ <span class="c1">#   psi2 = cos(theta/3) * ket0 + exp(1j * phi) * sin(theta/2) * ket1</span>
+
+    <span class="c1"># Clear the previous states added to the Bloch sphere</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="c1"># Add the new state to the Bloch sphere</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">add_states</span><span class="p">(</span><span class="n">psi</span><span class="p">)</span>
+<span class="c1">#    b.add_states(psi2)</span>
+
+    <span class="c1"># Render the Bloch sphere on the existing figure</span>
+    <span class="n">b</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
+
+<span class="c1"># Create interactive plot</span>
+<span class="n">interactive_plot</span> <span class="o">=</span> <span class="n">interactive</span><span class="p">(</span><span class="n">f</span><span class="p">,</span>
+                              <span class="n">theta</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">180.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">'Theta (deg)'</span><span class="p">),</span>
+                              <span class="n">phi</span><span class="o">=</span><span class="n">widgets</span><span class="o">.</span><span class="n">FloatSlider</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">360.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">'Phi (deg)'</span><span class="p">),</span>
+                              <span class="c1">#time=widgets.FloatSlider(value=0, min=0, max=6.28, step=0.1, description='Time'),</span>
+<span class="p">)</span>
+<span class="n">interactive_plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="photon-energy">
+<h4>1.2 Photon energy<a class="headerlink" href="#photon-energy" title="Permalink to this heading">#</a></h4>
+<p>The `number states’ $|m_H n_V\rangle$ constitute a complete orthonormal basis for the transverse EM field considered here – i.e., we can express all EM states $|\phi\rangle$ with arbitrary tranverse polarization and field strengths as a sum over these basis states.</p>
+<section id="estimate">
+<h5>1.2.1 Estimate<a class="headerlink" href="#estimate" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Q: For a wavelength of 1 $\lambda=\mu$m, calculate the energy $\hbar \omega$ of one quanta of excitation (1 photon) of the H or V mode, in electron volt (eV)? Here, $\omega$ is the angular frequency and $\hbar \equiv h/2\pi$.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To calculate $\hbar \omega$ for a 1 µm wavelength, we can use the formula $\omega = \frac{2\pi c}{\lambda}$ and $\hbar = \frac{h}{2\pi}$, where $\lambda = 1,\mu\text{m}$. We can perform this calculation using QuTiP:</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">h</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">micro</span>
+
+<span class="c1"># Wavelength in meters</span>
+<span class="n">wavelength</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">micro</span>  <span class="c1"># 1 µm in meters</span>
+
+<span class="c1"># Calculate angular frequency omega</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">c</span> <span class="o">/</span> <span class="n">wavelength</span>
+
+<span class="c1"># Calculate photon energy in electron volts (eV)</span>
+<span class="n">hbar</span> <span class="o">=</span> <span class="n">h</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">photon_energy_ev</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega</span> <span class="o">/</span> <span class="mf">1.60218e-19</span>  <span class="c1"># Convert to eV</span>
+
+<span class="n">photon_energy_ev</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.2398393795634255
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="photon-energy-compared-to-thermal-energy">
+<h4>1.2.2 Photon energy compared to thermal energy<a class="headerlink" href="#photon-energy-compared-to-thermal-energy" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Q: Assuming the EM modes are thermalized with the environment at $T=300$ K, how does the photon energy $\hbar \omega$ compare to $k_B T$? What’s the mean thermal occupation of this mode  – i.,e, what’s the mean number of photons you’d measure over some time at frequency $\omega$?</p></li>
+</ul>
+<p>To find the mean occupation, you can assume the Bose-Einstein distribution:</p>
+<p>$$
+\bar{n} = \frac{1}{e^{\frac{\hbar \omega}{k_B T}} - 1}
+$$</p>
+<p>A: To compare $\hbar \omega$ to $k_B T$, where $k_B$ is the Boltzmann constant and $T$ is the temperature (in Kelvin), we can calculate both and compare their magnitudes. We can also calculate the probability of measuring a thermally excited photon. THis is very small:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.constants</span> <span class="kn">import</span> <span class="n">Boltzmann</span> <span class="p">,</span> <span class="n">h</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">expit</span>
+
+<span class="c1"># Given wavelength in meters</span>
+<span class="n">wavelength</span> <span class="o">=</span> <span class="mf">1e-6</span>  <span class="c1"># 1 µm</span>
+
+<span class="c1"># Calculate angular frequency (in rad/s) using c = 3e8 m/s</span>
+<span class="n">omega</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">3e8</span> <span class="o">/</span> <span class="n">wavelength</span>
+
+<span class="c1"># Photon energy in electron volts (eV)</span>
+<span class="n">photon_energy</span> <span class="o">=</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">h</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="c1"># Temperature in Kelvin</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">300</span>  <span class="c1"># 300 K</span>
+
+<span class="c1"># Calculate thermal energy k_B * T</span>
+<span class="n">thermal_energy</span> <span class="o">=</span> <span class="n">Boltzmann</span> <span class="o">*</span> <span class="n">T</span>
+
+<span class="c1"># Compare photon energy to thermal energy</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">photon_energy</span><span class="p">,</span> <span class="n">thermal_energy</span> <span class="o">/</span> <span class="mf">1.60218e-19</span><span class="p">)</span>  <span class="c1"># Convert thermal energy to eV</span>
+
+<span class="c1"># Calculate probability of measuring a thermally excited photon using expit</span>
+<span class="n">thermal_occupation</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">photon_energy</span> <span class="o">/</span><span class="n">thermal_energy</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">thermal_occupation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.987821045e-19 0.025851945474291278
+1.4359924589903149e-21
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="thermal-occupation-at-microwave-frequency">
+<h4>1.2.3 Thermal occupation at microwave frequency<a class="headerlink" href="#thermal-occupation-at-microwave-frequency" title="Permalink to this heading">#</a></h4>
+<p>Q: What if we considered instead microwaves at $\omega/2\pi = 3 $ GHz (near your kitchen microwave’s frequency) – what’s the thermal occupation of an electromagnetic mode? If you wanted to bring the probability of thermal photon excitation of your microwave cavity below 1%, to what temperature would you need to cool the temperature of the mode? Order of magnitude answer is fine.</p>
+<p>A: To calculate the thermal occupation of an electromagnetic mode at $\omega/2\pi = 3$ GHz and determine the required temperature to achieve less than 1% thermal photon excitation, we can use QuTiP as follows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Microwave frequency in Hz</span>
+<span class="n">microwave_freq</span> <span class="o">=</span> <span class="mf">3e9</span>  <span class="c1"># 3 GHz in Hz</span>
+
+<span class="c1"># Calculate angular frequency omega for microwaves</span>
+<span class="n">omega_microwave</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">microwave_freq</span>
+
+<span class="c1"># Calculate thermal occupation using Bose-Einstein distribution</span>
+<span class="n">thermal_occupation</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_microwave</span> <span class="o">/</span> <span class="p">(</span><span class="n">Boltzmann</span> <span class="o">*</span> <span class="n">T</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Calculate temperature to achieve &lt; 1% thermal occupation, in Kelvin</span>
+<span class="n">desired_occupation</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># 1% probability</span>
+<span class="n">required_temperature</span> <span class="o">=</span> <span class="n">hbar</span> <span class="o">*</span> <span class="n">omega_microwave</span> <span class="o">/</span> <span class="p">(</span><span class="n">Boltzmann</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">desired_occupation</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">thermal_occupation</span><span class="p">,</span> <span class="n">required_temperature</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2083.1619523267705, 0.031196865103650512)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logical-encoding">
+<h4>1.3 Logical encoding<a class="headerlink" href="#logical-encoding" title="Permalink to this heading">#</a></h4>
+<p>Let’s use our modes to encode a qubit – i.e., a physical state that, when measured, yields one of two possible measurement outcomes (a `two-level system’).</p>
+<ul class="simple">
+<li><p>Q: Define a set of orthonormal logical qubit states $|0\rangle_L$ and $|1\rangle_L$ in terms of the H and V polarizations. What would be a suitable measurement apparatus? (Sketch the apparatus, using linear optical components like beamsplitters and waveplates)</p></li>
+</ul>
+<p>A: We can define the orthonormal logical qubit states as follows:</p>
+<p>$|0\rangle_L = |H\rangle$</p>
+<p>$|1\rangle_L = |V\rangle$</p>
+<p>In this notation, $|0\rangle_L$ corresponds to a qubit in the horizontal polarization state, and $|1\rangle_L$ corresponds to a qubit in the vertical polarization state.</p>
+<p>A suitable measurement apparatus for measuring these logical qubit states can involve linear optical components like beamsplitters and waveplates. To measure the logical qubit states, we can use a polarization beam splitter (PBS) and two single-photon detectors. Here’s a sketch of the measurement apparatus:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>                  PBS
+                  / \
+                 /   \
+           |0⟩_L/     \ |1⟩_L
+               /       \
+              /         \
+        Detector 1    Detector 2
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this setup:</p>
+<p>The PBS (Polarization Beam Splitter) splits the incoming photon based on its polarization.
+If the input photon is in the $|0\rangle_L$ state (horizontal polarization), it will pass through the upper path and be detected by Detector 1.
+If the input photon is in the $|1\rangle_L$ state (vertical polarization), it will be reflected down and be detected by Detector 2.
+This measurement scheme allows us to distinguish between the logical qubit states $|0\rangle_L$ and $|1\rangle_L$ based on their polarization. If the photon is in superposition, its state can be expressed as a linear combination of $|0\rangle_L$ and $|1\rangle_L$, and the measurement will project it onto one of these states based on its polarization.</p>
+<p>This is a basic example of a quantum measurement apparatus for logical qubits encoded in polarization states.</p>
+</section>
+<section id="mutually-unbiased-bases">
+<h4>1.4 Mutually unbiased bases<a class="headerlink" href="#mutually-unbiased-bases" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Q: Can you think of an alternative qubit encoding that is `mutually unbiased’ to your choice above – i.e, the inner product defined as $|\langle \psi_A | \psi_B \rangle|^{2}=1/2$ for any two logical qubits drawn from basis $A$ and the other basis $B$?</p></li>
+</ul>
+<p>Such mutually unbiased logical bases are commonly used in quantum key distribution (QKD) schemes among two trusted parties, A and B, to minimize information leakage to possible eavesdroppers. If the eavesdropper measures in a basis different from the sender, their measured signal would not correlate with the sender’s – and, conversely, the eavesdropper can minimize information leakage to the legitimate parties by measuring in a basis mutually unbiased to theirs.</p>
+<p>Yes, another basis would be the Hadamard Basis:</p>
+<p>|+⟩ = (|0⟩ + |1⟩) / √2
+|-⟩ = (|0⟩ - |1⟩) / √2</p>
+<p>.. or the Circular Basis:</p>
+<p>|↻⟩ = (|0⟩ + i|1⟩) / √2
+|↺⟩ = (|0⟩ - i|1⟩) / √2</p>
+</section>
+<section id="generalization">
+<h4>1.5 Generalization<a class="headerlink" href="#generalization" title="Permalink to this heading">#</a></h4>
+<p>The polarization encoding of the 1-photon qubit encoding is one example of a `two-mode’ or `dual-rail’ encoding on any two electromagnetic modes. For example, we could also encode the qubit on the forward- and backward-propagating modes, or we could encode the qubit on two spatially offset light fields.</p>
+<p>An alternative logical encoding would be to use only one mode – let’s say field H – but to realize the two levels by the number state. I.e., we could choose $|0\rangle_L=|m_H=0\rangle$ and $|1\rangle_L=|m_H=1\rangle$. However, this `number-state’ qubit basis is almost never used.</p>
+<ul class="simple">
+<li><p>Q: Why do people prefer the dual-rail encoding, and how does it relate to optical loss?</p></li>
+</ul>
+<p>A: The dual-rail encoding is preferred for quantum communication due to its robustness against optical loss. When quantum information is encoded in two spatially separated modes, such as horizontal (H) and vertical (V) polarizations, optical loss in one of the modes does not result in complete information loss. The redundancy in the dual-rail encoding offers the following advantages:</p>
+<p>Fault Tolerance: If one of the modes experiences optical loss or attenuation during transmission, the information can still be retrieved from the remaining mode. This redundancy makes the encoding more resilient against optical losses, which are common in practical quantum communication scenarios.</p>
+<p>Error Detection and Correction: The redundancy allows for error detection and correction. By comparing the information stored in both modes, errors can be identified, and appropriate error correction techniques can be applied to recover the original quantum state.</p>
+<p>Q: How many sets of mutually unbiased bases are there for single-photon polarization encoding in our logical qubit example?</p>
+<p>A:
+For a quantum system with two mutually unbiased bases, there are a total of three such sets of bases. This is a general result for a qubit system.</p>
+<p>In the context of qubits, the standard basis is typically denoted as {|0⟩, |1⟩}, which corresponds to the logical basis. The other two mutually unbiased bases can be defined in terms of different sets of basis states.</p>
+<p>Here are the three sets of mutually unbiased bases for qubits:</p>
+<p>Standard Basis (Logical Basis):</p>
+<p>|0⟩
+|1⟩
+Hadamard Basis:</p>
+<p>|+⟩ = (|0⟩ + |1⟩) / √2
+|-⟩ = (|0⟩ - |1⟩) / √2
+Circular Basis:</p>
+<p>|↻⟩ = (|0⟩ + i|1⟩) / √2
+|↺⟩ = (|0⟩ - i|1⟩) / √2
+These bases are mutually unbiased because the inner product of any pair of basis states from different bases has a magnitude of 1/√2, satisfying the condition for mutual unbiasedness.</p>
+<p>Comment: There’s a systematic construction that starts from the Lie algebra (group theory). Here, the following set of rotations forms a basis for the Lie algebra su(2), representing the group of unitary 2x2 matrices. The Pauli matrices, including X and Y, generate rotations in the Bloch sphere, allow us to transform between different bases.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Basis</p></th>
+<th class="head"><p>Basis State</p></th>
+<th class="head"><p>Construction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Hadamard Basis</p></td>
+<td><p>|0⟩_H</p></td>
+<td><p>H</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>|1⟩_H</p></td>
+<td><p>HX</p></td>
+</tr>
+<tr class="row-even"><td><p>Circular Basis</p></td>
+<td><p>|0⟩_C</p></td>
+<td><p>S</p></td>
+</tr>
+<tr class="row-odd"><td><p>(X-Basis)</p></td>
+<td><p>|1⟩_C</p></td>
+<td><p>SX</p></td>
+</tr>
+<tr class="row-even"><td><p>Standard Basis</p></td>
+<td><p>|0⟩_Z</p></td>
+<td><p>I</p></td>
+</tr>
+<tr class="row-odd"><td><p>(Computational Basis)</p></td>
+<td><p>|1⟩_Z</p></td>
+<td><p>X</p></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s use Qutip to demonstrate these bases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">qutip</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># Define the basis states</span>
+<span class="n">ket_H</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># |H⟩</span>
+<span class="n">ket_V</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># |V⟩</span>
+<span class="n">ket_D1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">+</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |D1⟩</span>
+<span class="n">ket_D2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">-</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |D2⟩</span>
+<span class="n">ket_C1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |C1⟩</span>
+<span class="n">ket_C2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |C2⟩</span>
+
+<span class="c1"># Check mutual unbiasedness</span>
+<span class="n">basis_sets</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s2">"Standard (Z) Basis"</span><span class="p">,</span> <span class="p">[</span><span class="n">ket_H</span><span class="p">,</span> <span class="n">ket_V</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">"Diagonal (D) Basis"</span><span class="p">,</span> <span class="p">[</span><span class="n">ket_D1</span><span class="p">,</span> <span class="n">ket_D2</span><span class="p">]),</span>
+    <span class="p">(</span><span class="s2">"Circular (C) Basis"</span><span class="p">,</span> <span class="p">[</span><span class="n">ket_C1</span><span class="p">,</span> <span class="n">ket_C2</span><span class="p">])</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">basis_name</span><span class="p">,</span> <span class="n">basis_states</span> <span class="ow">in</span> <span class="n">basis_sets</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">basis_name</span><span class="si">}</span><span class="s2">:"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">state1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis_states</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">state2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basis_states</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">!=</span> <span class="n">j</span><span class="p">:</span>
+                <span class="n">inner_product</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">state1</span><span class="o">.</span><span class="n">overlap</span><span class="p">(</span><span class="n">state2</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"|⟨</span><span class="si">{</span><span class="n">state1</span><span class="si">}</span><span class="s2">|</span><span class="si">{</span><span class="n">state2</span><span class="si">}</span><span class="s2">⟩|^2 = </span><span class="si">{</span><span class="n">inner_product</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+
+
+<span class="kn">from</span> <span class="nn">qutip</span> <span class="kn">import</span> <span class="n">Bloch</span><span class="p">,</span> <span class="n">basis</span>
+
+<span class="c1"># Create Bloch sphere instance</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">Bloch</span><span class="p">()</span>
+
+<span class="c1"># Define basis states</span>
+<span class="n">ket_H</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># |H⟩</span>
+<span class="n">ket_V</span> <span class="o">=</span> <span class="n">basis</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># |V⟩</span>
+<span class="n">ket_D1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">+</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |D1⟩</span>
+<span class="n">ket_D2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">-</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |D2⟩</span>
+<span class="n">ket_C1</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |C1⟩</span>
+<span class="n">ket_C2</span> <span class="o">=</span> <span class="p">(</span><span class="n">ket_H</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">ket_V</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>  <span class="c1"># |C2⟩</span>
+
+<span class="c1"># Add states to the Bloch sphere</span>
+<span class="n">b</span><span class="o">.</span><span class="n">add_states</span><span class="p">([</span><span class="n">ket_H</span><span class="p">,</span> <span class="n">ket_V</span><span class="p">,</span> <span class="n">ket_D1</span><span class="p">,</span> <span class="n">ket_D2</span><span class="p">,</span> <span class="n">ket_C1</span><span class="p">,</span> <span class="n">ket_C2</span><span class="p">])</span>
+
+<span class="c1"># Render the Bloch sphere</span>
+<span class="n">b</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="problem-2-matrix-algebra">
+<h3>Problem 2. Matrix algebra<a class="headerlink" href="#problem-2-matrix-algebra" title="Permalink to this heading">#</a></h3>
+<p>In the context of single-photon polarization encoding, consider the following notation for the basis states:
+$|H⟩$ represents the state $|1_H,0_V⟩$
+$|V⟩$ represents the state $|0_H 1_V⟩$</p>
+<p>Now, let’s examine an arbitrary state |ϕ⟩, which can be represented in the logical qubit basis as:
+$$|ϕ⟩ = ⟨H|ϕ⟩ |H⟩ + ⟨V|ϕ⟩ |V⟩$$</p>
+<p>Here, $⟨H|ϕ⟩$ and $⟨V|ϕ⟩$ are the wavefunction values corresponding to the logical qubit states |H⟩ and |V⟩.</p>
+<p>Suppose there exists a transformation from |ϕ⟩ to |ψ⟩, which is represented by a 2x2 matrix U:
+$$|\psi\rangle = U |\phi\rangle$$</p>
+<p>Show that this transformation matrix U must be unitary. In other words, demonstrate that for the conjugate transpose U*, also known as the Hermitian adjoint U†, the following equality holds:
+$$U^\dagger U = U U^\dagger= I_2$$
+Where $I_2$ is the 2x2 identity matrix.</p>
+<p>A:</p>
+<ol class="arabic simple">
+<li><p>Expand the expressions $\langle H|U^\dagger U|H\rangle$ and $\langle V|U^\dagger U|V\rangle$ using matrix multiplication and Hermitian conjugation:
+$$
+\langle H|U^\dagger U|H \rangle = \begin{pmatrix}1 &amp; 0\end{pmatrix} U^\dagger U \begin{pmatrix}1 \ 0 \end{pmatrix} = u_{11}^* u_{11} + u_{12}^* u_{12} = |u_{11}|^2 + |u_{12}|^2 \
+\langle V|U^\dagger U|V\rangle = \begin{pmatrix}0 &amp; 1\end{pmatrix} U^\dagger U \begin{pmatrix}0 \ 1 \end{pmatrix} = u_{21}^* u_{21} + u_{22}^* u_{22} = |u_{21}|^2 + |u_{22}|^2
+$$</p></li>
+<li><p>Use the fact that the norm of a state is equal to its inner product with itself:
+$$|H|^2 = 1 \quad \text{and} \quad |V|^2 = 1$$</p></li>
+<li><p>Deduce that ( |u_{11}|^2 + |u_{12}|^2 = 1 ) and ( $|u_{21}|^2 + |u_{22}|^2 = 1$ ), which means that the matrix $U $ satisfies the condition for being unitary.
+Hence, if a 2x2 matrix $ |H\rangle  $ preserves the normalization of probability amplitudes for polarization states $ |H\rangle $ and $ |V\rangle $ , it must be unitary.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+<script>kernelName = 'python3'</script>
+</article>
+<footer class="prev-next-footer">
+<div class="prev-next-area">
+<a class="left-prev" href="Introduction.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations</p>
+</div>
+</a>
+<a class="right-next" href="1-2%20QKD_Tutorial.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">Exploring Quantum Networks: Practical Introduction with Examples in QKD</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> Contents
+  </div>
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-1-traveling-electromagnetic-waves">Problem 1. Traveling Electromagnetic Waves</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#number-states">1.1 Number states</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-energy">1.2 Photon energy</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#estimate">1.2.1 Estimate</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-energy-compared-to-thermal-energy">1.2.2 Photon energy compared to thermal energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#thermal-occupation-at-microwave-frequency">1.2.3 Thermal occupation at microwave frequency</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-encoding">1.3 Logical encoding</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mutually-unbiased-bases">1.4 Mutually unbiased bases</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization">1.5 Generalization</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-2-matrix-algebra">Problem 2. Matrix algebra</a></li>
+</ul>
+</li>
+</ul>
+</nav></div>
+</div></div>
+</div>
+<footer class="bd-footer-content">
+<div class="bd-footer-content__inner container">
+<div class="footer-item">
+<p class="component-author">
+By Dirk Englund, Hyeongrak Choi, Prajit Dhara
+</p>
+</div>
+<div class="footer-item">
+<p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+</p>
+</div>
+<div class="footer-item">
+</div>
+<div class="footer-item">
+</div>
+</div>
+</footer>
+<html><body><div>
+<div class="msger-expand">
+<div class="msger-header-title">
+<i class="fas fa-comment-alt"></i> ChatTutor
+    </div>
+<div class="msger-header-options">
+<span><i class="fas fa-solid fa-caret-up"></i></span>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<div class="msger minimized">
+<div class="msg-header-helper">
+<div class="msger-header">
+<div class="msger-header-title">
+<i class="fas fa-comment-alt"></i> ChatTutor
+        </div>
+<div class="button-div" id="themeBtnDiv">
+<button class="theme-button" id="themeBtn">Toggle theme</button>
+<button class="msger-minimize" id="minimizeBtn"><span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">cancel</span></button>
+</div>
+</div>
+</div>
+<main class="msger-chat">
+<div class="msg left-msg">
+<div class="msg-bgd">
+<div class="msg-bubble">
+<div class="msg-info">
+<div class="msg-info-name">assistant</div>
+</div>
+<div class="msg-text">Hello, what can i do to help you?</div>
+</div>
+</div>
+</div>
+<div class="clear-btn-container" id="clearContId">
+</div>
+<div id="scrollHelper" style="background-color: black;">
+<!-- Helper for keeping scrolling  -->
+</div>
+</main>
+<form class="msger-inputarea">
+<input class="msger-input" id="msgInput" placeholder="Enter your message..." type="text"/>
+<button class="msger-send-btn" id="sendBtn" type="submit">
+<span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">
+            send
+          </span>
+</button>
+<button class="clear-btn" id="clearBtnId">
+<span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">
+                delete_forever
+            </span>
+</button>
+<button class="stop-gen-btn" id="stopBtnId">
+<span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">
+                stop_circle
+            </span>
+</button>
+</form>
+</div>
+</div></body></html></main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+<footer class="bd-footer">
+</footer>
+<script src="_static/scripts/chattutor.js"></script></body>
+</html>
