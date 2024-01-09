@@ -243,11 +243,39 @@ document.write(`
 <nav aria-label="Page">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-mediated-remote-entanglement-protocols">Photon-mediated Remote Entanglement Protocols</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-protocol">Setting up the protocol:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-quantum-optical-modeling">Introducing quantum optical modeling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-entanglement-protocol-framework">Remote entanglement protocol framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qurebb-repository">QuREBB Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-start-qurebb">How to start QuREBB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-building-blocks">Logical building blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topology-of-the-protocol">Topology of the protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-photon-interface-blocks">Spin-Photon Interface blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-blocks">Photon blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-blocks">Spin blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-logical-building-blocks">Other logical building blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-topology-and-logical-building-blocks">Combining topology and Logical Building Blocks</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding">Encoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-encoding">Photon Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-encoding">Spin encoding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-building-blocks">Physical building blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-physical-building-blocks">Photon Physical Building Blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-photon-interface-pbbs">Spin-photon interface PBBs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-operations">Spin operations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-optical-modeling">Quantum optical modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emitter">Emitter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photonic-cavity">Photonic Cavity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-channel-description-of-pbb">Quantum channel description of PBB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-and-benchmarking-entanglement-protocols">Simulating and Benchmarking Entanglement Protocols</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </nav>
 </div>
@@ -263,615 +291,288 @@ document.write(`
 <h2>Photon-mediated Remote Entanglement Protocols<a class="headerlink" href="#photon-mediated-remote-entanglement-protocols" title="Permalink to this heading">#</a></h2>
 <p>Photon-mediated remote entanglement protocols are essential in quantum networks, quantum computing, and quantum communication, with the synthesis of quantum mechanics and photonic technology. These protocols enable the generation of quantum entanglement between stationary qubits (often called “quantum memory”) over long distances. At the core of these protocols is the utilization of photons as intermediaries, leveraging their inherent stabilities over optical fibers. This approach not only circumvents the limitations posed by the direct interaction of qubits but also harnesses the speed and coherence properties of photons, making long-range quantum communication feasible.</p>
 <p>The significance of these protocols lies in their potential to create extensive quantum networks, similar to the internet, but operating on the principles of quantum mechanics. Such networks could revolutionize data security through quantum cryptography and enable distributed quantum computing, where computational tasks are shared across multiple quantum nodes. The development of photon-mediated remote entanglement protocols is thus a critical step towards realizing the full potential of quantum technologies. It merges the realms of quantum photonics, where light-matter interactions are manipulated at the quantum level, with quantum information science, offering innovative solutions to the challenges of scalability and robustness in quantum systems.</p>
-<p>Figure 1(a) shows photon-mediated remote entanglement protocols with three different topologies—detection-in-midpoint (ingoing), sender-receiver, and source-in-midpoint (outgoing).</p>
+</section>
+<section id="remote-entanglement-protocol-framework">
+<h2>Remote entanglement protocol framework<a class="headerlink" href="#remote-entanglement-protocol-framework" title="Permalink to this heading">#</a></h2>
+<p>Here, as a Tutorial, we present a theoretical framework for comparing and understanding different photon-mediated remote entanglement protocols (REPs). The modular framework consists of four layers, with modules assembled by connecting one’s output to another’s input.</p>
+<p>The advantage of this framework is that it gives insights into the common features of remote entanglement protocols. Moreover, it allows easy modification of the modules to compare a protocol with different types of quantum hardware or to rearrange the quantum hardware and test different protocols with the same hardware. Dedicated simulations of entanglement generation for a given experiment usually lack this flexibility.</p>
+<p>Figure 1 illustrates the framework. We start by explaining the high-level idea and how the first layer (logical building block and topology) can describe REPs in a generic manner. Next, we introduce the encoding and physical building block layers, which link the protocol to specific hardware. Finally, the quantum optical modeling layer provides a detailed, quantitative description of the physical building blocks. Our focus is on qubits realized with a single spin in atomic or solid-state systems, but the framework can incorporate other systems such as the spin wave in an atomic ensemble and optomechanical resonators, as well as superconducting qubits. These single entangled links between qubits could later be extended to multi-spin encoding for error correction for fault-tolerant quantum networks.</p>
+<p><img alt="Fig1" src="_images/QuREBB-figure1.png"/></p>
+<p><strong>Figure 1</strong> - Overview of remote entanglement protocol modular framework. <strong>Entanglement link</strong> - The objective of entanglement protocols is to entangle two remote spins (purple) where the entanglement is created by photons (red). (a) <strong>Logical Building Blocks (LBB)</strong> and Topology - The topology for remote entanglement generation is deconstructed in logical building blocks (LBBs). From left to right, we consider three main REP topologies: the detection-in-midpoint, sender-receiver, and source-in-midpoint topology. (b) <strong>Encoding</strong> - The encoding layer chooses the basis for the photonic qubits and the levels for the spin qubit. We illustrate the time-bin encoding of sender-receiver topology with spin-photon gates. (c) <strong>Physical Building Blocks (PBB)</strong> - The physical building blocks (PBBs) are the quantum channel describing the operations of the physical systems including imperfections. This layer shows the REP at the physical level. The first panel describes the construction of spin-photon gates with an overcoupled cavity QED system for state conditional amplitude reflection. The second panel shows the implementation of a measurement of the time-bin qubit in the X-basis, using a Mach-Zehnder interferometer. (d) <strong>Quantum optical modeling</strong> - This layer models the hardware used in the PBB. In this example the relevant parameters for the PBBs (e.g. state-dependent reflection coefficient, $r_{\ket{0}, \ket{1}}$) can be calculated from physical variables (e.g. spin-cavity coupling rate, $g$), using a detailed quantum optical model. We implemented these descriptions in a software package publicly available on GitHub.</p>
+</section>
+<section id="qurebb-repository">
+<h2>QuREBB Repository<a class="headerlink" href="#qurebb-repository" title="Permalink to this heading">#</a></h2>
+<p>We have released a software package titled QuREBB (Quantum Remote Entanglement Building Block simulations), available in an accompanying GitHub repository. This package offers a comparison of three exemplary entanglement protocols. For each protocol, we review every layer, from the idealized version to its practical implementation. As an example, we assume that the protocols are implemented with silicon-vacancy color centers in diamond nanophotonic cavities. This serves as a Tutorial on how to effectively employ our theoretical framework for the construction and quantitative analysis of the protocol’s performance. The modular structure of our software implementation mirrors the framework, enabling the implementation of complex quantum systems from the physical to the network levels. Users can easily add new physical devices or logical units without interfering with existing functionality. Our ``named quantum object’’ simplifies the tensor operations of different quantum subsystems by indexing them by names instead of numerical values.</p>
+<p><img alt="QuREBBrepo" src="_images/QuREBB-Repo.png"/></p>
+</section>
+<section id="how-to-start-qurebb">
+<h2>How to start QuREBB<a class="headerlink" href="#how-to-start-qurebb" title="Permalink to this heading">#</a></h2>
+<p><strong>If you have git on your machine</strong>, your can clone the repository through git.</p>
+<p><strong>If you do not have git</strong>, you can manually download from the <a class="reference external" href="https://github.com/QuTech-Delft/QuREBB">repository</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/QuTech-Delft/QuREBB.git
+</pre></div>
+</div>
+<p>The virtual environment in this QuREBB repository is managed by <a class="reference external" href="https://pipenv.pypa.io/en/latest/">pipenv</a>.
+To install pipenv you can use pip:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pipenv<span class="w"> </span>--user
+</pre></div>
+</div>
+<p>Using pipenv you then want to install all the dependencies of the repository by syncing with pipenv.
+First navigate in the terminal to the QuREBB folder. Then run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pipenv<span class="w"> </span>sync
+</pre></div>
+</div>
+<p>Once you are synced you can go into a shell of this virtual enviroment (again while being in the QuREBB folder):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pipenv<span class="w"> </span>shell
+</pre></div>
+</div>
+<p>The commands you now run are within this virtual enviroment, e.g.:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>jupyter<span class="w"> </span>lab
+</pre></div>
+</div>
+</section>
+<section id="logical-building-blocks">
+<h2>Logical building blocks<a class="headerlink" href="#logical-building-blocks" title="Permalink to this heading">#</a></h2>
+<p>The first layer of our framework is the choice of protocol topology and its description in terms of logical building blocks (LBBs). The operation of the protocol topology can be described by the circuit diagrams Fig. 2(a). LBBs are high-level quantum operations in a quantum network that can be chained together to form an entanglement protocol, such as photon sources, spin-photon emission, and photon detection. In Fig. 2(b) we show how LBBs compare to elementary circuit diagrams, and in Fig. 2(c) how they can be used to construct different protocol topologies. The LBBs are not hardware-specific, as the practical details on what generates this operation and the dependence on physical parameters are described in the physical building block layer.</p>
+<section id="topology-of-the-protocol">
+<h3>Topology of the protocol<a class="headerlink" href="#topology-of-the-protocol" title="Permalink to this heading">#</a></h3>
 <p>In the detection-in-midpoint topology, both endpoints generate spin-photon entanglement. The photons are then measured in the middle, in an entangled basis using a Bell state measurement. This projects the two spins in an entangled state. The detection-in-midpoint topology has an advantage in its simplicity. At its most basic, this topology requires only photon-emission from the spins, beamsplitter interference of the photons, and single-photon detections at the central station. Efficient spin-photon interfaces like optical cavities, while helpful, are not necessary to get high-fidelity entanglement. Furthermore, the time overhead for classical communication is reduced by half compared to the other topologies, since the endpoints communicate solely with the detection point, eliminating the need for direct communication between them.</p>
 <p>In the sender-receiver topology, the first endpoint generates spin-photon entanglement, and the photon is then sent to the second endpoint, where it interacts with the spin, such that entanglement between the spins is achieved. This interaction can be a gate-like behavior (e.g. by using an optical cavity) after which the photon is measured. Alternatively, the photon can be absorbed by the spin-photon interface in which case this topology matches the workings of quantum state transfer [2, 3]. The sender-receiver topology does not necessitate an intermediary station for the spins to become entangled. However, the classical communication time for the heralding signal is twice as long compared to a detection-in-midpoint, as it needs to travel the full distance as opposed to half of it.</p>
 <p>The source-in-midpoint topology has an entangled photon source in the middle which sends these photons to the endpoints. The endpoints have an entangling interaction between the spin and the photon, after which the photons are measured and the spins will be projected into an entangled state. The source-in-midpoint topology is useful in satellite-assisted entanglement protocols. Ground-to-satellite channel (uplink) has a higher overall loss than the satellite-to-ground channel (downlink). Phenomenologically, this phenomenon is collectively referred to as the “shower curtain effect” of the atmosphere. In particular, the diffraction and deflection by air turbulence are more severe in the early stage of transmission than in the late stage on the dispersed beam. Moreover, practical factors such as limited onboard optics on the satellite result in a larger pointing error in the uplink than the downlink.</p>
 <p>Remote entanglement between two stationary qubits has been experimentally realized with sender-receiver topology using trapped atoms embedded in optical cavities, and with detection-in-midpoint using several platforms including NV centers in diamond, quantum dots, trapped ions, and neutral atoms.</p>
-<p align="center">
-<img src="images/QuREBB-figure1.png" width="800"/>
-</p>
-<p><strong>Figure 1</strong> - Overview of remote entanglement protocol modular framework. <strong>Entanglement link</strong> - The objective of entanglement protocols is to entangle two remote spins (purple) where the entanglement is created by photons (red). (a) <strong>Logical Building Blocks (LBB)</strong> and Topology - The topology for remote entanglement generation is deconstructed in logical building blocks (LBBs). From left to right, we consider three main REP topologies: the detection-in-midpoint, sender-receiver, and source-in-midpoint topology. (b) <strong>Encoding</strong> - The encoding layer chooses the basis for the photonic qubits and the levels for the spin qubit. We illustrate the time-bin encoding of sender-receiver topology with spin-photon gates. (c) <strong>Physical Building Blocks (PBB)</strong> - The physical building blocks (PBBs) are the quantum channel describing the operations of the physical systems including imperfections. This layer shows the REP at the physical level. The first panel describes the construction of spin-photon gates with an overcoupled cavity QED system for state conditional amplitude reflection. The second panel shows the implementation of a measurement of the time-bin qubit in the X-basis, using a Mach-Zehnder interferometer. (d) <strong>Quantum optical modeling</strong> - This layer models the hardware used in the PBB. In this example the relevant parameters for the PBBs (e.g. state-dependent reflection coefficient, $r_{\ket{0}, \ket{1}}$) can be calculated from physical variables (e.g. spin-cavity coupling rate, $g$), using a detailed quantum optical model. We implemented these descriptions in a software package publicly available on GitHub.</p>
+<p><img alt="QuREBBrepo" src="_images/QuREBB-2a.png"/></p>
+<p><strong>Figure 2(a)</strong> Remote entanglement protocol topologies and logical building blocks (LBBs): Three available topologies for REP - detection-in-midpoint, sender-receiver topology, and source-in-midpoint and their operation with circuit diagrams. Here we use the notation $\ket{+} = (\ket{0}+\ket{1})/\sqrt{2}$.</p>
 </section>
-<section id="setting-up-the-protocol">
-<h2>Setting up the protocol:<a class="headerlink" href="#setting-up-the-protocol" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Utility and common imports</span>
-
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">expanduser</span><span class="p">,</span> <span class="n">join</span>
-<span class="n">home</span> <span class="o">=</span> <span class="n">expanduser</span><span class="p">(</span><span class="s2">"~"</span><span class="p">)</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="s1">'Repositories/2024.CQNSCHOOL.DIGITALTWIN'</span><span class="p">))</span>
-<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1"># QuREBB library imports</span>
-
-<span class="kn">import</span> <span class="nn">lib.LBB</span> <span class="k">as</span> <span class="nn">lbb</span>
-<span class="kn">import</span> <span class="nn">lib.PBB</span> <span class="k">as</span> <span class="nn">pbb</span>
-<span class="kn">import</span> <span class="nn">lib.NQobj</span> <span class="k">as</span> <span class="nn">nq</span>
-<span class="kn">import</span> <span class="nn">lib.states</span> <span class="k">as</span> <span class="nn">st</span>
-<span class="kn">import</span> <span class="nn">lib.quantum_optical_modelling</span> <span class="k">as</span> <span class="nn">qom</span>
-<span class="kn">from</span> <span class="nn">lib.PBB</span> <span class="kn">import</span> <span class="n">no_vacuum_projector</span>
-<span class="kn">from</span> <span class="nn">lib.protocol</span> <span class="kn">import</span> <span class="n">Protocol</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="s1">'Repositories/2024.CQNSCHOOL.DIGITALTWIN'</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
-<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># QuREBB library imports</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named 'numpy'
-</pre></div>
-</div>
-</div>
-</div>
-<p>First, we look at the Logical Buildind Blocks and Encoding.</p>
-<p><img alt="image.png" src="attachment:cc3881d7-427e-4f44-b5f8-8145597a85e4.png"/></p>
-<p>We start with a single photon in Time-Bin encoding, prepared in $|+\rangle = 1/\sqrt{2}(|E\rangle + |L\rangle)$, and two spins Alice and Bob, both prepared in $|+\rangle=1/\sqrt{2}(|\uparrow\rangle + |\downarrow\rangle)$.</p>
-<p>The photon then interacts with a Conditional Amplitude Reflection SPI based on a cavity-emitter system of Alice, then with the one of Bob.</p>
-<p>To measure entanglement we need to measure the photonic qubit in the X basis, therefore we apply a rotation gate before we measure in the| ${|E\rangle, |L\rangle}$ basis.</p>
-<p>We first create our protocol, inheriting from the Protocol class.
-Here we need to define:</p>
-<ul class="simple">
-<li><p>The initial density matrix of the spin state(s)</p></li>
-<li><p>The projector of the photonic state we want to herald for successful entanglement</p></li>
-<li><p>The target state of our protocol</p></li>
-</ul>
-<p>Often different final photonic states correspond to a different entangled state generation. The protocol allows one to define a list of photon state projectors and target states. They have to correspond one-to-one, for each herald state the protocol calculates the fidelity of the corresponding target state.</p>
-<p>Detecting a photon in $|E\rangle$ will herald the final Bell state $|\psi_+\rangle$, and detecting a photon in $|L\rangle$ will herald $|\psi_-\rangle$.
-The detection is done using the projector on “non vacuum” state: $P = \mathbb{1} - |vac\rangle\langle vac |$.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">""" </span>
-<span class="sd">        Our protocol class to simulate Spin-Photon Entanglement</span>
-<span class="sd">    """</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="c1"># We prepare the initial state of the spins in |x &gt;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-
-        <span class="c1"># We definet the two herald state projectors.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">herald_projectors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
-            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
-        <span class="p">]</span>
-
-        <span class="c1"># And the corresponding target entangled states</span>
-
-        <span class="n">state_uu</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-        <span class="n">state_dd</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">target_states</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">state_uu</span> <span class="o">+</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> 
-            <span class="p">(</span><span class="n">state_uu</span> <span class="o">-</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
-        <span class="p">]</span>
-        
-
-        
-        
-</pre></div>
-</div>
-</div>
-</div>
-<p>The Protocol class contains several built-in features, in particular:</p>
-<ul class="simple">
-<li><p>parameters: a dictionary of the parameters needed to run the protocol</p></li>
-<li><p>dm: the density matrix used for the evolution of the protocol</p></li>
-<li><p>fidelity, rate: values that get updated with the simulation results</p></li>
-</ul>
-<p>A key function of Protocol is the <em>do_lbb()</em> function. This is a wrapper that applies a Logical Building Block to the density matrix, taking care to pass over all the relevant parameters.
-It is defined like this:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">do_lbb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">LBB</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""Makes a logical building block act on the density matrix."""</span>
-        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="n">LBB</span><span class="p">(</span><span class="n">dm_in</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dm</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>For example: let’s start from the initial density matrix of our protocol, which contains only the spin states, and apply a photon source LBB to generate a photon in  $|+\rangle = 1/\sqrt{2}(|E\rangle + |L\rangle)$.</p>
-<p>This is how the source is defined in the LBB library:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">photon_source_time_bin</span><span class="p">(</span><span class="n">dm_in</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-    <span class="c1"># We can either create a single ephoton</span>
-    <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">photon_basis</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">photon</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
-
-    <span class="c1"># Or a coherent state</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">photon_basis</span> <span class="o">=</span> <span class="n">qt</span><span class="o">.</span><span class="n">coherent</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
-
-    <span class="c1">#We create the photonic modes and we prepare them in the |+&gt; state</span>
-    <span class="n">E</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">photon_basis</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">)</span>
-    <span class="n">L</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">photon_basis</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">dm_in</span><span class="p">,</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">((</span><span class="n">E</span> <span class="o">+</span> <span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We define the neccessary parameters to create the photon. </span>
-<span class="c1"># "dim" is the Fock state dimension of each photonic Qubit state</span>
-<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"dim"</span><span class="p">:</span> <span class="mi">2</span>
-<span class="p">}</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">ExampleProtocol</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-<span class="c1">#This is the initial density matrix, we use it to initialize the process density matrix p.dm</span>
-<span class="n">display</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm_init</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">dm_init</span>
-
-<span class="c1">#Apply a photon source building block.</span>
-<span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">photon_source_time_bin</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">)</span>
-
-<span class="c1"># This is what the density matrix looks like after the LBB:</span>
-<span class="n">display</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_latex math notranslate nohighlight">
-\[\begin{split}Quantum object: dims = [[2, 2], [2, 2]], shape = (4, 4), type = oper, isherm = True $ \\ \left(\begin{matrix}0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\\end{matrix}\right)$ $\\$ names = [['Alice', 'Bob'], ['Alice', 'Bob']], kind = state\end{split}\]</div>
-<div class="output text_latex math notranslate nohighlight">
-\[\begin{split}Quantum object: dims = [[2, 2, 2, 2], [2, 2, 2, 2]], shape = (16, 16), type = oper, isherm = True $ \\ \left(\begin{matrix}0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\\end{matrix}\right)$ $\\$ names = [['Alice', 'Bob', 'E', 'L'], ['Alice', 'Bob', 'E', 'L']], kind = state\end{split}\]</div>
-</div>
-</div>
-<p>The <em>photon_source_time_bin()</em> function took care of creating the photons in the correct state and adding them to the density matrix, thanks to the tensor product using NQobj().</p>
-<p>Now, in the same way we can apply the Conditional Amplitude Reflection SPI LBB.</p>
-<p>In the ideal case, this is a spin-dependent cavity where the photon is totally reflected if the spin is in $|\downarrow\rangle$ and totally transmitted if the spin is in $|\uparrow\rangle$.</p>
-<p>We first describe the LBB in terms of Physical Building Blocks:</p>
-<p><img alt="image.png" src="attachment:e7725563-64df-496f-9fb2-6a41462964b6.png"/></p>
-<p>And we define the LBB function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">(</span>
-    <span class="n">dm_in</span><span class="p">,</span>
-    <span class="n">spin_name</span><span class="p">,</span>
-    <span class="n">photon_early_name</span><span class="p">,</span>
-    <span class="n">photon_late_name</span><span class="p">,</span>
-    <span class="n">dim</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kw</span><span class="p">,</span>
-<span class="p">):</span>
-
-    <span class="c1"># Reflection coefficient and transmission coefficients for states up (u) and down (d)</span>
-    <span class="n">t_u</span> <span class="o">=</span> <span class="n">r_d</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">t_d</span> <span class="o">=</span> <span class="n">r_u</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="c1"># No loss</span>
-    <span class="n">l_u</span> <span class="o">=</span> <span class="n">l_d</span> <span class="o">=</span> <span class="mi">0</span>
-
-
-    <span class="c1"># We provide the parameters to the Physical Building Block of a conditional amplitude reflection SPI</span>
-    <span class="n">cav</span> <span class="o">=</span> <span class="n">pbb</span><span class="o">.</span><span class="n">conditional_amplitude_reflection</span><span class="p">(</span><span class="n">r_u</span><span class="p">,</span> <span class="n">t_u</span><span class="p">,</span> <span class="n">l_u</span><span class="p">,</span> <span class="n">r_d</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">l_d</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
-
-    <span class="c1"># Specifying which Spin it refers to.</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"spin"</span><span class="p">,</span> <span class="n">spin_name</span><span class="p">)</span>
-
-    <span class="c1"># We realise PBB implementation of the LBB, first the cavity is applied to Early</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"R"</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">)</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"T"</span><span class="p">,</span> <span class="s2">"loss_transmission"</span><span class="p">)</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"loss"</span><span class="p">,</span> <span class="s2">"loss"</span><span class="p">)</span>
-
-    <span class="n">dm_E_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="n">dm_in</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
-
-    <span class="c1"># Tracing out the lost modes</span>
-    <span class="n">dm_E</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_E_full</span><span class="p">)</span>
-
-    <span class="c1"># We apply a pi rotation on the spin</span>
-    <span class="n">RX_pi</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">NQobj</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">names</span><span class="o">=</span><span class="n">spin_name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"oper"</span><span class="p">)</span>
-
-    <span class="c1"># And we apply the same cavity PBB to Late by renaming the photonic mode it operates on</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">photon_early_name</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">)</span>
-    <span class="n">dm_L_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="p">(</span><span class="n">RX_pi</span> <span class="o">*</span> <span class="n">dm_E</span> <span class="o">*</span> <span class="n">RX_pi</span><span class="o">.</span><span class="n">dag</span><span class="p">())</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
-
-    <span class="c1">#Finally we trace out the lost modes.</span>
-    <span class="n">dm_L</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_L_full</span><span class="p">)</span>
-
-    <span class="c1">#Finally, we return the modified density matrix</span>
-    <span class="k">return</span> <span class="n">dm_L</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can now apply this  in our protocol, first to Alice:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
-        <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
-        <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span>
-        <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span>
-        <span class="n">spin_name</span><span class="o">=</span><span class="s2">"Alice"</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\hakna\Repositories\2024.CQNSchool.DigitalTwin\lib\PBB.py:50: RuntimeWarning: divide by zero encountered in scalar divide
-  theta_splitting_u = np.arctan(np.abs(t_prime_u) / np.abs(r_prime_u))
-</pre></div>
-</div>
-</div>
-</div>
-<p>Then to Bob:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
-        <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
-        <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span>
-        <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span>
-        <span class="n">spin_name</span><span class="o">=</span><span class="s2">"Bob"</span><span class="p">,</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Now we can herald and project the spins in an entangled state.</p>
-<p>For this protocol to work, we need to measure the photons in the X basis. We can implement this by first rotating the basis and measuring in ${|E\rangle, |L\rangle}$.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#First rotate the basis</span>
-<span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">basis_rotation</span><span class="p">,</span> <span class="n">photon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"L"</span><span class="p">])</span>
-
-<span class="c1">#And herald on the photonic states we previously defined, to get the rate and fidelity:</span>
-<span class="k">def</span> <span class="nf">herald</span><span class="p">(</span><span class="n">dm_in</span><span class="p">,</span> <span class="n">herald_projector</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-    <span class="n">dm_final</span> <span class="o">=</span> <span class="n">herald_projector</span> <span class="o">*</span> <span class="n">dm_in</span> <span class="o">*</span> <span class="n">herald_projector</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_everything_but_spins</span><span class="p">(</span><span class="n">dm_final</span><span class="p">)</span>
-
-<span class="c1">#We herald on a photon in Early</span>
-<span class="n">heralded_dm_E</span> <span class="o">=</span> <span class="n">herald</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">herald_projectors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-
-<span class="c1"># And check the fidelity and success probability of getting Psi_+</span>
-<span class="n">fidelity</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">heralded_dm_E</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">target_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">rate</span> <span class="o">=</span> <span class="n">heralded_dm_E</span><span class="o">.</span><span class="n">tr</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Heralding a photon in Early gives the state psi_+ with Fidelity: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> and Success Probability: </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
-
-<span class="c1">#And we do the same with Late and Psi_-</span>
-<span class="n">heralded_dm_L</span> <span class="o">=</span> <span class="n">herald</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">herald_projectors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">fidelity</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">heralded_dm_L</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">target_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span>
-<span class="n">rate</span> <span class="o">=</span> <span class="n">heralded_dm_L</span><span class="o">.</span><span class="n">tr</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Heralding a photon in Late gives the state psi_- with Fidelity: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> and Success Probability: </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Heralding a photon in Early gives the state psi_+ with Fidelity: 1.000 and Success Probability: 0.125 
-Heralding a photon in Late gives the state psi_- with Fidelity: 1.000 and Success Probability: 0.125 
-</pre></div>
-</div>
-</div>
-</div>
-<p>We have entanglement!</p>
-<p>Now, the Protocol class contains several functions that make running the protocol much simpler. It will take care of initialising the density matrix, running all the LBBs and doing the hearlding and fidelity/rate measurement. This is done with the <em>Protocol.run()</em> function:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">"""Runs the protocol sequence and return the metrics"""</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">protocol_sequence</span><span class="p">()</span>
-        <span class="n">fidelity</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">herald</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">fidelity</span><span class="p">,</span> <span class="n">rate</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>So in our protocol, we can just define the <em>protocol_sequence()</em></p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">""" </span>
-<span class="sd">        Our protocol class to simulate Spin-Photon Entanglement</span>
-<span class="sd">    """</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="c1"># We prepare the initial state of the spins in |x &gt;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-
-        <span class="c1"># We definet the two herald state projectors.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">herald_projectors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
-            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
-        <span class="p">]</span>
-
-        <span class="c1"># And the corresponding target entangled states</span>
-
-        <span class="n">state_uu</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-        <span class="n">state_dd</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">target_states</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">state_uu</span> <span class="o">+</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> 
-            <span class="p">(</span><span class="n">state_uu</span> <span class="o">-</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
-        <span class="p">]</span>
-        
-
-    <span class="k">def</span> <span class="nf">protocol_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">photon_source_time_bin</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
-            <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
-            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span>
-            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span>
-            <span class="n">spin_name</span><span class="o">=</span><span class="s2">"Alice"</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
-            <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
-            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span>
-            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span>
-            <span class="n">spin_name</span><span class="o">=</span><span class="s2">"Bob"</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">basis_rotation</span><span class="p">,</span> <span class="n">photon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"L"</span><span class="p">],</span> <span class="n">sign</span><span class="o">=+</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s2">"dim"</span><span class="p">:</span> <span class="mi">2</span>
-<span class="p">}</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">ExampleProtocol</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">"The Fidelities for the two herald states are: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] and the Success Probability: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] "</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Fidelities for the two herald states are: [1.000, 1.000] and the Success Probability: [0.125, 0.125] 
-</pre></div>
-</div>
-</div>
-</div>
+<section id="spin-photon-interface-blocks">
+<h3>Spin-Photon Interface blocks<a class="headerlink" href="#spin-photon-interface-blocks" title="Permalink to this heading">#</a></h3>
+<p>The key logical building block of a REP is the spin-photon interface block since this is the interaction between the stationary and flying qubits.
+In this work, we focus on REPs that are heralded, using single-photon detection to screen out photon loss errors. Absorption-based spin-photon interfaces generally allow heralding only through additional energy levels in the stationary qubit. Thus, we give only a cursory treatment of absorption-based spin-photon interfaces. We identify four main categories of the spin-photon interface blocks:</p>
+<p><strong>Spin-Photon Emission</strong> - A spin-photon emission block creates a photonic qubit entangled with the qubit state of the spin by emission through a higher level excited state. This is commonly achieved by the emission of a photon after spin-dependent excitation with a laser pulse. As an example, optical excitation of a spin in a superposition state will emit a photon depending on the spin state: $\frac{1}{\sqrt{2}}(\ket{0}_s+\ket{1}_s) \xrightarrow{\text{laser}} \frac{1}{\sqrt{2}}(\ket{0}_s+\ket{\text{excited}}_s) \rightarrow \frac{1}{\sqrt{2}}(\ket{0}_s\ket{0}_p+\ket{1}_s\ket{1}_p)$, where the subscript $s$ ($p$) labels the state of the spin (photonic mode), and $\ket{1}_s$ is the spin’s bright state that is excited and emit a single photon. Alternatively, the system can be brought to an excited state where two different decay channels lead to two different spin states. The emitted photons can have for example a different polarization entangled with the spin state.  Various optically active quantum systems have realized spin-photon emission through spin-dependent optical excitation or decay to different spin states, including NV centers in bulk diamonds, neutral atoms, trapped ions, and quantum dots.</p>
+<p><strong>Spin-Photon Gate</strong> - A spin-photon gate block is a conditional gate between the spin and a photon. Depending on the exact implementation, this will act as a controlled Z- or controlled X-rotation on the photonic qubit. Spin-photon gate blocks require a strong coupling of photons with the stationary qubit, and this is realized by confining the light with photonic cavities or waveguides. In some cases, the need for strong coupling can be relaxed at the expense of a non-deterministic but heralded gate operation. Examples of practical implementation of spin-photon gate LBB are trapped atoms in Fabry-Perot cavities, SiV centers in diamond photonic crystal cavities, and quantum dots in photonic crystal waveguides.</p>
+<p><strong>Spin-Photon Projector</strong> -A spin-photon projector block selects only specific states from the input state. With the right input state and the right selection, this results in spin-photon entanglement. This method is sometimes referred to as “carving”. An example is where the input state is in a superposition for both the photon and spin qubit (note that the $\ket{0}_p$ is referring to the qubit state, not the vacuum state): $\frac{1}{2}(\ket{0}_s\ket{0}_p+ \ket{0}_s\ket{1}_p+\ket{1}_s\ket{0}_p+ \ket{1}_s\ket{1}_p)$ and the spin-photon interface has a photonic loss that depends on both the spin and photon state. In this example, a spin-photon interface that has photon loss for the photon in the scenario’s $\ket{0}_s\ket{1}_p $and $\ket{1}_s\ket{0}_p$ would create with 50% chance the state $\frac{1}{2}(\ket{0}_s\ket{0}_p+ \ket{1}_s\ket{1}_p)$. So heralding no photon loss by photon detection ensures that only (an entangled) part of the incoming state is selected. This approach was used for entangling two neutral atoms in a cavity and with silicon-vacancy centers in diamond photonic crystal cavities for the demonstration of an asynchronous Bell state measurement between two photons. The downside is that it has intrinsic losses as it rejects part of the incoming state rather than performing a deterministic gate.</p>
+<p><strong>Spin-Photon Absorption</strong>
+The spin-photon absorption block transfers the photon state to the spin state. The block often implements a strong interaction using a cavity or spin ensemble. The absorption of a photon from lossy channels results in the vacuum field and does not herald the entanglement by photodetection resulting in low fidelities. Instead, spin-photon absorption can be useful if carefully used. For example, one can read the spin state after the absorption, effectively constructing a heralded protocol. Alternatively, one can make a high optical-depth spin ensemble absorb a single photon from a photon-pair source and use the other photon from the source. If the channel loss is negligible, the spin-photon absorption can directly implement quantum state transfer without classical communications.</p>
+<p><img alt="QuREBBrepo" src="_images/QuREBB-2b1.png"/></p>
+<p><strong>Figure 2(b)</strong> displays the LBBs available to construct the REP. The circuit description outlines their idealized operations, which the user can match with the diagrams in Figure (a). For the spin-photon projector and the spin-photon absorption, an approximate gate diagram is given. This can be used to see how they can be used in the quantum circuits in (a). The exact gate description for these LBBs would be a projector operation and a SWAP gate.</p>
 </section>
-<section id="introducing-quantum-optical-modeling">
-<h2>Introducing quantum optical modeling<a class="headerlink" href="#introducing-quantum-optical-modeling" title="Permalink to this heading">#</a></h2>
-<p>This is the ideal protocol. A step further is to use quantum optical modeling of the cavity-emitter system that we use for the SPI.</p>
-<p>First, let’s look at what the cavity spectrum looks like for some parameters:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
-
-    <span class="s1">'gamma_dephasing'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">'splitting'</span><span class="p">:</span> <span class="mf">3e9</span><span class="p">,</span>
-    <span class="s1">'DW'</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
-    <span class="s1">'QE'</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
-    <span class="s1">'dim'</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
-    <span class="s1">'ideal'</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="s1">'f_operation'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">'delta'</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="s1">'kappa_r'</span><span class="p">:</span> <span class="mf">20.e9</span><span class="p">,</span>
-    <span class="s1">'kappa_t'</span><span class="p">:</span> <span class="mf">20.e9</span><span class="p">,</span> 
-    <span class="s1">'gamma'</span><span class="p">:</span> <span class="mf">100e6</span><span class="p">,</span>
-    <span class="s1">'g'</span><span class="p">:</span> <span class="mf">2e9</span><span class="p">,</span>
-    <span class="s1">'alpha'</span><span class="p">:</span> <span class="kc">None</span>
-<span class="p">}</span>
-
-<span class="n">C</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'g'</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'kappa_t'</span><span class="p">]</span><span class="o">+</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'kappa_r'</span><span class="p">])</span><span class="o">/</span><span class="n">parameters</span><span class="p">[</span><span class="s1">'gamma'</span><span class="p">]</span>
-
-<span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">30e9</span><span class="p">,</span> <span class="mf">30e9</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">lib.quantum_optical_modelling</span> <span class="kn">import</span> <span class="n">cavity_qom_cavity_centered</span>
-
-<span class="n">t_up</span><span class="p">,</span> <span class="n">r_up</span><span class="p">,</span> <span class="n">l_up</span> <span class="o">=</span> <span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
-                        <span class="n">omega</span><span class="o">=</span><span class="n">frequencies</span><span class="p">,</span>
-                        <span class="n">delta</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'delta'</span><span class="p">],</span> 
-                        <span class="n">kappa_r</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'kappa_r'</span><span class="p">],</span>
-                        <span class="n">kappa_t</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'kappa_t'</span><span class="p">],</span>
-                        <span class="n">kappa_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
-                        <span class="n">gamma</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'gamma'</span><span class="p">],</span> 
-                        <span class="n">C</span> <span class="o">=</span> <span class="n">C</span>
-<span class="p">)</span>
-
-<span class="n">t_down</span><span class="p">,</span> <span class="n">r_down</span><span class="p">,</span> <span class="n">l_down</span> <span class="o">=</span> <span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
-                        <span class="n">omega</span><span class="o">=</span><span class="n">frequencies</span><span class="p">,</span>
-                        <span class="n">delta</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'delta'</span><span class="p">]</span> <span class="o">-</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'splitting'</span><span class="p">],</span> 
-                        <span class="n">kappa_r</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'kappa_r'</span><span class="p">],</span>
-                        <span class="n">kappa_t</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'kappa_t'</span><span class="p">],</span>
-                        <span class="n">kappa_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
-                        <span class="n">gamma</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">'gamma'</span><span class="p">],</span> 
-                        <span class="n">C</span> <span class="o">=</span> <span class="n">C</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">"f_operation"</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'Operation frequency'</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">'--'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r_up</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"$|\uparrow\rangle$"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'r'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r_down</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">"$|\downarrow\rangle$"</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">'b'</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Spin-dependent cavity spectrum'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Frequency [GHz]'</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Reflection'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x2417fea08d0&gt;
-</pre></div>
-</div>
-<img alt="_images/e4702553055b4141472e4cdf9f82756a72e2a4facb551806f9e1c25c9a3855b5.png" src="_images/e4702553055b4141472e4cdf9f82756a72e2a4facb551806f9e1c25c9a3855b5.png"/>
-</div>
-</div>
-<p>This deviates from the ideal case, as at the operation frequency the reflectivity for spin up is not perfectly 1 and for spin down is not perfectly zero.
-Indeed we are interested in what fidelity we can achieve with this configuration.</p>
-<p>First, we need to change the SPI LBB:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conditional_amplitude_reflection_time_bin_spi</span><span class="p">(</span>
-    <span class="n">dm_in</span><span class="p">,</span>
-    <span class="n">spin_name</span><span class="p">,</span>
-    <span class="n">photon_early_name</span><span class="p">,</span>
-    <span class="n">photon_late_name</span><span class="p">,</span>
-    <span class="n">dim</span><span class="p">,</span>
-    <span class="n">atom_centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">f_operation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">kappa_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">kappa_t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">kappa_loss</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="n">gamma</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">splitting</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-    <span class="n">ideal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">gamma_dephasing</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kw</span><span class="p">,</span>
-<span class="p">):</span>
-
-    <span class="c1">#We just chhange how we get the reflection coefficients, which now are taken from the quantum optical modeling</span>
-    <span class="n">C</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">kappa_t</span> <span class="o">+</span> <span class="n">kappa_r</span> <span class="o">+</span> <span class="n">kappa_loss</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">+</span> <span class="n">gamma_dephasing</span><span class="p">)</span>
-
-    <span class="n">t_u</span><span class="p">,</span> <span class="n">r_u</span><span class="p">,</span> <span class="n">l_u</span> <span class="o">=</span> <span class="n">qom</span><span class="o">.</span><span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
-                <span class="n">f_operation</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">kappa_r</span><span class="p">,</span> <span class="n">kappa_t</span><span class="p">,</span> <span class="n">kappa_loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma_dephasing</span><span class="o">=</span><span class="n">gamma_dephasing</span>
-            <span class="p">)</span>
-    <span class="n">t_d</span><span class="p">,</span> <span class="n">r_d</span><span class="p">,</span> <span class="n">l_d</span> <span class="o">=</span> <span class="n">qom</span><span class="o">.</span><span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
-                <span class="n">f_operation</span><span class="p">,</span> <span class="n">delta</span> <span class="o">-</span> <span class="n">splitting</span><span class="p">,</span> <span class="n">kappa_r</span><span class="p">,</span> <span class="n">kappa_t</span><span class="p">,</span> <span class="n">kappa_loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma_dephasing</span><span class="o">=</span><span class="n">gamma_dephasing</span>
-            <span class="p">)</span>
-
-
-    <span class="c1"># We provide the parameters to the Physical Building Block of a conditional amplitude reflection SPI</span>
-    <span class="n">cav</span> <span class="o">=</span> <span class="n">pbb</span><span class="o">.</span><span class="n">conditional_amplitude_reflection</span><span class="p">(</span><span class="n">r_u</span><span class="p">,</span> <span class="n">t_u</span><span class="p">,</span> <span class="n">l_u</span><span class="p">,</span> <span class="n">r_d</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">l_d</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
-
-    <span class="c1"># Specifying which Spin it refers to.</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"spin"</span><span class="p">,</span> <span class="n">spin_name</span><span class="p">)</span>
-
-    <span class="c1"># We realise PBB implementation of the LBB, first the cavity is applied to Early</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"R"</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">)</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"T"</span><span class="p">,</span> <span class="s2">"loss_transmission"</span><span class="p">)</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">"loss"</span><span class="p">,</span> <span class="s2">"loss"</span><span class="p">)</span>
-
-    <span class="n">dm_E_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="n">dm_in</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
-
-    <span class="c1"># Tracing out the lost modes</span>
-    <span class="n">dm_E</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_E_full</span><span class="p">)</span>
-
-    <span class="c1"># We apply a pi rotation on the spin</span>
-    <span class="n">RX_pi</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">NQobj</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">names</span><span class="o">=</span><span class="n">spin_name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">"oper"</span><span class="p">)</span>
-
-    <span class="c1"># And we apply the same cavity PBB to Late by renaming the photonic mode it operates on</span>
-    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">photon_early_name</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">)</span>
-    <span class="n">dm_L_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="p">(</span><span class="n">RX_pi</span> <span class="o">*</span> <span class="n">dm_E</span> <span class="o">*</span> <span class="n">RX_pi</span><span class="o">.</span><span class="n">dag</span><span class="p">())</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
-
-    <span class="c1">#Finally we trace out the lost modes.</span>
-    <span class="n">dm_L</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_L_full</span><span class="p">)</span>
-
-    <span class="c1">#Finally, we return the modified density matrix</span>
-    <span class="k">return</span> <span class="n">dm_L</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can the redefine the protocol:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">""" </span>
-<span class="sd">        Our protocol class to simulate Spin-Photon Entanglement</span>
-<span class="sd">    """</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-
-        <span class="c1"># We prepare the initial state of the spins in |x &gt;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-
-        <span class="c1"># We definet the two herald state projectors.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">herald_projectors</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
-            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
-        <span class="p">]</span>
-
-        <span class="c1"># And the corresponding target entangled states</span>
-
-        <span class="n">state_uu</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-        <span class="n">state_dd</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">"Alice"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">"Bob"</span><span class="p">,</span> <span class="s2">"state"</span><span class="p">))</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">target_states</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="p">(</span><span class="n">state_uu</span> <span class="o">+</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> 
-            <span class="p">(</span><span class="n">state_uu</span> <span class="o">-</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
-        <span class="p">]</span>
-        
-
-    <span class="k">def</span> <span class="nf">protocol_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">photon_source_time_bin</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
-            <span class="n">conditional_amplitude_reflection_time_bin_spi</span><span class="p">,</span>
-            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span>
-            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span>
-            <span class="n">spin_name</span><span class="o">=</span><span class="s2">"Alice"</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
-            <span class="n">conditional_amplitude_reflection_time_bin_spi</span><span class="p">,</span>
-            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">"E"</span><span class="p">,</span>
-            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">"L"</span><span class="p">,</span>
-            <span class="n">spin_name</span><span class="o">=</span><span class="s2">"Bob"</span><span class="p">,</span>
-        <span class="p">)</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">basis_rotation</span><span class="p">,</span> <span class="n">photon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"E"</span><span class="p">,</span> <span class="s2">"L"</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>And we run it with the same parameters we have shown before</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ExampleProtocol</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
-<span class="n">p</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">"The Fidelities for the two herald states are: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] and the Success Probability: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] "</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Fidelities for the two herald states are: [0.747, 1.000] and the Success Probability: [0.115, 0.111] 
-</pre></div>
-</div>
-</div>
-</div>
-<p>The protocol was successful, as we can see one of the two states has higher fidelity than the other (this is expected when the two nodes have equal parameters because the errors on $|\psi_-\rangle$ cancel out [2]).</p>
-<p>The total fidelity and rate the protocol calculates is the weighted average over the success probability of the two fidelities)</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total fidelity: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, total Success Probability: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total fidelity: 0.871, total Success Probability: 0.226
-</pre></div>
-</div>
-</div>
-</div>
-<section id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h3>
-<p>[1] H.K.C. Beukers, M. Pasini, H. Choi et. al., (2023) ‘Tutorial: Remote entanglement protocols for stationary qubits with photonic interface’, link</p>
-<p>[2] C.M. Knaut, A. Suleymanzade, Y.-C. Wei, D. R. Assumpcao, P.-J. Stas et al. (2023) ‘Entanglement of Nanophotonic Quantum Memory Nodes in a Telecommunication Network’. arXiv. Available at: https://doi.org/10.48550/arXiv.2310.01316.</p>
+<section id="photon-blocks">
+<h3>Photon blocks<a class="headerlink" href="#photon-blocks" title="Permalink to this heading">#</a></h3>
+<p><strong>Photon source</strong>
+Photon source blocks can be considered as the initialization of photonic qubits. High-rate entanglement generation with photon sources requires the deterministic generation of single photons with high-efficiency quantum emitters or photon-pair generation followed by the heralding. For high fidelities, single photons need to be indistinguishable, which is often challenging in a solid-state environment. The distinguishability problem is considered in the quantum optical modeling layer.</p>
+<p><strong>Photon pair sources</strong>
+Photon pair sources provide entangled photon pairs, which can be used for REPs with source-in-midpoint topology. This can be understood as two photons initialized in an entangled state. Mid-point on-demand entangled photon pair sources have been proposed based on correlated photon decay from quantum emitters, mode-mixing of single photons or multiplexing spontaneous pair sources.</p>
+<p>We note that at the LBB level, photon pair sources output perfect Bell states in the logical basis, $\ket{0}$ and $\ket{1}$. The photonic basis of the states is determined in the photonic encoding layer, and imperfections, such as probabilistic photon pair generation, are detailed in the quantum optical modeling of physical building blocks.</p>
+<p><strong>Photon measurement</strong>
+Generally in the REPs, the photon is still entangled with the spins before detection. For example in the sender-receiver topology (middle circuit Fig. 2(a)) the state before the measurement is</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \frac{1}{2}\left(\ket{0}_p(\ket{00}_{AB}+\ket{11}_{AB}) + \ket{1}_p(\ket{01}_{AB}+\ket{10}_{AB})\right),
+\end{equation*}\]</div>
+<p>where $A$ and $B$ refer to the two separate spins. This means that the photon needs to be measured on a basis that preserves entanglement between the spins, this is in the $Z$-basis for this situation. In this measurement of the photonic qubit, the outcome heralds a different entangled state on the spins, in this example measurement of $\ket{0}$ for the photon heralds $\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$. One can choose to feedback on one of the spins to always generate the same entangled state or use the measurement outcome in post-processing.</p>
+<p><strong>Bell State Measurement</strong>
+Photonic Bell state measurement projects the state of two photons into one of four Bell states, $\ket{\Psi^\pm} = \ket{01}\pm\ket{10}, \ket{\Phi^\pm} = \ket{00}\pm\ket{11}$. When it is required to have a quantum operation between two photons, for example in the detection-in-midpoint topology, the Bell state measurement can be used. This is advantageous as in linear optics the photons do not interact. This can be achieved with a beamsplitter and photon measurement after the beamsplitter. The Bell state measurement projects two photons into an entangled state. It is usually used for entanglement swapping of two spin-photon-entangled pairs to yield entangled spins. Note that the Bell state measurement with linear optics is probabilistic with only 50% chance of succeeding. However, with auxiliary single photons, one can boost the success probability to 75%</p>
+<p><strong>Photon gates</strong>
+Gates on the photonic qubit are essential in some entanglement protocols. How easily these can be implemented completely depends on the photonic encoding used.</p>
+<p><img alt="2b2" src="_images/QuREBB-2b2.png"/></p>
+<p><strong>Figure 2(b)</strong> LBB photon blocks</p>
 </section>
+<section id="spin-blocks">
+<h3>Spin blocks<a class="headerlink" href="#spin-blocks" title="Permalink to this heading">#</a></h3>
+<p>Operations on the spin such as initialization, gates, and measurements are their own logic building blocks. They are the standard set of initialization, qubit gates, and qubit measurement. Entanglement protocols require in some cases the spin to be initialized and put in a superposition, for each entanglement attempt.</p>
+<p><img alt="2b3" src="_images/QuREBB-2b3.png"/></p>
+<p><strong>Figure 2(b)</strong> LBB spin blocks</p>
+</section>
+<section id="other-logical-building-blocks">
+<h3>Other logical building blocks<a class="headerlink" href="#other-logical-building-blocks" title="Permalink to this heading">#</a></h3>
+<p>The blocks discussed earlier are the logic operations required for the working of the REPs. On top of these there are processes, which in an ideal scenario do not do anything to the photonic and spin qubits. Their implementation will, however, add noise, for example, a photonic loss in a fiber or quantum frequency conversion of the photons. These blocks do not change the logical states of qubits in the ideal situation, so they appear as identity operators in the circuit diagrams of the LBB layer and they can be modeled in detail as PBBs.</p>
+<p>For example, a photonic loss block can be added, which takes care of the losses in the system, this does not change the ideal operation of the protocol but will impact the rate and fidelity in the simulations (which is implemented in the PBB).</p>
+<p>For a long-distance entanglement generation, it is advantageous to use photons in the telecom band to improve photon transmission using ultralow-loss fibers. As the physical platforms used for spin-photon interfaces have limited access to those wavelengths, quantum frequency conversion is often used to match the photon wavelength of the spin-photon interface with the desired communication band. In this case, one can model and add a frequency conversion block to protocols.</p>
+</section>
+<section id="combining-topology-and-logical-building-blocks">
+<h3>Combining topology and Logical Building Blocks<a class="headerlink" href="#combining-topology-and-logical-building-blocks" title="Permalink to this heading">#</a></h3>
+<p>In a given topology, a user can implement different combinations of LBBs. Figure~\ref{fig:LBB}(c) demonstrates the detection-in-middle topology implemented with the spin-photon emission, gate, and projector logical building blocks.</p>
+<p><img alt="2c" src="_images/QuREBB-2c.png"/></p>
+<p><strong>Figure 2(C)</strong> provides three different implementations of the midpoint detector as an example. In this case, the spin-photon emission, spin-photon gate, and spin-photon projector are used as the spin-photon interface, respectively.</p>
+</section>
+</section>
+<section id="encoding">
+<h2>Encoding<a class="headerlink" href="#encoding" title="Permalink to this heading">#</a></h2>
+<p>In the previous section, the ideal operation of a REP was outlined. To translate this to the quantum hardware, the abstract spin and photonic qubits need to be encoded in the desired and available spin and photon levels. In this section, the photonic encodings are discussed in detail as these are very general. The spin encoding is much more platform dependent and therefore discussed more briefly.</p>
+<section id="photon-encoding">
+<h3>Photon Encoding<a class="headerlink" href="#photon-encoding" title="Permalink to this heading">#</a></h3>
+<p>Optical photons are the best option to send quantum information over a long distance for remote entanglement. Quantum information can be encoded into a photon using various degrees of freedom: amplitude (Fock-state encoding), timing (time-bin encoding), spatial modes (dual-rail encoding), polarization (polarization encoding), and frequency (frequency encoding); see Fig. 3. In literature, dual-rail encoding can also refer to general two-mode encodings e.g. time-bin and frequency encoding. In this tutorial, we will use the term dual-rail exclusively as spatial modes encoding. Each of the encoding schemes has two states acting as the qubit basis. In general, the other degrees of freedom are kept the same to simplify the operations and allow for the interference of encoded photons for a Bell measurement, which requires indistinguishable photons
+unless precise measurement of conjugate variable is available and the measurement result is mutually unbiased.</p>
+<p><img alt="Figure3" src="Images%5CQuREBB-figure3.png"/></p>
+<p><strong>Figure 2</strong> Encoding of photonic qubits. (a) Basis states of photonic encoding. (b) In every basis choice, the basis can be implemented with single photons or those can be approximated with a weak coherent state.</p>
+<p><strong>Photon number of the photonic qubit</strong> - All encoding except Fock-state encoding have a single photon in the basis states. The advantage is that the loss of photons can be detected. The entanglement protocols discard the cases with photon loss for high-fidelity entanglement generation, so-called heralded entanglement.</p>
+<p>As high-efficiency, indistinguishable single-photon sources are technologically demanding, the single-photons are frequently replaced with weak coherent sources (attenuated lasers). They have Poisson statistics with a small mean photon number, well below one. The wave function of a weak coherent state is dominantly vacuum ($\ket{0}$) with a small fraction of single photon state ($\ket{1}$) and an even smaller fraction of two-photon states ($\ket{2}$):</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{equation*}
+    \ket{\alpha} \propto \ket{0} + \alpha \ket{1} + \frac{\alpha^2}{\sqrt{2}} \ket{2} + ...
+\end{equation*}\]</div>
+<p>where $\alpha$ is the complex amplitude and $|\alpha|^2 &lt;&lt; 1$ is the mean photon number. The vacuum component $\ket{0}$ reduces the rate of entanglement generation since it cannot herald entanglement through photodetection. The $\ket{2}$ state reduces the fidelity of the spin-photon entangled state as the loss of one of the two photons leaks information to the environment. There is, therefore, a trade-off between rate and fidelity for choosing $\alpha$, when using weak coherent states as approximate single-photon states in heralded entanglement generation protocols.</p>
+<p><strong>Fock-state encoding</strong> - Fock-state encoding stores quantum information in the photon-number eigenstates with zero and one photon ($\ket{n=0}$ and $\ket{n=1}$, where $n$ is the photon number). $n&gt;1$ states are not considered in the encoding due to technical difficulties in preparing those states. However, the problem is that loss takes one qubit state to the other and therefore directly impacts the fidelity (compared to other encodings where loss can be detected as the vacuum state is not part of the encoding space). The relative phase of the two bases evolves as the optical phase, so the optical path length needs to be stabilized or at least known for correction. Despite these complications, Fock-state encoding has a significant advantage in that Bell measurement is possible with the detection of a single photon, while the other encodings need the detection of two single photons. The success probability of a heralded protocol scales linearly with the probability of photon loss if only single-photon detection is needed, while it scales quadratically for two-photon detection (in all but Fock state encoding). In cases where photon losses are significant, due to long-distance transmission or devices with low efficiency, the linear scaling given by Fock-state encoding can provide a key advantage over other encodings.</p>
+<p><strong>Time-bin encoding</strong> - Time-bin encoding counteracts the drawbacks of Fock-state encoding at the expense of the requirement of two-photon detection for Bell measurement. Two time bins (early and late) are chosen to encode the photons. Photon loss can always be detected, in the ideal case of detectors with no dark counts, as this would result in no detection of photons. Therefore, the fidelity of protocols with time-bin encoding is not compromised, as long as dark counts are negligible with respect to the signal, but the rate decreases. Another advantage is relaxed phase stability: the optical phases should be stable on the time scale of the spacing of the time bins. However, arbitrary qubit operations are hard to implement, but the encoding is quite robust against noise sources such as dispersion or birefringence in the transmission medium. Therefore this encoding is mostly used in sending quantum information over long fibers and not in situations that require full control over the photonic qubit state.</p>
+<p><strong>Polarization</strong> - The polarization encoding defines the qubit state in two perpendicular polarizations: horizontal and vertical polarization (H and V), diagonal and anti-diagonal (D and A), or left and right circular (L and R). Single-qubit gates are easily implemented, as all single-qubit rotations can be performed with waveplates. Moreover, polarization encoding requires phase stability between the two polarization bases. This stability can be readily attained in free space. In single-mode optical fibers the polarization is preserved but temperature and stress fluctuations in the fiber can rotate the polarization, stabilization and calibration is therefore required. Polarization maintaining (PM) fibers decouple the two different polarization bases by using orthogonal modes with different effective indices. This preserves only the amplitude in each basis and not the phase relation between them. In remote entanglement experiments using polarization encoding, usually single mode fibers are used.</p>
+<p><strong>Dual-rail encoding</strong> - The dual-rail encoding uses two spatial modes for photons. The encoding has a main drawback as it requires twice the physical elements. The phase between two separate paths is extremely stable on the integrated photonic device, however, in fiber or free space the requirements are comparable to phase stabilization for Fock state encoding. This encoding can implement operations that are hard to perform in another encoding because path separation gives the most flexibility to use optical elements separately in two modes.</p>
+<p>Note that some literature uses the term ‘dual-rail encoding’ to refer to a single excitation out of two orthogonal bosonic degrees of freedom, encompassing spatial modes, polarizations, time bins, frequencies, wavevectors, and orbital angular momentum. In these instances, ‘Fock state encoding’ is referred to as ‘single-rail encoding’. In this tutorial, we use ‘dual-rail encoding’ specifically for the single excitation in two spatial photonic modes and specify the degree of freedom in other cases.</p>
+<p><strong>Frequency encoding</strong> - In frequency encoding, photonic qubits utilize two distinct frequency modes as basis states. Single-qubit gates in frequency encoding require nonlinear optical devices such as electro-optic modulators that suffer from low efficiencies. To measure frequency-encoded photons, the frequency separation of two frequency modes must exceed the spectral resolution of a grating or a cavity. One can also directly detect a frequency-encoded photon in time-separated manner by using group velocity dispersion in optical fibers or Bragg gratings. Note that group velocity dispersion does not convert the frequency encoding to time-bin encoding. Even if a photon of one frequency is time-shifted relative to a photon of another frequency, the two photons still occupy distinct frequency bins.</p>
+</section>
+<section id="spin-encoding">
+<h3>Spin encoding<a class="headerlink" href="#spin-encoding" title="Permalink to this heading">#</a></h3>
+<p>Besides the photonic qubit, also the spin qubit needs to be encoded in the physical states of the system. The encoding of the stationary qubit depends on the system at hand. An important requirement for the spin-photon interface is that at least one of the states has an efficient and stable optical transition. Besides, there should be ways to initialize, control, and read out with high fidelity. Lastly, the coherence time of the qubit should be long enough to bridge at least the time of flight of the photons to the midpoint or another quantum node as this allows for heralded entanglement generation, required for applications beyond point-to-point quantum key distribution. Examples of the levels that are used to encode the spin qubit in various systems are the electronic spin for NV centers in diamond or cold atoms, spin-orbital hybrid states for group-IV centers in diamond, hyperfine levels in trapped ions and angular momentum states in quantum dots.</p>
+</section>
+</section>
+<section id="physical-building-blocks">
+<h2>Physical building blocks<a class="headerlink" href="#physical-building-blocks" title="Permalink to this heading">#</a></h2>
+<p>After the REP topology is constructed with LBBs and the encoding is chosen, we can construct the REP with the physical systems that are available. The LBBs are ideal circuit elements acting on the qubits of photons and spins, while the PBBs are physical processes on/of the optical modes (e.g. early and late) and spin states. Therefore, the PBB layer translates the abstract operations to allow hardware implementation.</p>
+<section id="photon-physical-building-blocks">
+<h3>Photon Physical Building Blocks<a class="headerlink" href="#photon-physical-building-blocks" title="Permalink to this heading">#</a></h3>
+<p>The PBBs of the photonic operations are described in Fig. 4. Polarization and dual-rail encoding have the convenience in the implementation of quantum gates and are often used in linear optics quantum computation. The photonic PBBs, of which we describe photonic loss, mode mixing, and photodetection, are often studied in standard quantum optics textbooks.</p>
+<p><img alt="PBB" src="_images/QuREBB-figure4.png"/></p>
+<p><strong>Figure 4</strong> - Photonic physical building blocks for the different photon encodings. (a) Each basis has its own implementation of the quantum operations, but some do not have natural implementation without converting them to a different basis (usually to dual-rail). The measurement in the computational basis is performed with a single photon detector. For time-bin encoding, it needs to be time-resolved. For polarization and frequency, the qubit is usually converted to and detected in dual-rail encoding. Two-qubit gates are implemented using mode mixing with a beamsplitter. The mode mixing lets two photonic qubits interfere with each other. For a Z-rotation the phase between the two basis states needs to be altered. This is implemented in Fock state encoding with a delay line, in time-bin encoding with an electric optic modulator (EOM) shifting one time-bin, in polarization encoding with a waveplate, in dual-rail encoding with delaying one of the lines, and in frequency encoding with a dispersive medium. The X-rotation requires changing the photon between the two eigenstates, which is not feasible for Fock states encoding, goes via dual-rail for time-bin encoding, can be easily implemented with a waveplate in polarization encoding, uses a Mach-Zehnder interferometer for dual-rail and nonlinear processes for frequency encoding. (b) The conversion between the basis that can be used for the easier physical implementation of quantum operations. Fock state encoding cannot easily be converted. All other encodings can be converted to and from dual-rail. For this, one element adds a new encoding (switch, PBS, or cavity/grating), and another removes the old encoding (in the white dashed box, delay, waveplate, or frequency shifting EOM). The latter can be omitted if the photon is detected afterward, as no indistinguishability is required. (c) The LBB of Bell State Measurement can be constructed using the mode mixing and single photon detection in each of the encodings.</p>
+<p><strong>Measurement</strong> - Measurement in all photon encodings is done by means of single photon detectors. Fock state encoding can be measured directly. However, a single photon state ($\ket{1}$) after photon loss cannot be distinguished from the vacuum state ($\ket{0}$). Time-bin encoding requires time-resolving detectors. Polarization and frequency-encoded qubits cannot be detected directly and are usually converted to dual-rail (see Sec~\ref{ssec: conversion}) where both modes are then measured with a separate detector.</p>
+<p><strong>Photon gates</strong> - An arbitrary gate can be made with the combination of rotations around the X- and Z-axis of the qubit Bloch sphere. For a Z-rotation, the phase between the qubit basis states needs to be changed. This is directly also the phase that needs to be stable for the use of the encoding. For an X-rotation, the operation needs to change the basis states. This can be readily implemented for polarization encoding with waveplates. For a Fock state encoding, this is not trivial and has not been demonstrated to the best of our knowledge, and the time-bin needs to be converted to dual-rail. In dual-rail encoding a Mach-Zehnder interferometer is used.</p>
+<p><strong>Bell state measurement</strong> - The Bell state measurement can be performed with linear optics with a 50% success probability. It can only detect the $\ket{\Psi^\pm} = \ket{01} \pm \ket{10}$ as it requires detecting both modes after the beamsplitter. The $\ket{\Phi^\pm} = \ket{00} \pm \ket{11}$ cannot be detected as measuring the same modes after the beamsplitter reveals both their individual states. The Bell state measurement is done by using a beamsplitter for mode mixing and two detectors to tell which of the two detectable entangled states ($\ket{\Psi^+}$ or $\ket{\Psi^-}$) was measured (Fig 4(c)).</p>
+<p><strong>Conversion between encoding</strong> - Figure 4(b) shows the possible conversion between the encoding. In practice, dual-rail encoding is a versatile encoding that can be converted directly into the others and vice versa. For the conversion, one needs the separation of the photons in different modes into different spatial paths (e.g. using a polarizing beamsplitter) and compensating elements to remove the character from the previous encoding (e.g. using a waveplate). The compensation can be omitted if one does not need indistinguishable photons after conversion, for example, if the photons are detected directly.</p>
+<p>The conversion between time-bin encoding and dual rail is used often as this is the only viable way to perform X-gates on the photonic qubit. In this case, the switch is often replaced by a beamsplitter by accepting the 50% loss, as this reduces the complexity of the experiment and as the time delay between time bins can be short compared to the switching time. When using a beamsplitter, there are also possible optical paths involving the unwanted output ports that cause the photon to be delayed and fall outside of the defined time-bin window, however, these cases can be discarded upon measurement using time-resolving detectors.</p>
+</section>
+<section id="spin-photon-interface-pbbs">
+<h3>Spin-photon interface PBBs<a class="headerlink" href="#spin-photon-interface-pbbs" title="Permalink to this heading">#</a></h3>
+<p>The spin-photon interface is an essential part of the entanglement protocols as it connects the stationary and flying qubits. We discuss five different spin-photon interface PBBs, see Fig 5(a). The first three are suitable to make spin photon entanglement for a spin-photon emission LBB: spontaneous emission, coherent scattering, and Raman scattering. These PBBs are all controlled with a classical laser control pulse and the output is a single photon (or a weak coherent state depending on the exact implementation) entangled with the spin.  When the interaction between the light and the emitter is very strong, we can get a reflection of a single photon or weak coherent state where the amplitude or phase of the reflected light is controlled by the spin state. The conditional amplitude or phase reflection PBB can be used to build the LBB of a spin-photon projection or a spin-photon gate.</p>
+<p><img alt="fig5" src="_images/QuREBB-figure5.png"/></p>
+<p><strong>Figure 5</strong> Spin-photon interface physical building blocks - (a) State-selective optical transition as spin-photon interfaces. For the spontaneous emission spin-photon interface the excitation pulse is much shorter than the optical lifetime and excites the $\ket{1}$, it will emit a single photon by spontaneous emission. The coherent scattering spin-photon interface scatters a weak pulse from the $\ket{1}$ optical transition, resulting in a photon with a weak coherent state. The Raman scattering spin-photon interface is excited with a pulse but as the optical excitation ends up in a different spin state only a single photon is emitted. In the conditional phase reflection spin-photon interface a photon is reflected from the cavity with a coupled spin. For $\ket{1}$ the phase is flipped and therefore entangled with the spin state. An overcoupled cavity is used for this purpose. In the conditional amplitude reflection spin-photon interface the photon is transmitted or reflected depending on the spin state. A critically coupled cavity is used for this case. (b) Schematic example of how a spin-photon interface LBB can be implemented in the different photonic encodings starting from a spin-photon PBB. Below are examples of experimental realizations of the emission, projection, and gate LBBs in different encodings.</p>
+<p><strong>Spontaneous emission</strong>
+The conceptually most simple way to implement a spin-photon interface is the emission-based spin-photon interface where the spin-photon entanglement is generated through spontaneous emission. In this case, a short, high-power, optical $\pi$ pulse is used to excite the system to the excited state. If this excitation or the spontaneous emission depends on the spin state we can create spin-photon entanglement.</p>
+<p>With this PBB we can create a spin-photon emission LBB. For Fock state encoding we prepare the spin in a superposition and apply a spin state-dependent optical $\pi$-pulse such that the presence of a photon is entangled with only one of the spin states. For the time-bin encoding, we initialize the spin state in an equal superposition and apply the excitation twice with a $\pi$-pulse of the spin in the middle. For the polarization of frequency encoding, both spin states need to have an optical transition with a different polarization or frequency. The entanglement can either be generated by initializing the spin in an equal superposition and exciting both transitions or by relying on an optical transition that has an equal chance of decaying to either state correlated with a different polarization or frequency.</p>
+<p>The photon coming from such a process will have frequency and exponential temporal shape determined by the optical properties of the emitter. The linewidth is determined by the lifetime and the inhomogeneously broadened linewidth and the indistinguishability is determined by the dephasing processes of the optical transition. This requires favorable properties of the emitter to make the photons suitable for entanglement generation.
+The optical $\pi$-pulse needs to be much shorter than the optical lifetime, otherwise in case of fast spontaneous decay the same pulse can cause re-excitation of the transition and a second photon emission, which can lead to an error in the protocol. On the other hand, it needs to be not too short as this increases the linewidth of the excitation pulse and can therefore couple to and cause photon emission from unwanted off-resonant transitions which are close in frequency.
+A common method to separate the single photon from the excitation laser is to use the delayed emission of the photons compared to the arrival of the laser pulse. By delaying the detection window compared to the arrival of the excitation pulse one can filter out the laser pulse in the time domain.</p>
+<p><strong>Coherent scattering</strong>
+In the coherent scattering PBB a long and weak pulse is scattered elastically from the emitter. Under the condition that the exciting pulse is weak and long enough that on average only one photon interacts with the emitter within the optical lifetime, the scattered light will inherit the temporal shape, photon statistics, and frequency of the excitation field.</p>
+<p>One can detune the laser from the emitter, making it more resilient to the spectral instability of the emitter. However, as the light has the same character as the laser, filtering the excitation light is experimentally much more challenging. This PBB allows for a spin-photon emission LBB in a similar way as the spontaneous emission.</p>
+<p><strong>Raman scattering</strong>
+The third way to make a spin-photon emission LBB is using the PBB of Raman scattering. In this case, the driving field and the emitted photon are coupled in a lambda scheme where they both couple to a virtual state. In this inelastic scattering event, the temporal waveform and frequency are determined by the driving field, but now only a single photon is emitted. The driving field and the spontaneously emitted photons, which would act as noise sources, can be separated and filtered out from the scattered photons since they have different frequencies. There is usually a trade-off between efficiency and noise in this PBB by choosing the detuning of the virtual level from the excited state. This PBB was used for entangling trapped ions over hundreds of meters.</p>
+<p>Raman transition can be also used for spin-photon absorption. In this case, the spin absorbs the incoming photon with one transition, and the other transition is driven so that the spin is in another state upon absorption. If there is no photon interacting with the first transition, for instance because there is no photon or it is in a different polarization, then there is no change in the spin state because the driving addresses the transition with no population.</p>
+<p><strong>Conditional amplitude reflection</strong>
+When the interaction between the spin and the photon becomes strong, a single spin can modulate the single photon. This is different from the three previous situations where the driving field is ‘classical’ and only the photon emitted or scattered is in the single photon regime. As emitters have a limited dipole, the light field needs to be confined spatially to achieve strong interaction, which can be achieved in an optical cavity or a waveguide.
+In the conditional amplitude reflection PBB, the emitter acts as a quantum switch: reflecting the light if it is in one spin state while transmitting the light in the other spin state.</p>
+<p>In the dual rail encoding, this can clearly be used to realize a spin-photon gate as the spin interacts directly with the two spatial paths. For the other photonic encodings, we can use this PBB to make the spin-photon projector LBB: the photon is only reflected if the transition is on resonance and otherwise lost. This PBB was used to show an asynchronous Bell state measurement with the silicon vacancy in diamond, where a time-bin photonic qubit and a nanophotonic optical cavity were used.</p>
+<p><strong>Conditional phase reflection</strong>
+To perform a spin-photon gate the conditional amplitude reflection PBB works only for the dual-rail encoding. For the other encodings, the problem is that photons are lost in transmission depending on the spin state, which is not compatible with a spin-photon gate. To apply a spin-photon gate we need an unconditional reflection of the photon. The conditionality of the interaction should therefore be encoded in the phase of the photon. This is achieved with an overcoupled cavity where the back side of the cavity has a much higher reflectivity than the front such that the photon will not be transmitted. The emitter will alter the cavity response in such a way that depending on the spin state, the photon will be reflected on the cavity or will enter the cavity and leave it again. When calibrated well, this can result in a $\pi$ phase shift difference between the two types of reflection. The cavity can in principle also be replaced by a waveguide with a mirror at the end.</p>
+<p>The conditional phase reflection with polarization-encoded photonic qubits was the central PBB in the realization of a non-local gate with cold atoms in cavities.</p>
+</section>
+<section id="spin-operations">
+<h3>Spin operations<a class="headerlink" href="#spin-operations" title="Permalink to this heading">#</a></h3>
+<p>The exact PBB spin operations depend a lot on the chosen spin encoding. We discuss the most common ones below.</p>
+<p><strong>Initialization</strong> - Initialization of the spin is usually achieved in one of the following ways. When a non-perfectly cycling optical transition is present, which means that under continuous driving there is a (small) probability of spontaneously decaying to a different state than the ones involved in the transition, it is possible to use optical pumping. By laser excitation of the non-cycling transition, the system will eventually decay to the desired qubit state and remain there as this is not driven by the laser. In systems with a very good readout, it can be advantageous to read and generate the desired initialized state with a control pulse conditional on the readout result.
+If one wants to prepare the system in a superposition a quantum gate can be used. Alternatively, one can prepare a state by Stimulated Raman Adiabatic Passage (STIRAP).</p>
+<p><strong>Control</strong> - Quantum control of the qubit is usually achieved by direct Rabi driving of the transition. This is usually a microwave or optical field but can also be done with other coupled fields, like an oscillating strain field.
+If the transition frequency is experimentally hard to reach or it is only weakly allowed, two driving fields in a lambda configuration can be used, in which the qubit states are coupled to a common excited state. By driving both transitions, a coherent rotation on the qubit can be achieved with a two-photon Raman transition.
+In some systems, mostly based on solid-state implementations, coupling to fluctuating magnetic fields in the surrounding environment such as nuclear spin baths can affect the coherence of spin-based qubits. With the control in place, it is usually possible to extend the coherence time of the spin qubit in these platforms by means of dynamical decoupling.</p>
+<p><strong>Readout</strong> - The qubits we are considering have a good spin-photon interface, which allows for optical readout of the spin. The spin can read out by the detection of the state-dependent fluorescence. For high fidelity of this readout, high collection efficiency and good cyclicity of the optical transition are needed. A good cyclicity results in a transition that can be driven for a long time generating as many photons as possible before the qubit decays to an unwanted state, a high collection efficiency allows for measuring enough photons for a high-fidelity readout with a shorter driving time and lower probability of the qubit changing state. When a conditional phase reflection PBB (see next section) is used the spin state can be read out by phase readout.</p>
+<p><strong>Auxiliary qubits</strong> - To go beyond a single entangled link it is essential to have auxiliary qubits for storage of quantum states in the system. This is for example required for entanglement distillation and entanglement swapping in repeater schemes. The available auxiliary qubits are highly dependent on the system and can go from nuclear spins in solid-state emitters to different species of atoms or ions in those systems. The most difficult requirement to fulfill for these qubits is often that they need to be resilient for entanglement attempts on the spin qubit, which typically involves a lot of initialization and control pulses. This can result in a competition between the coupling required for two-qubit gates and the isolation required for resilience during entanglement attempts.</p>
+</section>
+</section>
+<section id="quantum-optical-modeling">
+<h2>Quantum optical modeling<a class="headerlink" href="#quantum-optical-modeling" title="Permalink to this heading">#</a></h2>
+<p>In the quantum optical modeling layer, the devices used are simulated at the quantum optics level. The aim of this layer is to calculate the action of the PBB on the photonic modes and spin states. The operations of PBBs are modeled as quantum channels which are completely positive trace-preserving maps. PBBs map an input density matrix to an output density matrix. We emphasize that the mathematical modeling of PBBs can be done in different levels of detail. Thus, one can choose the PBB model as exhaustive or approximate depending on the purpose. The quantum optical modeling layer is separated from the PBB layer as many PBBs rely on the same physical systems and therefore the same modeling, e.g. the conditional amplitude and phase reflection PBB both use an emitter coupled to a cavity. Moreover, the same PBBs can be modeled in different ways with different details. We will first discuss the intrinsic properties of the emitter, then how they can be enhanced and modified by an optical cavity, and finally, the modeling of a couple of PBBs.</p>
+<p>Using the modeling of a hardware-specific implementation, a REP can be benchmarked and optimized with respect to relevant experimental parameters. Having a realistic description of the building blocks also allows us to take into account noise sources and practical limitations.</p>
+<p><img alt="fig6" src="_images/QuREBB-figure6.png"/></p>
+<p><strong>Figure 6</strong> Quantum Modeling layer - spin-photon interface. (a) The inefficiencies and noises of the optical transition in the spin-photon interface. (Left) zero-phonon-line decay ($\gamma_r$), phonon-sideband decay, and non-radiative decay combined give a total decay rate $\gamma$ resulting in the natural broadening (Lorentzian). The ratios of transitions are expressed with an internal quantum efficiency ($QE$) and Debye-Waller factor ($DW$). (Right) Additional slow noise adds Gaussian spectral diffusion with a standard deviation of $\sigma_\omega$, while the fast noise gives Lorentzian pure dephasing of linewidth $\gamma^*$. (b) (Left) cavity-QED system parameters. $g$ is vacuum Rabi frequency, $\gamma$ the spontaneous emission rate, and $\kappa_r, \kappa_t,$ and $\kappa_l$ are cavity decay rate to reflection, transmission, and loss port, respectively. (Right) level diagram of laser, cavity, and spin. We assume that $\ket{1}$ state of spins is desirably interacting with photons; interaction with the $\ket{0}$ state is negligible when $\gamma \ll \delta_{01}, g$.</p>
+<section id="emitter">
+<h3>Emitter<a class="headerlink" href="#emitter" title="Permalink to this heading">#</a></h3>
+<p>For the spin photon interface to perform well, the properties of the optical interface are important. The optical transition of an ideal emitter has a naturally broadened linewidth $\gamma$ related to its excited state lifetime. In practice, noises in the surrounding environment of the emitter generally cause the optical line to broaden.</p>
+<p>The noises can be divided into spectral diffusion and dephasing by their time scales. Especially for solid-state emitters, the fluctuation of the local charge environment is often slower than the nanoseconds’ lifetime of the transition. These charge fluctuations can change the spacing of the energy levels involved in the optical transition by Stark effect, causing the frequency to change. This effect is called spectral diffusion. Spectrally diffused transitions have fluctuating resonance frequency, shot-to-shot, that can be modeled with a Gaussian distribution of standard deviation $\sigma_\omega$. The fidelity of spectrally diffused spin-photon interfaces can be calculated by a Monte Carlo simulation, statistically averaging over the distribution function.</p>
+<p>On the other hand, fast noise sources such as mobile charges on the surfaces of photonic nanostructures or acoustic phonon scattering induce homogeneous broadening of the transition. In this limit, the frequency and phase noises are indistinguishable, $S_{\delta\omega_1}(\omega) = S_{\delta\phi_1}(\omega)\cdot \omega^2$ where $S(\omega)$ is the power spectral density, and the subscript of $S$ refers the random process. The noise is modeled as random phase flips, or equivalently, pure-dephasing without longitudinal relaxation. For pure dephasing $\gamma^<em>$, the transition is further broadened by $\gamma^</em>$ from radiative broadening, and the lineshape is Lorentzian. If the fluctuation time scale of a noise is in an intermediate regime, the dynamics of the spin-photon interfaces and the resulting fidelity of entanglement requires a complete specification of the noise as a stochastic random process.</p>
+<p>Furthermore, especially in solid-state emitters, in addition to the coherent transition without the involvement of phonons: the zero-phonon line, there are phonon-assisted optical transitions, called phonon sidebands. Moreover, non-radiative, multiphonon processes make the excited-state population decay without emitting photons. Quantum efficiency ($QE$) is defined as the ratio between the rates of all radiative processes to those of all processes:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-48d0d6db-ed3c-4df0-9e3b-6625e29721e9">
+<span class="eqno">(1)<a class="headerlink" href="#equation-48d0d6db-ed3c-4df0-9e3b-6625e29721e9" title="Permalink to this equation">#</a></span>\[\begin{align}
+    QE &amp;= \frac{\Gamma_\textrm{rad}}{\Gamma_\textrm{rad} + \Gamma_\textrm{non-rad}}.
+\end{align}\]</div>
+<p>The decay rate of the zero-phonon line relative to the phonon sideband is the Debye-Waller factor ($DW$). In remote entanglement settings, a large $QE\cdot DW$ is helpful for an efficient spin-photon interface, since only the coherent photons of the zero-phonon line are usable for entanglement protocols.</p>
+<p>Other noise sources, such as a magnetic field or strain fluctuations, can also influence the transition through Zeeman shifts or mechanical deformation of the substrate, altering the energy levels. Moreover, in platforms other than solid-state emitters, like trapped ions or superconducting qubits, other sources of noise such as thermal fluctuations or coupling to nearby qubits can play a significant role.</p>
+</section>
+</section>
+<section id="photonic-cavity">
+<h2>Photonic Cavity<a class="headerlink" href="#photonic-cavity" title="Permalink to this heading">#</a></h2>
+<p>A bare emitter can be used as a spin-photon interface, but it is advantageous to enhance the emitter properties and the collection efficiency of photons by means of an optical cavity. Other devices can be used to achieve the same goal, such as coupling the emitter to (photonic-crystal) waveguides or optical fibers. However, using a cavity is the most common approach and often other devices can be described as a special case of cavity-emitter coupling. Quantum optical modeling of a two-level system coupled to an optical cavity is a well-studied subject.</p>
+<p>Figure 6(b) shows relevant quantities of the emitter-cavity system. The dynamics of an emitter-cavity coupled system are governed by three parameters, $\gamma$, $\kappa$, and $g$. The emitter (cavity) transition linewidth $\gamma$ ($\kappa$) is the inverse time of emitter decay (cavity relaxation). Spontaneously emitted photons into free space, non-radiative decays, and decays into phonon sidebands fall outside the coherent cavity-emitter interactions and are considered as a relaxation channel of the system, incorporated in $\gamma$. The dynamics of a cavity-emitter coupled system are governed by the coupling rate $g$. Physically, $g$ is the Rabi-frequency when the emitter is driven by a vacuum cavity electric field (zero-point electric field multiplied by the transition dipole moment).</p>
+<p>The cooperativity of the system is defined as:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-32308ce1-41ad-418c-bc10-6f1d7611674a">
+<span class="eqno">(2)<a class="headerlink" href="#equation-32308ce1-41ad-418c-bc10-6f1d7611674a" title="Permalink to this equation">#</a></span>\[\begin{align}
+    C &amp;= \frac{4 g^2}{\kappa \gamma}.
+\end{align}\]</div>
+<p>The cooperativity gauges the strength of coherent interaction relative to the dissipation, and higher cooperativity improves the efficiency of spin-photon interfaces. In REPs, this directly translates to the rate and the fidelities.</p>
+<p>While $\kappa, g$, and $\gamma$ are usually set parameters once the device is realized, the operation point of the cavity-emitter system can often be tuned. In the right side of Fig. 6(b) we indicate the energy relations that determine the operation point. The frequencies $\omega_c, \omega_a$, and $\nu$ are related to the energies of the cavity mode, atomic transition, and external source (laser or single photon). The detuning between the cavity and emitter, $\delta_{ac}$, determines how the emitter and cavity couple and what is the amplitude and phase response of the system. The external source frequency, which we define with respect to the cavity as $\delta_{cl}$, can be optimized to obtain the desired phase or amplitude when interacting with the cavity.
+Realistically, there are often additional optical transitions that couple (or are close) to the cavity. Here, we depict a common level scheme for solid-state emitters, the Voigt configuration. When the energy difference between the target transition (here involving the bright state $\ket{1}$) and other transitions is comparable to the cavity linewidth, emitter linewidth, or coupling rate, or the input light is not far-detuned, undesired interaction of the dark $\ket{0}$ state can lead to errors.</p>
+<p>The cavity loss channels, $\kappa_{t, r, l}$, determine the cavity behavior. It is useful to relate the losses to the cavity input channel, which we take to be $\kappa_r$, in this way, we can define the cavity output coupling as critically coupled ($\kappa_l + \kappa_t = \kappa_r$), undercoupled ($\kappa_l+\kappa_t &gt; \kappa_r$) or overcoupled ($\kappa_l + \kappa_t &lt; \kappa_r$). The first and latter regimes are particularly interesting for a cavity-based spin-photon interface: an over-coupled cavity is sometimes called a single-sided cavity as the preferential output channel is the one used for probing the cavity; therefore emitted photons will be funneled in the collected optical mode, while incident photon will almost always be reflected back to the same port; this cavity is used in the conditional phase reflection PBB. A critically-coupled cavity allows both transmission and reflection to potentially be used as output channels, this is the cavity used for a conditional amplitude reflection PBB.</p>
+<p>Emission-based spin-photon interfaces can be realized using a bare emitter, though this can pose a severe limitation to the entanglement generation rate when quantum efficiencies and/or Debye-Waller factors are low. In addition, especially for the spontaneous emission, spectral diffusion and dephasing directly affect the photon indistinguishability and thus the entanglement fidelity. The efficiency and the fidelity of a spin-photon interface can be improved with a cavity: the Purcell effect enhances the emission of the optical transition by decreasing the lifetime and increasing the fraction of photons emitted by the target transition (e.g. zero-phonon line for solid-state spins). At the same time, the optical linewidth broadening coming from the lifetime reduction decreases the relative effect of incoherent broadening mechanisms. The Purcell factor is defined as;</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ba36d31d-5410-4ced-b581-9fea5836c42b">
+<span class="eqno">(3)<a class="headerlink" href="#equation-ba36d31d-5410-4ced-b581-9fea5836c42b" title="Permalink to this equation">#</a></span>\[\begin{align}
+F_p = 4g^2/\kappa\gamma_r = \frac{3}{4\pi^2}\frac{Q}{V}\left(\frac{\lambda}{n}\right)^3,
+\end{align}\]</div>
+<p>where $Q$ is the cavity quality factor, $\lambda$ is the resonant wavelength, $n$ is the refractive index of the host material, and $V$ the effective mode volume. The effective mode volume is calculated with the electric field profile of cavity mode, $E(\vec{r})$;</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d933d2b5-df10-4e51-a5dd-9ed4e8ff86c7">
+<span class="eqno">(4)<a class="headerlink" href="#equation-d933d2b5-df10-4e51-a5dd-9ed4e8ff86c7" title="Permalink to this equation">#</a></span>\[\begin{align}
+    V = \int dV \epsilon(\vec{r})|E(\vec{r})|^2/\epsilon(\vec{r}_e)|E(\vec{r}_e)|^2,
+\end{align}\]</div>
+<p>for the emitter located at $\vec{r}_e$, and $\epsilon(\vec{r})$ is the permittivity as a function of coordinates. If the cavity has sufficiently high quality factor and small mode volume, resulting in $g&gt;\kappa, \gamma$, the system enters the strong coupling regime, and the overall outcoupling efficiency of the emitted photons can become inefficient. This is because the cavity photon can be reabsorbed into the emitter before escaping the cavity. In the strong coupling regime, the outcoupling efficiency is,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9408bd0a-34b7-4bf2-88ed-685b9d4b0fd3">
+<span class="eqno">(5)<a class="headerlink" href="#equation-9408bd0a-34b7-4bf2-88ed-685b9d4b0fd3" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \eta_\text{out} = \frac{\kappa_r}{\kappa}\cdot\frac{\kappa}{\kappa+\gamma},
+\end{align}\]</div>
+<p>assuming $\kappa_t = 0$ and $\kappa_r$ is the output port of the emitted photons. Equation above separates the contribution of cavity outcoupling and the fractional photon decay through the cavity. Thus, for example, reducing $\kappa_r$ does not help the efficiency as it decreases both factors. Furthermore, in the strong coupling regime, the wavepacket of photons oscillates with a coupling rate $g$, which makes the indistinguishability significantly susceptible to both $g$ and $\kappa+\gamma$. When designing a cavity for entanglement, optimal parameters should be chosen within the trade-off space, rather than just strengthening the interaction, which often places the system in weak coupling or bad-cavity regimes ($\kappa &gt;&gt; g &gt;&gt; \gamma$).</p>
+<p>Spin-photon gate and spin-photon projector LBBs, by contrast, are based on the efficient coherent scattering of a single photon or weak coherent state by the emitter, which in turn requires strong interaction between the emitter’s dipole and a photonic mode.
+Spatial confinement of an optical mode by means of optical cavities or light-guiding structures (i.e. waveguides or optical fibers) enables this strong interaction. Here we will focus on the use of cavities, as the scattering and emission of an emitter are similar except for the numerical calculation of the coupling. In the strong coupling regime, the response of the cavity to incoming photons with the cavity system is modulated in amplitude and phase by the state of the emitter. The cavity-emitter parameters and chosen operation points (in terms of cavity-emitter detuning and photon frequency) can be used together with the system input-output formalism relations to determine the response of the system, in terms of reflection and transmission coefficients and loss. The spin-dependent reflection and transmission coefficients are complex-valued and describe the amplitude and phase of the photon after the interaction. They are used to realize spin-photon gates and spin-photon projectors. In practice, this can be either changing the amplitude or the phase of the photonic state, conditioned on the spin being in the bright state. When modulating phase, it is convenient to use a single-sided cavity as almost all photons will be reflected optimizing the efficiency, while amplitude modulation benefits from a critically coupled cavity maximizing the contrast of the field amplitudes. As anticipated, it is possible that the unwanted transition is close in frequency that it also couples to the cavity. In such cases, the relative phase or amplitude contrast between the system response has to be optimized for high fidelity of the spin-photon emission. This can be done by changing the operation point, i.e. the emitter-cavity detuning and the input photon frequency.</p>
+<section id="quantum-channel-description-of-pbb">
+<h3>Quantum channel description of PBB<a class="headerlink" href="#quantum-channel-description-of-pbb" title="Permalink to this heading">#</a></h3>
+<p>The systematic and modular treatment of quantum channels is the key role of the PBB layer. Quantum channels can be additive and multiplicative: e.g. optical $\pi$-pulse emission spin-photon interface and weak excitation spin-photon interface, respectively. Table I lists the representative PBBs, which we use later for benchmarking REPs. In the following sections, we explain the items of Table I.</p>
+<p><img alt="Table" src="_images/QuREBB-Table.PNG"/></p>
+<p>TABLE I: Physical building blocks as a quantum channel.</p>
+<p><strong>Spin PBB</strong> - The state preparation block outputs the desired state $\ket{\psi}$ with fidelity $F_\text{state}$. Our model assumes that a probabilistic error switches the state to an orthogonal state with probability $1-F_\text{state}$. The density matrix of the system is an incoherent mixture of the two components weighted with the probabilities: $\hat{\rho} = F_\text{state}\ket{\psi}\bra{\psi} + (1-F_\text{state})\ket{\psi^\perp}\bra{\psi^\perp}$.</p>
+<p>Note that the quantum channel description of PBBs depends on the model of the physical systems. Let’s assume that one rotates a perfectly prepared $\ket{0}$ state for the preparation of $\hat{R}_x(\theta)\ket{0}$, where $\hat{R}<em>x(\theta)$ is the single qubit rotation around the $x$ axis by $\theta$. However, if $\theta$ has a bias error of $\epsilon$, then $\rho</em>\text{out} = \hat{R}_x(\theta+\epsilon)\ket{0}\bra{0}\hat{R}_x^\dagger(\theta+\epsilon)$ will be more accurate. Choosing a realistic and accurate model is important. Our model-flexible description of PBBs enables the framework to cover all possible quantum hardware, as far as its quantum modeling can be made.</p>
+<p>The most widely used error model for qubit operations (gates) is the depolarization channel. This channel maps the portion of qubits’ population into a maximally mixed state, which is achieved with the uniformly probable application of Pauli operators (for $n$-qubit gates, the $n$-tensor product of Pauli’s and identity operator, except $I^{\otimes n}$). The Table~\ref{tab:PBB} lists one- and two-qubit gate errors as they are often used,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\hat{\rho}_\text{out}&amp;= F_1\hat{\rho}_\text{in}+\frac{1-F_1}{3}(\hat{\sigma}_x^\dagger\hat{\rho}_\text{in}\hat{\sigma}_x+\hat{\sigma}_y^\dagger\hat{\rho}_\text{in}\hat{\sigma}_y+\hat{\sigma}_z^\dagger\hat{\rho}_\text{in}\hat{\sigma}_z), \\
+\hat{\rho}_\text{out}&amp;= F_2\hat{\rho}_\text{in}+\frac{1-F_2}{15}\sum\limits_{\substack{\hat{A},\hat{B}=\hat{I},\hat{\sigma}_x,\hat{\sigma}_y,\hat{\sigma}_z \\ \hat{A}\otimes\hat{B}\neq\hat{I}\otimes\hat{I}}}(\hat{A}^\dagger\otimes\hat{B}^\dagger)\hat{\rho}_\text{in}(\hat{A}\otimes\hat{B}).
+\end{align*}\]</div>
+<p>In the simulation of color centers in Sec. VII, we assume that spin PBBs are perfect because these operations have an order of magnitude smaller errors than photonic or spin-photon PBBs.</p>
+<p><strong>Photonic PBB</strong> - A lost photon while traveling through the fiber by absorption or scattering can project the spin-photon entangled state to a trivial state. A popular way to describe the process is the Lindblad master equations. This is equivalent to unitary evolution with an auxiliary mode and partial tracing (see the Table element). The unitary evolution is equivalent to the beamsplitter operation, of which the angle is determined from the loss ($\theta_L = \arcsin{\sqrt{L}}$, see Appendix C). The same unitary evolution also describes the mode mixing for erasing `which path information’. Here, we listed the perfect mode mixing with $\theta = \pi/4$, but imperfect mode mixing can be set with different $\theta$ for the biased case, or even combinations of $\theta$s for stochastic description.</p>
+<p>We can implement the photodetection on a specific mode ($p$ subscription in the table) with a projection operator. Here, we used the projection of a Fock-state encoded photonic mode, but one can use the eigenstate of a different basis for the projection operator.</p>
+<p>Lastly, we present the PBB for entangled photon-pair sources. Among many implementations and photon encoding, we specifically consider spontaneous parametric down-conversion (SPDC), polarization-encoded photon pair state,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+&amp;\rho_\text{out} = \ket{\text{SPDC}}\bra{\text{SPDC}}, \\
+&amp;\ket{\text{SPDC}} = \hat{S}_2(\zeta)\ket{0000} = e^{-|\zeta|^2/2} \cdot \Big[\ket{0000} \nonumber \\
+&amp;+\zeta\big(\ket{1_{a,H}0_{a,V}0_{b,H}1_{b,V}}+\ket{0_{a,H}1_{a,V}1_{b,H}0_{b,V}}\big)+...\Big],
+\end{align*}\]</div>
+<p>where $\hat{S}<em>2(\zeta) = \exp\big[\zeta (\hat{a}<em>H^\dagger \hat{b}<em>V^\dagger+\hat{a}<em>V^\dagger \hat{b}<em>H^\dagger) + \text{h.c.}\big]$ is the SPDC operator, $\zeta$ denotes the numerical parameter determined by pump field, $\hat{a}$ and $\hat{b}$ are two spatial photonic modes, $H$ and $V$ indicate two polarization modes, and ``h.c.’’ refers to Hermitian conjugate terms. It is worth noting that $\ket{HV}+\ket{VH} = \ket{1</em>{a,H}0</em>{a,V}0</em>{b,H}1</em>{b,V}}+\ket{0</em>{a,H}1_{a,V}1_{b,H}0_{b,V}}$ in the literature for simplicity, whereas we explicitly specify photon numbers in each photonic mode to align with other PBBs.
+}</p>
+<p><strong>Spin-photon PBB</strong> - The ideal operation of emission spin-photon interface using optical $\pi$-pulse is described with the coherent channel subscripted with ``coh’’. When the spin is in the dark state ($\ket{0}$) it does not affect the state of the photonic mode ($\hat{I}$). When the spin is in the bright state ($\ket{1}$), the desired outcome is the creation of a single photon in the mode of interest, $\hat{a}$. This results in the Kraus operator $\hat{C}_\text{coh}=\ket{0_s}\bra{0_s}\otimes\hat{I}+\ket{1_s}\bra{1_s}\otimes\hat{a}^\dagger$.</p>
+<p>In realistic devices, ideal events only happen with probability $p_\text{coh}$. With probability, $p_\text{incoh}$, the incoherent channel, labeled with ``incoh’’, adds a photon with a random phase that does not coherently interfere, and it reflects the non-unity indistinguishability. This can be modeled with the addition of photon to the incoherent mode $\hat{a}<em>\text{incoh}$ that will not be interfered with by the mode mixing PBB. Likewise, double excitation and finite efficiencies additively contribute to the density matrix through $\hat{C}</em>\text{2ph}$ and $\hat{C}<em>\text{loss}$, with $p</em>\text{2ph}$ and $p_\text{loss}$ (see Table~\ref{tab:PBB} and Appendix D1). Again, these PBBs can add more channels such as ionization, or remove some if not wanted.</p>
+<p>All the parameters including probabilities are calculated at the quantum optical modeling layer, and PBBs require these numerical values for the calculation of $\rho_\text{out}$. See Appendix~\ref{Apdx:QOParameter} for the calculation of PBB parameters from physically characterized ones.</p>
+<p>Instead of a short strong optical pulse, one can weakly drive the transition by coherently scattering the field. The scattered field by this way is in a coherent state with amplitude $\alpha$. The process can be encapsulated by the displacement operator $\hat{D}<em>{\hat{a}}(\alpha)$ where $\hat{a}$ represents the mode that the operator acts on ($\hat{D}(\alpha)\ket{0} = \ket{\alpha}$). At the same time, the excitation field is also scattered to unwanted mode $\hat{a}</em>\text{loss}$. Moreover, incoherent scattering due to noises adds photons to another mode with Poisson statistics. We can express the loss-mode part of the density matrix as,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\hat{\rho}_\text{loss} = \sum_i \frac{n_\text{loss}^i \exp{(-n_\text{loss})}}{i!}\ket{i}\bra{i},
+\end{align*}\]</div>
+<p>where $n_\text{loss}$ is the average number of photons added to the loss mode. $\ket{n\neq 0}$ components of the density matrix reduce the fidelity of the fidelity of spin-photon entanglement and subsequent spin-spin entanglement, because it leaks the state information (only bright state, $\ket{1_s}$, adds the photon to the loss mode).</p>
+</section>
+</section>
+<section id="simulating-and-benchmarking-entanglement-protocols">
+<h2>Simulating and Benchmarking Entanglement Protocols<a class="headerlink" href="#simulating-and-benchmarking-entanglement-protocols" title="Permalink to this heading">#</a></h2>
+<p>In this section, we show an example of how the proposed framework can be used to break down three different entanglement protocols into realistic physical building blocks, and we use the software introduced in the previous section to simulate the performance and compare them. We set the physical platform used for all the protocols to be the silicon-vacancy center in a diamond coupled to an optical cavity.</p>
+<p>We outline our simulation comparison in Fig. 7. The hardware platform we chose is the SiV color center in diamond, and we consider photonic crystal cavities to either enhance the spin-photon emission or to realize spin-photon projectors in the strong coupling regime. The protocols we compare are one emission-based protocol with detection-in-midpoint topology, where we use Fock state encoding for the photon Protocol A in Fig. 7(b) and two projector-based (Protocols B and C) with the conditional amplitude reflection and the time-bin encoding, with a sender-receiver and detection-in-midpoint topology. The detailed implementation in terms of physical building blocks is shown for all protocols (Figures 7(c) and (d)). More details on the quantum optical modeling used can be found in the manuscript.</p>
+<p><img alt="fig7" src="_images/QuREBB-figure7.png"/></p>
+<p><strong>Figure 7</strong> - Comparison of different protocols for entanglement generation using the SiV in diamond coupled to an optical cavity as spin-photon interface. (b) Circuit diagram and logical building block descriptions of the protocols under investigation. (c) Photonic encodings for each protocol. (d) The protocol after the LBBs are compiled to hardware-aware PBBs and includes imperfections such as loss.
+The photon states are labeled by node of interaction ($A$ and $B$ for Alice and Bob) by time-bin encoding ($E$ and $L$ for Early and Late mode), and whether the photon is resulting from incoherent emission ($\textrm{Incoh.}$). The initial photon state is defined as $\ket{+} = 1/\sqrt{2}(\ket{E}+\ket{L})$. (e) Simulated success probability-infidelity curves for the different protocols using the demonstrated parameters (see manuscript for more detail). Protocol C is also simulated for a weak coherent state (WCS) input instead of single photons. (f, g, h) Performance of Protocol C when the cooperativity is changed by either improving the cavity decay rate $\kappa$, or the emitter-cavity coupling $g$, following cooperativity equation. (f) Shows the fidelity for two different success probabilities $\eta$ when varying $\kappa$ or $g$ (left and right graph, respectively) (g) and (h) report the success probability-infidelity curves for some of the cooperativities. The dashed lines mark the values of $\eta$ shown in (f).</p>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>In this work, we introduced a modular framework to describe photon-mediated remote entanglement protocols. Our framework divides the remote entanglement protocols into four different layers, allowing a perspective of the entanglement protocol from an abstract and hardware-agnostic overview to a detailed description of each component and physical implementation. We describe the function of the different layers and provide examples of their realization, including detailed modeling of cavity-based spin-photon interfaces. Finally, using a software implementation that directly reflects the modular approach of the framework, we simulated different remote entanglement protocol topologies based on a realistic experimental platform and investigated how they perform under different parameter regimes.</p>
+<p>For future work, our framework can expand into both higher-level uses and lower-level descriptions. At the higher level, leveraging the logical operations of the LBB layer can construct error-corrected encoded quantum networks. Incorporating error correction schemes into our framework would enable the simulation of fault-tolerant quantum applications. On the other hand, the integration of material-level details of physics, for example, for the case of color centers, into our quantum optical modeling can help the choice of quantum systems to optimally configure the network. This inclusion of finer-grained aspects will enhance the accuracy of our simulations as well. In addition, we believe our framework can be extended to apply to continuous variable entanglement distribution and qudit entanglement distribution.</p>
 </section>
 </section>
 <script type="text/x-thebe-config">
@@ -921,11 +622,39 @@ Indeed we are interested in what fidelity we can achieve with this configuration
 <nav class="bd-toc-nav page-toc">
 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-mediated-remote-entanglement-protocols">Photon-mediated Remote Entanglement Protocols</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-protocol">Setting up the protocol:</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-quantum-optical-modeling">Introducing quantum optical modeling</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#remote-entanglement-protocol-framework">Remote entanglement protocol framework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qurebb-repository">QuREBB Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-start-qurebb">How to start QuREBB</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-building-blocks">Logical building blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topology-of-the-protocol">Topology of the protocol</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-photon-interface-blocks">Spin-Photon Interface blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-blocks">Photon blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-blocks">Spin blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-logical-building-blocks">Other logical building blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-topology-and-logical-building-blocks">Combining topology and Logical Building Blocks</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding">Encoding</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-encoding">Photon Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-encoding">Spin encoding</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#physical-building-blocks">Physical building blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#photon-physical-building-blocks">Photon Physical Building Blocks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-photon-interface-pbbs">Spin-photon interface PBBs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spin-operations">Spin operations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-optical-modeling">Quantum optical modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#emitter">Emitter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#photonic-cavity">Photonic Cavity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-channel-description-of-pbb">Quantum channel description of PBB</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-and-benchmarking-entanglement-protocols">Simulating and Benchmarking Entanglement Protocols</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
 </nav></div>
 </div></div>

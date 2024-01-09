@@ -366,8 +366,8 @@ document.write(`
 <p>The type of entanglement is dependent on how the qubit is defined. For example, if we define the qubit in terms of the ‘presence’ or ‘absence’ of a photon such as
 $$\ket{\bar{0}}= \ket{0}; \quad \ket{\bar{1}}= \ket{1} $$
 then the entanglement generation source is a device that generates entangled photons in the form of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0ca627b6-4d8e-48a4-a772-758056559e2d">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0ca627b6-4d8e-48a4-a772-758056559e2d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0e1867ef-fa75-4556-b59f-9724cb4f089a">
+<span class="eqno">(6)<a class="headerlink" href="#equation-0e1867ef-fa75-4556-b59f-9724cb4f089a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{split}  
 \ket{\Psi^+} = \frac{1}{\sqrt{2}}\left(\ket{0}\ket{0} + \ket{1}\ket{1}\right) \\
 \ket{\Psi^-} = \frac{1}{\sqrt{2}}\left(\ket{0}\ket{0} - \ket{1}\ket{1}\right) \\
@@ -379,8 +379,8 @@ then the entanglement generation source is a device that generates entangled pho
 <p>In contrast if we define the qubit in terms of the polarization of the photon, then the qubits are defined as
 $$\ket{\bar{0}}=\ket{0,1}\equiv\ket{H}; \quad \ket{\bar{1}}=\ket{1,0}\equiv\ket{V} $$
 Then the entanglement generation source is a device that generates entangled photons in the form of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-47f7f75d-a1e6-403b-9e15-32055d14abcd">
-<span class="eqno">(2)<a class="headerlink" href="#equation-47f7f75d-a1e6-403b-9e15-32055d14abcd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ce83fb43-26b2-41af-93e4-9e2bb3ee0ba6">
+<span class="eqno">(7)<a class="headerlink" href="#equation-ce83fb43-26b2-41af-93e4-9e2bb3ee0ba6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{split}
 \ket{\Psi^+} = \frac{1}{\sqrt{2}}\left(\ket{H}\ket{H} + \ket{V}\ket{V}\right) \\
 \ket{\Psi^-} = \frac{1}{\sqrt{2}}\left(\ket{H}\ket{H} - \ket{V}\ket{V}\right) \\
@@ -410,14 +410,14 @@ where $\omega_p$ is the frequency of the pump photon, $\omega_s$ and $\omega_i$ 
 <p><img alt="SPDC" src="_images/MPS_SPDC_Sources.png"/>
 <strong>Figure</strong>: Visualizations of typical SPDC based polarization entanglement sources - (a) based on subsequent down-conversions, (b) based on a Sagnac loop interferometer, (c) based on repeated down-conversion interactions. The three sources shown in (a)-(c) can be visulaized to be a single ‘black box’ source in (d) generating the specified state. (Image adapted from <a href="https://doi.org/10.1103/PhysRevA.60.R773"> (a) Kwiat et. al 1999</a>, <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.73.012316">(b) Kim et. al 2006 </a>, <a href="https://doi.org/10.1103/PhysRevA.61.042304">(c) Kok and Braunstein et. al 2000</a>, <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">(d) Dhara et. al 2022</a>)</p>
 <p>The general output state of the SPDC process is given (in the Fock basis) as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-731c2d4e-9ba0-45a7-af99-e8f42664e374">
-<span class="eqno">(3)<a class="headerlink" href="#equation-731c2d4e-9ba0-45a7-af99-e8f42664e374" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-12cde321-6ad3-486a-ad34-87e3fe3af386">
+<span class="eqno">(8)<a class="headerlink" href="#equation-12cde321-6ad3-486a-ad34-87e3fe3af386" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \ket{\Psi^\pm} = \sum_{n=0}^{\infty} \sum_{k}^{n} \sqrt{\frac{p(n)}{n+1}}\ket{n-k,k,k,n-k}
 \end{equation}\]</div>
 <p>where $p(n)=(n+1) N_s^n/(N_s+1)^{n+2}$ with the modes being ordered as : Horizontal 1, Vertical 1, Horizontal 2, Vertical 2. The first pair of modes (Horizontal and Vertical 1 ) are cosnidered to be sent to Alice and the second pair of modes (Horizontal and Vertical 2) are considered to be sent to Bob. $N_s$ istypically called the mean-photon number per mode in the source - we shall work in the regime where $N_s\lesssim 0.2$ to ensure that only terms upto $p(2)$ constibute to the state.</p>
 <p>Expanding the state out in the Fock basis for upto $n=2$, we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-db8e47b7-69d6-472c-83c9-8a1d26c25a54">
-<span class="eqno">(4)<a class="headerlink" href="#equation-db8e47b7-69d6-472c-83c9-8a1d26c25a54" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-467396bb-3985-4919-a258-1c41fcd22a54">
+<span class="eqno">(9)<a class="headerlink" href="#equation-467396bb-3985-4919-a258-1c41fcd22a54" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \ket{\Psi^\pm} = N_0 \left[ \sqrt{p(0)} \ket{0,0,0,0} + \sqrt{\frac{p(1)}{2}} (\ket{1,0,0,1} + \ket{0,1,1,0}) + \sqrt{\frac{p(2)}{3}} (\ket{2,0,0,2} + \ket{0,2,2,0} + \ket{1,1,1,1}) \right]
 \end{equation}\]</div>
 <p>where $N_0$ is a normalization constant. In this equation, $p(0)$ represents the probability of generating a vacuum state in all four modes -indicating that the pump photons is not downverted. Correspondingly $p(1)$ represents the probability of generating a single pair of photons in one of the modes and vacuum in the rest, and $p(2)$ represents the probability of generating two photons pairs in the modes and vacuum in the rest. The terms corrsponding to $p(1)$ are the useful terms as they signify the generation of entangled photons in the polarization basis. On the other hand, the terms corresponding to $p(2)$ are the ‘noise’ terms as the terms are not in the polarization qubit basis defined earlier.</p>
@@ -521,8 +521,8 @@ The second idea would be to use the existing SPDC based source and perform post-
 <p><img alt="SPDC" src="_images/MPS_Cascaded_Source.png"/>
 <strong>Fig.</strong>: Diagram of the  cascaded source construction. (Image adapted from <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">Dhara et. al 2022</a>)</p>
 <p>The cascaded source shown in the figure above comprises of a pair of SPDC sources, each of which generates a pair of photons. The photons are then sent through a linear optical circuit that performs a Bell state measurement. The measurement is heralded by the detection of a pair of photons in a few specific modes. If the measurement is successful, then the photons are expected to be projected into the state $\ket{\Psi^+}$ - certainly this is so if the the SPDC sources generated Bell-pairs natively. If the measurement is not successful, then the photons are discarded. However, given the probabilistic nature of the SPDC sources, the output state must be computed from the entire state being conditioned  on the measurement being successful. We shall not delve into the details of this computation here, and refer the reader to the original paper for the details. However, we can write the form of the quantum state that is generated by the cascaded source as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7dd6e420-a493-4fb4-9c9b-ea8d36a87e40">
-<span class="eqno">(5)<a class="headerlink" href="#equation-7dd6e420-a493-4fb4-9c9b-ea8d36a87e40" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bede28d4-b08a-46f5-ab27-a5b955b79572">
+<span class="eqno">(10)<a class="headerlink" href="#equation-bede28d4-b08a-46f5-ab27-a5b955b79572" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \ket{S}=\frac{1}{\sqrt{2}}\left[\frac{\ket{1,0,0,1}+ (-1)^{m_1} \ket{0,1,1,0}}{\sqrt{2}} + (-1)^{m_2} \frac{\ket{0,0,1,1}+ (-1)^{m_1} \ket{1,1,0,0}}{\sqrt{2}} \right]
 \end{equation}\]</div>
 <p>where $m_1,m_2$ are dependent on the click patterns in the Bell state measurement. Paying close attention to the state, we have the necessary Bell pair terms that we need for the protocol and gotten rid of the vacuum and two-pair terms. However, we have introduced a new term $\ket{0,0,1,1}+ (-1)^{m_1} \ket{1,1,0,0}$ that is not in the polarization basis. However of a quantum communication protocol, this term is something that can be dealt with in the following fashion.</p>
@@ -668,8 +668,8 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 <p><img alt="DK_Scheme" src="_images/MPS_DK_Scheme.png"/>
 <strong>Fig.</strong>: Duan Kimble scheme for the teleportation of the state of a single photonic qubit into a quantum memory. (Image adapted from  <a href="https://doi.org/10.1038/s41534-020-00337-3">Chen et. al 2021</a>)</p>
 <p>The Duan-Kimble scheme relies on being able to perform a controlled phase-rotation of a polarization qubit based on the state of a quantum memory. Incoming photons separated based on their polarization using a polarizing beam splitter. One of the polarization (let us say $V$) is simply reflected of a mirror. The $H$ polarized photon is made to interact with a cavity that is coupled to a quantum memory. The cavity is designed such that the $H$ polarized photon experiences a phase shift of $\pi$ when it interacts with the cavity if and only if the memory is in the $\ket{1}_M$ state. Otherwise it is simply reflected out of the cavity. The two photons are then recombined using the same polarizing beam splitter. As per the conditional interaction specified above, the memory implements the state transformation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-20c6e1ab-88ea-4dd1-a0cc-1fa100e926a9">
-<span class="eqno">(6)<a class="headerlink" href="#equation-20c6e1ab-88ea-4dd1-a0cc-1fa100e926a9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6af46d2a-3320-43d3-b2ff-abaa768f3d84">
+<span class="eqno">(11)<a class="headerlink" href="#equation-6af46d2a-3320-43d3-b2ff-abaa768f3d84" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\ket{0}_M +\ket{1}_M}{\sqrt{2}} \otimes (\alpha \ket{H} +\beta \ket{V}) \rightarrow \ket{0}_M \otimes (\alpha \ket{H} + \beta \ket{V}) + \ket{1}_M \otimes (-\alpha \ket{H} + \beta \ket{V})
 \end{equation}\]</div>
 <p>This can be used to perform a CPHASE gate based single qubit teleportation as shown below. The detection of the photon in the $\ket{A}$ or $\ket{D}$ modes heralds the successful teleportation of the state $\alpha \ket{H} + \beta{V}$ to the memory upto some phase rotation.</p>

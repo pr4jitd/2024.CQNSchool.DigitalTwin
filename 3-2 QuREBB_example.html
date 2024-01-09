@@ -47,6 +47,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
 <script async="async" src="_static/sphinx-thebe.js"></script>
+<script>window.MathJax = {"tex": {"macros": {"ket": ["\\left|{#1}\\right\\rangle", 1], "bra": ["\\left\\langle{#1}\\right|", 1], "braket": ["\\left\\langle{#1}\\middle|{#2}\\right\\rangle", 2], "adagger": ["\\hat{a}^{\\dagger}"], "ahat": ["\\hat{a}"], "bdagger": ["\\hat{b}^{\\dagger}"], "bhat": ["\\hat{b}"], "cdagger": ["\\hat{c}^{\\dagger}"], "chat": ["\\hat{c}"], "ddagger": ["\\hat{d}^{\\dagger}"], "dhat": ["\\hat{d}"], "edagger": ["\\hat{e}^{\\dagger}"], "ehat": ["\\hat{e}"], "fdagger": ["\\hat{f}^{\\dagger}"], "fhat": ["\\hat{f}"], "gdagger": ["\\hat{g}^{\\dagger}"], "ghat": ["\\hat{g}"], "hdagger": ["\\hat{h}^{\\dagger}"], "hhat": ["\\hat{h}"], "gtwo": ["g^{(2)}"], "H": ["\\ket{H}"], "V": ["\\ket{V}"], "D": ["\\ket{D}"], "AD": ["\\ket{AD}"]}}}</script>
+<script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <script>DOCUMENTATION_OPTIONS.pagename = '3-2 QuREBB_example';</script>
 <link href="genindex.html" rel="index" title="Index"/>
 <link href="search.html" rel="search" title="Search"/>
@@ -412,6 +414,12 @@ It is defined like this:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}Quantum object: dims = [[2, 2], [2, 2]], shape = (4, 4), type = oper, isherm = True $ \\ \left(\begin{matrix}0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\0.250 &amp; 0.250 &amp; 0.250 &amp; 0.250\\\end{matrix}\right)$ $\\$ names = [['Alice', 'Bob'], ['Alice', 'Bob']], kind = state\end{split}\]</div>
+<div class="output text_latex math notranslate nohighlight">
+\[\begin{split}Quantum object: dims = [[2, 2, 2, 2], [2, 2, 2, 2]], shape = (16, 16), type = oper, isherm = True $ \\ \left(\begin{matrix}0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.125 &amp; 0.125 &amp; 0.0\\0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; \cdots &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0 &amp; 0.0\\\end{matrix}\right)$ $\\$ names = [['Alice', 'Bob', 'E', 'L'], ['Alice', 'Bob', 'E', 'L']], kind = state\end{split}\]</div>
+</div>
 </div>
 <p>The <em>photon_source_time_bin()</em> function took care of creating the photons in the correct state and adding them to the density matrix, thanks to the tensor product using NQobj().</p>
 <p>Now, in the same way we can apply the Conditional Amplitude Reflection SPI LBB.</p>
@@ -482,6 +490,12 @@ It is defined like this:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>c:\Users\hakna\Repositories\2024.CQNSchool.DigitalTwin\lib\PBB.py:50: RuntimeWarning: divide by zero encountered in scalar divide
+  theta_splitting_u = np.arctan(np.abs(t_prime_u) / np.abs(r_prime_u))
+</pre></div>
+</div>
+</div>
 </div>
 <p>Then to Bob:</p>
 <div class="cell docutils container">
@@ -522,6 +536,12 @@ It is defined like this:</p>
 <span class="n">fidelity</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">heralded_dm_L</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">target_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span>
 <span class="n">rate</span> <span class="o">=</span> <span class="n">heralded_dm_L</span><span class="o">.</span><span class="n">tr</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Heralding a photon in Late gives the state psi_- with Fidelity: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> and Success Probability: </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> "</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Heralding a photon in Early gives the state psi_+ with Fidelity: 1.000 and Success Probability: 0.125 
+Heralding a photon in Late gives the state psi_- with Fidelity: 1.000 and Success Probability: 0.125 
 </pre></div>
 </div>
 </div>
@@ -604,6 +624,11 @@ It is defined like this:</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Fidelities for the two herald states are: [1.000, 1.000] and the Success Probability: [0.125, 0.125] 
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="introducing-quantum-optical-modeling">
@@ -672,6 +697,12 @@ It is defined like this:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x1469f4fac90&gt;
+</pre></div>
+</div>
+<img alt="_images/e4702553055b4141472e4cdf9f82756a72e2a4facb551806f9e1c25c9a3855b5.png" src="_images/e4702553055b4141472e4cdf9f82756a72e2a4facb551806f9e1c25c9a3855b5.png"/>
 </div>
 </div>
 <p>This deviates from the ideal case, as at the operation frequency the reflectivity for spin up is not perfectly 1 and for spin down is not perfectly zero.
@@ -804,12 +835,22 @@ Indeed we are interested in what fidelity we can achieve with this configuration
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The Fidelities for the two herald states are: [0.747, 1.000] and the Success Probability: [0.115, 0.111] 
+</pre></div>
+</div>
+</div>
 </div>
 <p>The protocol was successful, as we can see one of the two states has higher fidelity than the other (this is expected when the two nodes have equal parameters because the errors on $|\psi_-\rangle$ cancel out [2]).</p>
 <p>The total fidelity and rate the protocol calculates is the weighted average over the success probability of the two fidelities)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total fidelity: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, total Success Probability: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total fidelity: 0.871, total Success Probability: 0.226
 </pre></div>
 </div>
 </div>
