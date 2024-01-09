@@ -1,0 +1,1131 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Example Notebook: &#8212; CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3-2 QuREBB_example';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="QuREBB: Quantum Remote Entanglement Building Block Simulations" href="3-1%20QuREBB_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/3protocols.png" class="logo__image only-light" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>
+    <script>document.write(`<img src="_static/3protocols.png" class="logo__image only-dark" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Introduction.html">
+                    CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midpoint Source Protocol</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="2-1%20Midpoint_Source_Tutorial.html">Midpoint Source Protocol for Quantum Links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">QuREBB - Quantum Remote Entanglement Building Block Simulations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3-1%20QuREBB_intro.html">QuREBB: Quantum Remote Entanglement Building Block Simulations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Example Notebook:</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pr4jitd/2024.CQNSchool.DigitalTwin/main?urlpath=tree/3-2 QuREBB_example.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pr4jitd/2024.CQNSchool.DigitalTwin/blob/main/3-2 QuREBB_example.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin/issues/new?title=Issue%20on%20page%20%2F3-2 QuREBB_example.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/3-2 QuREBB_example.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Example Notebook:</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-amplitude-reflection-spin-spin-entanglement">Conditional Amplitude Reflection Spin-Spin Entanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-protocol">Setting up the protocol:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-quantum-optical-modeling">Introducing quantum optical modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="example-notebook">
+<h1>Example Notebook:<a class="headerlink" href="#example-notebook" title="Permalink to this heading">#</a></h1>
+<section id="conditional-amplitude-reflection-spin-spin-entanglement">
+<h2>Conditional Amplitude Reflection Spin-Spin Entanglement<a class="headerlink" href="#conditional-amplitude-reflection-spin-spin-entanglement" title="Permalink to this heading">#</a></h2>
+<p>In this notebook we show how to construct a Protocol to simulate Spin-Spin Entanglement using a Conditional Amplitude Reflection SPI (See Section IV C 4 of [1]). This is Protocol C in [1].</p>
+</section>
+<section id="setting-up-the-protocol">
+<h2>Setting up the protocol:<a class="headerlink" href="#setting-up-the-protocol" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Utility and common imports</span>
+
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">expanduser</span><span class="p">,</span> <span class="n">join</span>
+<span class="n">home</span> <span class="o">=</span> <span class="n">expanduser</span><span class="p">(</span><span class="s2">&quot;~&quot;</span><span class="p">)</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="s1">&#39;Repositories/2024.CQNSCHOOL.DIGITALTWIN&#39;</span><span class="p">))</span>
+<span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># QuREBB library imports</span>
+
+<span class="kn">import</span> <span class="nn">lib.LBB</span> <span class="k">as</span> <span class="nn">lbb</span>
+<span class="kn">import</span> <span class="nn">lib.PBB</span> <span class="k">as</span> <span class="nn">pbb</span>
+<span class="kn">import</span> <span class="nn">lib.NQobj</span> <span class="k">as</span> <span class="nn">nq</span>
+<span class="kn">import</span> <span class="nn">lib.states</span> <span class="k">as</span> <span class="nn">st</span>
+<span class="kn">import</span> <span class="nn">lib.quantum_optical_modelling</span> <span class="k">as</span> <span class="nn">qom</span>
+<span class="kn">from</span> <span class="nn">lib.PBB</span> <span class="kn">import</span> <span class="n">no_vacuum_projector</span>
+<span class="kn">from</span> <span class="nn">lib.protocol</span> <span class="kn">import</span> <span class="n">Protocol</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">home</span><span class="p">,</span> <span class="s1">&#39;Repositories/2024.CQNSCHOOL.DIGITALTWIN&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="kn">from</span> <span class="nn">copy</span> <span class="kn">import</span> <span class="n">copy</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># QuREBB library imports</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we look at the Logical Buildind Blocks and Encoding.</p>
+<p><img alt="image.png" src="attachment:cc3881d7-427e-4f44-b5f8-8145597a85e4.png" /></p>
+<p>We start with a single photon in Time-Bin encoding, prepared in $|+\rangle = 1/\sqrt{2}(|E\rangle + |L\rangle)$, and two spins Alice and Bob, both prepared in $|+\rangle=1/\sqrt{2}(|\uparrow\rangle + |\downarrow\rangle)$.</p>
+<p>The photon then interacts with a Conditional Amplitude Reflection SPI based on a cavity-emitter system of Alice, then with the one of Bob.</p>
+<p>To measure entanglement we need to measure the photonic qubit in the X basis, therefore we apply a rotation gate before we measure in the| ${|E\rangle, |L\rangle}$ basis.</p>
+<p>We first create our protocol, inheriting from the Protocol class.
+Here we need to define:</p>
+<ul class="simple">
+<li><p>The initial density matrix of the spin state(s)</p></li>
+<li><p>The projector of the photonic state we want to herald for successful entanglement</p></li>
+<li><p>The target state of our protocol</p></li>
+</ul>
+<p>Often different final photonic states correspond to a different entangled state generation. The protocol allows one to define a list of photon state projectors and target states. They have to correspond one-to-one, for each herald state the protocol calculates the fidelity of the corresponding target state.</p>
+<p>Detecting a photon in $|E\rangle$ will herald the final Bell state $|\psi_+\rangle$, and detecting a photon in $|L\rangle$ will herald $|\psi_-\rangle$.
+The detection is done using the projector on “non vacuum” state: $P = \mathbb{1} - |vac\rangle\langle vac |$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        Our protocol class to simulate Spin-Photon Entanglement</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+        <span class="c1"># We prepare the initial state of the spins in |x &gt;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+
+        <span class="c1"># We definet the two herald state projectors.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">herald_projectors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
+            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
+        <span class="p">]</span>
+
+        <span class="c1"># And the corresponding target entangled states</span>
+
+        <span class="n">state_uu</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+        <span class="n">state_dd</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_states</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">state_uu</span> <span class="o">+</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> 
+            <span class="p">(</span><span class="n">state_uu</span> <span class="o">-</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
+        <span class="p">]</span>
+        
+
+        
+        
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Protocol class contains several built-in features, in particular:</p>
+<ul class="simple">
+<li><p>parameters: a dictionary of the parameters needed to run the protocol</p></li>
+<li><p>dm: the density matrix used for the evolution of the protocol</p></li>
+<li><p>fidelity, rate: values that get updated with the simulation results</p></li>
+</ul>
+<p>A key function of Protocol is the <em>do_lbb()</em> function. This is a wrapper that applies a Logical Building Block to the density matrix, taking care to pass over all the relevant parameters.
+It is defined like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">do_lbb</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">LBB</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Makes a logical building block act on the density matrix.&quot;&quot;&quot;</span>
+        <span class="n">kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="n">LBB</span><span class="p">(</span><span class="n">dm_in</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dm</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For example: let’s start from the initial density matrix of our protocol, which contains only the spin states, and apply a photon source LBB to generate a photon in  $|+\rangle = 1/\sqrt{2}(|E\rangle + |L\rangle)$.</p>
+<p>This is how the source is defined in the LBB library:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">photon_source_time_bin</span><span class="p">(</span><span class="n">dm_in</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">,</span> <span class="n">dim</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="c1"># We can either create a single ephoton</span>
+    <span class="k">if</span> <span class="n">alpha</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">photon_basis</span> <span class="o">=</span> <span class="n">st</span><span class="o">.</span><span class="n">photon</span><span class="p">(</span><span class="n">dim</span><span class="p">)</span>
+
+    <span class="c1"># Or a coherent state</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">photon_basis</span> <span class="o">=</span> <span class="n">qt</span><span class="o">.</span><span class="n">coherent</span><span class="p">(</span><span class="n">dim</span><span class="p">,</span> <span class="n">alpha</span><span class="p">)</span>
+
+    <span class="c1">#We create the photonic modes and we prepare them in the |+&gt; state</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">photon_basis</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">photon_basis</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">dm_in</span><span class="p">,</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">((</span><span class="n">E</span> <span class="o">+</span> <span class="n">L</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We define the neccessary parameters to create the photon. </span>
+<span class="c1"># &quot;dim&quot; is the Fock state dimension of each photonic Qubit state</span>
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;dim&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ExampleProtocol</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+<span class="c1">#This is the initial density matrix, we use it to initialize the process density matrix p.dm</span>
+<span class="n">display</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm_init</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">dm_init</span>
+
+<span class="c1">#Apply a photon source building block.</span>
+<span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">photon_source_time_bin</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+
+<span class="c1"># This is what the density matrix looks like after the LBB:</span>
+<span class="n">display</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <em>photon_source_time_bin()</em> function took care of creating the photons in the correct state and adding them to the density matrix, thanks to the tensor product using NQobj().</p>
+<p>Now, in the same way we can apply the Conditional Amplitude Reflection SPI LBB.</p>
+<p>In the ideal case, this is a spin-dependent cavity where the photon is totally reflected if the spin is in $|\downarrow\rangle$ and totally transmitted if the spin is in $|\uparrow\rangle$.</p>
+<p>We first describe the LBB in terms of Physical Building Blocks:</p>
+<p><img alt="image.png" src="attachment:e7725563-64df-496f-9fb2-6a41462964b6.png" /></p>
+<p>And we define the LBB function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">(</span>
+    <span class="n">dm_in</span><span class="p">,</span>
+    <span class="n">spin_name</span><span class="p">,</span>
+    <span class="n">photon_early_name</span><span class="p">,</span>
+    <span class="n">photon_late_name</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kw</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="c1"># Reflection coefficient and transmission coefficients for states up (u) and down (d)</span>
+    <span class="n">t_u</span> <span class="o">=</span> <span class="n">r_d</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">t_d</span> <span class="o">=</span> <span class="n">r_u</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># No loss</span>
+    <span class="n">l_u</span> <span class="o">=</span> <span class="n">l_d</span> <span class="o">=</span> <span class="mi">0</span>
+
+
+    <span class="c1"># We provide the parameters to the Physical Building Block of a conditional amplitude reflection SPI</span>
+    <span class="n">cav</span> <span class="o">=</span> <span class="n">pbb</span><span class="o">.</span><span class="n">conditional_amplitude_reflection</span><span class="p">(</span><span class="n">r_u</span><span class="p">,</span> <span class="n">t_u</span><span class="p">,</span> <span class="n">l_u</span><span class="p">,</span> <span class="n">r_d</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">l_d</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+
+    <span class="c1"># Specifying which Spin it refers to.</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;spin&quot;</span><span class="p">,</span> <span class="n">spin_name</span><span class="p">)</span>
+
+    <span class="c1"># We realise PBB implementation of the LBB, first the cavity is applied to Early</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">)</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;loss_transmission&quot;</span><span class="p">)</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+
+    <span class="n">dm_E_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="n">dm_in</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+
+    <span class="c1"># Tracing out the lost modes</span>
+    <span class="n">dm_E</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_E_full</span><span class="p">)</span>
+
+    <span class="c1"># We apply a pi rotation on the spin</span>
+    <span class="n">RX_pi</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">NQobj</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">names</span><span class="o">=</span><span class="n">spin_name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;oper&quot;</span><span class="p">)</span>
+
+    <span class="c1"># And we apply the same cavity PBB to Late by renaming the photonic mode it operates on</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">photon_early_name</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">)</span>
+    <span class="n">dm_L_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="p">(</span><span class="n">RX_pi</span> <span class="o">*</span> <span class="n">dm_E</span> <span class="o">*</span> <span class="n">RX_pi</span><span class="o">.</span><span class="n">dag</span><span class="p">())</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+
+    <span class="c1">#Finally we trace out the lost modes.</span>
+    <span class="n">dm_L</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_L_full</span><span class="p">)</span>
+
+    <span class="c1">#Finally, we return the modified density matrix</span>
+    <span class="k">return</span> <span class="n">dm_L</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now apply this  in our protocol, first to Alice:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
+        <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
+        <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+        <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span>
+        <span class="n">spin_name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Then to Bob:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
+        <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
+        <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+        <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span>
+        <span class="n">spin_name</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can herald and project the spins in an entangled state.</p>
+<p>For this protocol to work, we need to measure the photons in the X basis. We can implement this by first rotating the basis and measuring in ${|E\rangle, |L\rangle}$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#First rotate the basis</span>
+<span class="n">p</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">basis_rotation</span><span class="p">,</span> <span class="n">photon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">])</span>
+
+<span class="c1">#And herald on the photonic states we previously defined, to get the rate and fidelity:</span>
+<span class="k">def</span> <span class="nf">herald</span><span class="p">(</span><span class="n">dm_in</span><span class="p">,</span> <span class="n">herald_projector</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
+    <span class="n">dm_final</span> <span class="o">=</span> <span class="n">herald_projector</span> <span class="o">*</span> <span class="n">dm_in</span> <span class="o">*</span> <span class="n">herald_projector</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_everything_but_spins</span><span class="p">(</span><span class="n">dm_final</span><span class="p">)</span>
+
+<span class="c1">#We herald on a photon in Early</span>
+<span class="n">heralded_dm_E</span> <span class="o">=</span> <span class="n">herald</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">herald_projectors</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># And check the fidelity and success probability of getting Psi_+</span>
+<span class="n">fidelity</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">heralded_dm_E</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">target_states</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">heralded_dm_E</span><span class="o">.</span><span class="n">tr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heralding a photon in Early gives the state psi_+ with Fidelity: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> and Success Probability: </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+
+<span class="c1">#And we do the same with Late and Psi_-</span>
+<span class="n">heralded_dm_L</span> <span class="o">=</span> <span class="n">herald</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">dm</span><span class="p">),</span> <span class="n">p</span><span class="o">.</span><span class="n">herald_projectors</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">fidelity</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">fidelity</span><span class="p">(</span><span class="n">heralded_dm_L</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> <span class="n">nq</span><span class="o">.</span><span class="n">ket2dm</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">target_states</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">rate</span> <span class="o">=</span> <span class="n">heralded_dm_L</span><span class="o">.</span><span class="n">tr</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heralding a photon in Late gives the state psi_- with Fidelity: </span><span class="si">{</span><span class="n">fidelity</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> and Success Probability: </span><span class="si">{</span><span class="n">rate</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have entanglement!</p>
+<p>Now, the Protocol class contains several functions that make running the protocol much simpler. It will take care of initialising the density matrix, running all the LBBs and doing the hearlding and fidelity/rate measurement. This is done with the <em>Protocol.run()</em> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Runs the protocol sequence and return the metrics&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">protocol_sequence</span><span class="p">()</span>
+        <span class="n">fidelity</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">herald</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">fidelity</span><span class="p">,</span> <span class="n">rate</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>So in our protocol, we can just define the <em>protocol_sequence()</em></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        Our protocol class to simulate Spin-Photon Entanglement</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+        <span class="c1"># We prepare the initial state of the spins in |x &gt;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+
+        <span class="c1"># We definet the two herald state projectors.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">herald_projectors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
+            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
+        <span class="p">]</span>
+
+        <span class="c1"># And the corresponding target entangled states</span>
+
+        <span class="n">state_uu</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+        <span class="n">state_dd</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_states</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">state_uu</span> <span class="o">+</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> 
+            <span class="p">(</span><span class="n">state_uu</span> <span class="o">-</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
+        <span class="p">]</span>
+        
+
+    <span class="k">def</span> <span class="nf">protocol_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">photon_source_time_bin</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
+            <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
+            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span>
+            <span class="n">spin_name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
+            <span class="n">conditional_amplitude_reflection_time_bin_spi_ideal</span><span class="p">,</span>
+            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span>
+            <span class="n">spin_name</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">basis_rotation</span><span class="p">,</span> <span class="n">photon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">],</span> <span class="n">sign</span><span class="o">=+</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;dim&quot;</span><span class="p">:</span> <span class="mi">2</span>
+<span class="p">}</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">ExampleProtocol</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;The Fidelities for the two herald states are: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] and the Success Probability: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="introducing-quantum-optical-modeling">
+<h2>Introducing quantum optical modeling<a class="headerlink" href="#introducing-quantum-optical-modeling" title="Permalink to this heading">#</a></h2>
+<p>This is the ideal protocol. A step further is to use quantum optical modeling of the cavity-emitter system that we use for the SPI.</p>
+<p>First, let’s look at what the cavity spectrum looks like for some parameters:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+
+    <span class="s1">&#39;gamma_dephasing&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;splitting&#39;</span><span class="p">:</span> <span class="mf">3e9</span><span class="p">,</span>
+    <span class="s1">&#39;DW&#39;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
+    <span class="s1">&#39;QE&#39;</span><span class="p">:</span> <span class="mf">1.</span><span class="p">,</span>
+    <span class="s1">&#39;dim&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="s1">&#39;ideal&#39;</span><span class="p">:</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="s1">&#39;f_operation&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;delta&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="s1">&#39;kappa_r&#39;</span><span class="p">:</span> <span class="mf">20.e9</span><span class="p">,</span>
+    <span class="s1">&#39;kappa_t&#39;</span><span class="p">:</span> <span class="mf">20.e9</span><span class="p">,</span> 
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="mf">100e6</span><span class="p">,</span>
+    <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="mf">2e9</span><span class="p">,</span>
+    <span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="kc">None</span>
+<span class="p">}</span>
+
+<span class="n">C</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;kappa_t&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;kappa_r&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">]</span>
+
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">30e9</span><span class="p">,</span> <span class="mf">30e9</span><span class="p">,</span> <span class="mi">1001</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">lib.quantum_optical_modelling</span> <span class="kn">import</span> <span class="n">cavity_qom_cavity_centered</span>
+
+<span class="n">t_up</span><span class="p">,</span> <span class="n">r_up</span><span class="p">,</span> <span class="n">l_up</span> <span class="o">=</span> <span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
+                        <span class="n">omega</span><span class="o">=</span><span class="n">frequencies</span><span class="p">,</span>
+                        <span class="n">delta</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">],</span> 
+                        <span class="n">kappa_r</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;kappa_r&#39;</span><span class="p">],</span>
+                        <span class="n">kappa_t</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;kappa_t&#39;</span><span class="p">],</span>
+                        <span class="n">kappa_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+                        <span class="n">gamma</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">],</span> 
+                        <span class="n">C</span> <span class="o">=</span> <span class="n">C</span>
+<span class="p">)</span>
+
+<span class="n">t_down</span><span class="p">,</span> <span class="n">r_down</span><span class="p">,</span> <span class="n">l_down</span> <span class="o">=</span> <span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
+                        <span class="n">omega</span><span class="o">=</span><span class="n">frequencies</span><span class="p">,</span>
+                        <span class="n">delta</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;delta&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;splitting&#39;</span><span class="p">],</span> 
+                        <span class="n">kappa_r</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;kappa_r&#39;</span><span class="p">],</span>
+                        <span class="n">kappa_t</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;kappa_t&#39;</span><span class="p">],</span>
+                        <span class="n">kappa_loss</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> 
+                        <span class="n">gamma</span> <span class="o">=</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;gamma&#39;</span><span class="p">],</span> 
+                        <span class="n">C</span> <span class="o">=</span> <span class="n">C</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">vlines</span><span class="p">(</span><span class="n">parameters</span><span class="p">[</span><span class="s2">&quot;f_operation&quot;</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Operation frequency&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r_up</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$|\uparrow\rangle$&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r_down</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;$|\downarrow\rangle$&quot;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Spin-dependent cavity spectrum&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [GHz]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Reflection&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This deviates from the ideal case, as at the operation frequency the reflectivity for spin up is not perfectly 1 and for spin down is not perfectly zero.
+Indeed we are interested in what fidelity we can achieve with this configuration.</p>
+<p>First, we need to change the SPI LBB:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">conditional_amplitude_reflection_time_bin_spi</span><span class="p">(</span>
+    <span class="n">dm_in</span><span class="p">,</span>
+    <span class="n">spin_name</span><span class="p">,</span>
+    <span class="n">photon_early_name</span><span class="p">,</span>
+    <span class="n">photon_late_name</span><span class="p">,</span>
+    <span class="n">dim</span><span class="p">,</span>
+    <span class="n">atom_centered</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">f_operation</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">kappa_r</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">kappa_t</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">kappa_loss</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">gamma</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">delta</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">splitting</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">g</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">ideal</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">gamma_dephasing</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="o">**</span><span class="n">kw</span><span class="p">,</span>
+<span class="p">):</span>
+
+    <span class="c1">#We just chhange how we get the reflection coefficients, which now are taken from the quantum optical modeling</span>
+    <span class="n">C</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">g</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">kappa_t</span> <span class="o">+</span> <span class="n">kappa_r</span> <span class="o">+</span> <span class="n">kappa_loss</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">+</span> <span class="n">gamma_dephasing</span><span class="p">)</span>
+
+    <span class="n">t_u</span><span class="p">,</span> <span class="n">r_u</span><span class="p">,</span> <span class="n">l_u</span> <span class="o">=</span> <span class="n">qom</span><span class="o">.</span><span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
+                <span class="n">f_operation</span><span class="p">,</span> <span class="n">delta</span><span class="p">,</span> <span class="n">kappa_r</span><span class="p">,</span> <span class="n">kappa_t</span><span class="p">,</span> <span class="n">kappa_loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma_dephasing</span><span class="o">=</span><span class="n">gamma_dephasing</span>
+            <span class="p">)</span>
+    <span class="n">t_d</span><span class="p">,</span> <span class="n">r_d</span><span class="p">,</span> <span class="n">l_d</span> <span class="o">=</span> <span class="n">qom</span><span class="o">.</span><span class="n">cavity_qom_cavity_centered</span><span class="p">(</span>
+                <span class="n">f_operation</span><span class="p">,</span> <span class="n">delta</span> <span class="o">-</span> <span class="n">splitting</span><span class="p">,</span> <span class="n">kappa_r</span><span class="p">,</span> <span class="n">kappa_t</span><span class="p">,</span> <span class="n">kappa_loss</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">gamma_dephasing</span><span class="o">=</span><span class="n">gamma_dephasing</span>
+            <span class="p">)</span>
+
+
+    <span class="c1"># We provide the parameters to the Physical Building Block of a conditional amplitude reflection SPI</span>
+    <span class="n">cav</span> <span class="o">=</span> <span class="n">pbb</span><span class="o">.</span><span class="n">conditional_amplitude_reflection</span><span class="p">(</span><span class="n">r_u</span><span class="p">,</span> <span class="n">t_u</span><span class="p">,</span> <span class="n">l_u</span><span class="p">,</span> <span class="n">r_d</span><span class="p">,</span> <span class="n">t_d</span><span class="p">,</span> <span class="n">l_d</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="n">dim</span><span class="p">)</span>
+
+    <span class="c1"># Specifying which Spin it refers to.</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;spin&quot;</span><span class="p">,</span> <span class="n">spin_name</span><span class="p">)</span>
+
+    <span class="c1"># We realise PBB implementation of the LBB, first the cavity is applied to Early</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;R&quot;</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="p">)</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">,</span> <span class="s2">&quot;loss_transmission&quot;</span><span class="p">)</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;loss&quot;</span><span class="p">,</span> <span class="s2">&quot;loss&quot;</span><span class="p">)</span>
+
+    <span class="n">dm_E_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="n">dm_in</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+
+    <span class="c1"># Tracing out the lost modes</span>
+    <span class="n">dm_E</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_E_full</span><span class="p">)</span>
+
+    <span class="c1"># We apply a pi rotation on the spin</span>
+    <span class="n">RX_pi</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">NQobj</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]],</span> <span class="n">names</span><span class="o">=</span><span class="n">spin_name</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;oper&quot;</span><span class="p">)</span>
+
+    <span class="c1"># And we apply the same cavity PBB to Late by renaming the photonic mode it operates on</span>
+    <span class="n">cav</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">photon_early_name</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="p">)</span>
+    <span class="n">dm_L_full</span> <span class="o">=</span> <span class="n">cav</span> <span class="o">*</span> <span class="p">(</span><span class="n">RX_pi</span> <span class="o">*</span> <span class="n">dm_E</span> <span class="o">*</span> <span class="n">RX_pi</span><span class="o">.</span><span class="n">dag</span><span class="p">())</span> <span class="o">*</span> <span class="n">cav</span><span class="o">.</span><span class="n">dag</span><span class="p">()</span>
+
+    <span class="c1">#Finally we trace out the lost modes.</span>
+    <span class="n">dm_L</span> <span class="o">=</span> <span class="n">lbb</span><span class="o">.</span><span class="n">trace_out_loss_modes</span><span class="p">(</span><span class="n">dm_L_full</span><span class="p">)</span>
+
+    <span class="c1">#Finally, we return the modified density matrix</span>
+    <span class="k">return</span> <span class="n">dm_L</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can the redefine the protocol:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">ExampleProtocol</span><span class="p">(</span><span class="n">Protocol</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">        Our protocol class to simulate Spin-Photon Entanglement</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+
+        <span class="c1"># We prepare the initial state of the spins in |x &gt;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dm_init</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">x_dm</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+
+        <span class="c1"># We definet the two herald state projectors.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">herald_projectors</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
+            <span class="n">no_vacuum_projector</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">),</span>
+        <span class="p">]</span>
+
+        <span class="c1"># And the corresponding target entangled states</span>
+
+        <span class="n">state_uu</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">up</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+        <span class="n">state_dd</span> <span class="o">=</span> <span class="n">nq</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">),</span> <span class="n">nq</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">down</span><span class="p">,</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;state&quot;</span><span class="p">))</span>
+        
+        <span class="bp">self</span><span class="o">.</span><span class="n">target_states</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="p">(</span><span class="n">state_uu</span> <span class="o">+</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">(),</span> 
+            <span class="p">(</span><span class="n">state_uu</span> <span class="o">-</span> <span class="n">state_dd</span><span class="p">)</span><span class="o">.</span><span class="n">unit</span><span class="p">()</span>
+        <span class="p">]</span>
+        
+
+    <span class="k">def</span> <span class="nf">protocol_sequence</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">photon_source_time_bin</span><span class="p">,</span> <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
+            <span class="n">conditional_amplitude_reflection_time_bin_spi</span><span class="p">,</span>
+            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span>
+            <span class="n">spin_name</span><span class="o">=</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span>
+            <span class="n">conditional_amplitude_reflection_time_bin_spi</span><span class="p">,</span>
+            <span class="n">photon_early_name</span><span class="o">=</span><span class="s2">&quot;E&quot;</span><span class="p">,</span>
+            <span class="n">photon_late_name</span><span class="o">=</span><span class="s2">&quot;L&quot;</span><span class="p">,</span>
+            <span class="n">spin_name</span><span class="o">=</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">do_lbb</span><span class="p">(</span><span class="n">lbb</span><span class="o">.</span><span class="n">basis_rotation</span><span class="p">,</span> <span class="n">photon_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;E&quot;</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we run it with the same parameters we have shown before</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">ExampleProtocol</span><span class="p">(</span><span class="n">parameters</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span> <span class="sa">f</span><span class="s2">&quot;The Fidelities for the two herald states are: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] and the Success Probability: [</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">] &quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The protocol was successful, as we can see one of the two states has higher fidelity than the other (this is expected when the two nodes have equal parameters because the errors on $|\psi_-\rangle$ cancel out [2]).</p>
+<p>The total fidelity and rate the protocol calculates is the weighted average over the success probability of the two fidelities)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total fidelity: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">fidelity_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, total Success Probability: </span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">rate_total</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h3>
+<p>[1] H.K.C. Beukers, M. Pasini, H. Choi et. al., (2023) ‘Tutorial: Remote entanglement protocols for stationary qubits with photonic interface’, link</p>
+<p>[2] C.M. Knaut, A. Suleymanzade, Y.-C. Wei, D. R. Assumpcao, P.-J. Stas et al. (2023) ‘Entanglement of Nanophotonic Quantum Memory Nodes in a Telecommunication Network’. arXiv. Available at: https://doi.org/10.48550/arXiv.2310.01316.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="3-1%20QuREBB_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">QuREBB: Quantum Remote Entanglement Building Block Simulations</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-amplitude-reflection-spin-spin-entanglement">Conditional Amplitude Reflection Spin-Spin Entanglement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-protocol">Setting up the protocol:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-quantum-optical-modeling">Introducing quantum optical modeling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dirk Englund, Hyeongrak Choi, Prajit Dhara
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

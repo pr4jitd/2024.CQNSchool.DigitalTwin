@@ -1,0 +1,1127 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Midpoint Source Protocol for Quantum Links &#8212; CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"ket": ["\\left|{#1}\\right\\rangle", 1], "bra": ["\\left\\langle{#1}\\right|", 1], "braket": ["\\left\\langle{#1}\\middle|{#2}\\right\\rangle", 2], "adagger": ["\\hat{a}^{\\dagger}"], "ahat": ["\\hat{a}"], "bdagger": ["\\hat{b}^{\\dagger}"], "bhat": ["\\hat{b}"], "cdagger": ["\\hat{c}^{\\dagger}"], "chat": ["\\hat{c}"], "ddagger": ["\\hat{d}^{\\dagger}"], "dhat": ["\\hat{d}"], "edagger": ["\\hat{e}^{\\dagger}"], "ehat": ["\\hat{e}"], "fdagger": ["\\hat{f}^{\\dagger}"], "fhat": ["\\hat{f}"], "gdagger": ["\\hat{g}^{\\dagger}"], "ghat": ["\\hat{g}"], "hdagger": ["\\hat{h}^{\\dagger}"], "hhat": ["\\hat{h}"], "gtwo": ["g^{(2)}"], "H": ["\\ket{H}"], "V": ["\\ket{V}"], "D": ["\\ket{D}"], "AD": ["\\ket{AD}"]}}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2-1 Midpoint_Source_Tutorial';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="QuREBB: Quantum Remote Entanglement Building Block Simulations" href="3-1%20QuREBB_intro.html" />
+    <link rel="prev" title="CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations" href="Introduction.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <header>
+  
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
+  
+  </header>
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="Introduction.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/3protocols.png" class="logo__image only-light" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>
+    <script>document.write(`<img src="_static/3protocols.png" class="logo__image only-dark" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Introduction.html">
+                    CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midpoint Source Protocol</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Midpoint Source Protocol for Quantum Links</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">QuREBB - Quantum Remote Entanglement Building Block Simulations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="3-1%20QuREBB_intro.html">QuREBB: Quantum Remote Entanglement Building Block Simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-2%20QuREBB_example.html">Example Notebook:</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/pr4jitd/2024.CQNSchool.DigitalTwin/main?urlpath=tree/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/pr4jitd/2024.CQNSchool.DigitalTwin/blob/main/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin/issues/new?title=Issue%20on%20page%20%2F2-1 Midpoint_Source_Tutorial.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Midpoint Source Protocol for Quantum Links</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-intro-to-midpoint-source-protocol">Brief Intro to Midpoint Source Protocol</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-protocol">Components of the Protocol</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-memories">Quantum Memories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entanglement-generation-source">Entanglement Generation Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-and-classical-channels-for-information-transfer">Quantum and Classical Channels for Information Transfer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-construction-of-a-entanglement-generation-source">Understanding the Construction of a Entanglement Generation Source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-an-spdc-based-entanglement-generation-source">Tutorial: Evaluating the quality of an SPDC based entanglement generation source</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-heralded-entanglement-generation-source">Building a Heralded Entanglement Generation Source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-main-theoretical-idea">Motivation and Main Theoretical Idea</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-a-cascaded-entanglement-generation-source">Tutorial: Evaluating the Quality of a Cascaded Entanglement Generation Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplexing-sources">Multiplexing Sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-a-multiplexed-cascaded-entanglement-generation-source">Tutorial: Evaluating the Quality of a Multiplexed Cascaded Entanglement Generation Source</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-memories-sneak-peek">Quantum Memories: Sneak Peek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-and-simulating-a-midpoint-source-protocol-from-the-components">Building and Simulating a Midpoint Source Protocol from the Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-the-midpoint-source-protocol">Tutorial: Evaluating the Quality of the Midpoint Source Protocol</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="midpoint-source-protocol-for-quantum-links">
+<h1>Midpoint Source Protocol for Quantum Links<a class="headerlink" href="#midpoint-source-protocol-for-quantum-links" title="Permalink to this heading">#</a></h1>
+<p>This notebook is a demonstration of the Midpoint Source Protocol for Quantum Links. We shall take a step away from the QuREBB framework and use some bespoke code for the evaluation of the protocol.</p>
+<p>This tutotial will guide you through the basics of components that go into the protocol and how they are used for the evaluation of a midpoint source protocol. The tutoril is structured as follows:</p>
+<ul class="simple">
+<li><p>Brief Intro to Midpoint Source Protocol</p></li>
+<li><p>Components of the Protocol</p></li>
+<li><p>Understanding the Construction of a Entanglement Generation Source.</p></li>
+<li><p>Building a Heralded Entanglement Generation Source</p></li>
+<li><p>Quantum Memories: Sneak Peek</p></li>
+<li><p>Building and Simulating a Midpoint Source Protocol from the Components</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># %load_ext autoreload</span>
+<span class="c1"># %autoreload 2</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">dependencies_midpoint</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># %load_ext autoreload</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># %autoreload 2</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span> <span class="nn">sys</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">dependencies_midpoint</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="brief-intro-to-midpoint-source-protocol">
+<h2>Brief Intro to Midpoint Source Protocol<a class="headerlink" href="#brief-intro-to-midpoint-source-protocol" title="Permalink to this heading">#</a></h2>
+<p>The midpoint source protocol is one of the canonical methods to generate entanglement between two distant parties. You have all delved into the details of the ‘midpoint swap’ or ‘swap in the middle’ protocol in the previous tutorials. The protocol was first suggested by Jones et. al in <a class="reference external" href="https://doi.org/10.1088/1367-2630/18/8/083015">Design and analysis of communication protocols for quantum repeater networks.</a>. It relies on access to three main components:</p>
+<ol class="arabic simple">
+<li><p>A pair of quantum memories at the two distant parties that are wishing to generate entanglement. Let us call them Alice (A) and Bob (B).</p></li>
+<li><p>A source of entangled photons at the ‘midpoint’ that a third party Charlie (C) is handling.</p></li>
+<li><p>Quantum channels (i.e. mechanisms to send qubits) from C to A and B, as well classcial communication channels between all parties.</p></li>
+</ol>
+<p>The overall protocol is quite simple. It proceeds as follows:</p>
+<ol class="arabic simple">
+<li><p>C generates a pair of entangled photons and sends one to A and the other to B. They <em>also notify</em> A and B that they have done so.</p></li>
+<li><p>A and B receives the photons and store them in their quantum memories. If they have done so <strong>successfully</strong>, they communicate their success to each other.</p></li>
+<li><p>Once both A and B have signalled success, they are sure that their memories are entangled. They can now use these entangled memories to do any task that they need entanglement for (e.g. teleporting a quantum state, generating a shared secret key between them, etc.)</p></li>
+<li><p>If either A or B have signalled failure, they abort the protocol and try again.</p></li>
+</ol>
+<p>The flow of the protocol is shown in the figure below. One might note that this is quite straightforward and does not require any fancy quantum operations. However, the devil is in the details. We shall see the various requirement for the protocol to work in the next section.</p>
+<p><img alt="SPDC" src="_images/MPS_Protocol_Diag.png" />
+<strong>Figure</strong>: Overview of the midpoint source protocol.</p>
+</section>
+<section id="components-of-the-protocol">
+<h2>Components of the Protocol<a class="headerlink" href="#components-of-the-protocol" title="Permalink to this heading">#</a></h2>
+<p>As stated above the protocol requires three main components. Let us look at each of them in turn.</p>
+<section id="quantum-memories">
+<h3>Quantum Memories<a class="headerlink" href="#quantum-memories" title="Permalink to this heading">#</a></h3>
+<p>Most generally put quantum memories are physical systems that are capable of storing quantum information for a long time. In the context of the protocol, we require quantum memories that not only can can store quantum information for a long time but are also also be able to interact with photons. The latter requirement is necessary for the memories to be able to store entangled photons coming from the midpoint source at C. Furthermore, we require that the end parties A and B <strong>know</strong> when their share of the entangled photon pair is successfully stored in their memories. This is necessary for the protocol to work, as they need to communicate with each other to know when to proceed to the next step or whether to abort the protocol and restart.</p>
+<p>We generally refer to this set of requirements for a quantum memory as a ‘heralded photonic quantum memory’. Examples of this memory have been proposed in the literature for as long as quantum information has been alive - and quite recently, experiments have been able to demonstrate them as well. We defer a detailed discussion of what these memories actually do to a later section. Curious readers can look at the following references for more details:</p>
+<ul class="simple">
+<li><p>Vacancy center defects in diamond</p>
+<ul>
+<li><p>Chen, K. C., Bersin, E., &amp; Englund, D. (2021). <em><strong>A polarization encoded photon-to-spin interface</strong></em>. <a class="reference external" href="https://doi.org/10.1038/s41534-020-00337-3">Npj Quantum Information, 7(1), 1–6</a>.</p></li>
+<li><p>Nguyen, C. T. et. al (2019). <em><strong>Quantum Network Nodes Based on Diamond Qubits with an Efficient Nanophotonic Interface</strong></em>. <a class="reference external" href="https://doi.org/10.1103/PhysRevLett.123.183602">Physical Review Letters, 123(18), 183602</a>.</p></li>
+<li><p>Vasconcelos, R. et. al <em><strong>Scalable spin–photon entanglement by time-to-polarization conversion</strong></em>. <a class="reference external" href="https://doi.org/10.1038/s41534-019-0236-x">Npj Quantum Information, 6(1), 1–5</a>.</p></li>
+</ul>
+</li>
+<li><p>Vacancies in other host materials</p>
+<ul>
+<li><p>SiC: Parthasarathy, S. K., Kallinger, B., Kaiser, F., Berwian, P., Dasari, D. B. R., Friedrich, J., &amp; Nagy, R. (2023). <em><strong>Scalable Quantum Memory Nodes Using Nuclear Spins in Silicon Carbide.</strong></em> <a class="reference external" href="https://doi.org/10.1103/PhysRevApplied.19.034026">Physical Review Applied, 19(3), 034026.</a></p></li>
+<li><p>Si: Higginbottom, D. B., Asadi, F. K., Chartrand, C., Ji, J.-W., Bergeron, L., Thewalt, M. L. W., Simon, C., &amp; Simmons, S. (2023). <em><strong>Memory and Transduction Prospects for Silicon T Center Devices.</strong></em> <a class="reference external" href="https://doi.org/10.1103/PRXQuantum.4.020308">PRX Quantum, 4(2), 020308.</a></p></li>
+</ul>
+</li>
+<li><p>Atomic Ensemble Memories</p>
+<ul>
+<li><p>Fleischhauer, M., &amp; Lukin, M. D. (2002). <em><strong>Quantum memory for photons: Dark-state polaritons.</strong></em> <a class="reference external" href="https://doi.org/10.1103/PhysRevA.65.022314">Physical Review. A, 65(2), 022314.</a></p></li>
+<li><p>Namazi, M., Kupchak, C., Jordaan, B., Shahrokhshahi, R., &amp; Figueroa, E. (2017). <em><strong>Ultralow-Noise Room-Temperature Quantum Memory for Polarization Qubits.</strong></em> <a class="reference external" href="https://doi.org/10.1103/PhysRevApplied.8.034023">Physical Review Applied, 8(3), 034023.</a></p></li>
+<li><p>Shinbrough, K., Pearson, D. R., Jr, Fang, B., Goldschmidt, E. A., &amp; Lorenz, V. O. (2023). <em><strong>Broadband Quantum Memory in Atomic Ensembles.</strong></em> <a class="reference external" href="http://arxiv.org/abs/2301.08772">In arXiv [quant-ph]. arXiv.</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="entanglement-generation-source">
+<h3>Entanglement Generation Source<a class="headerlink" href="#entanglement-generation-source" title="Permalink to this heading">#</a></h3>
+<p>The entanglement generation source is a device that is capable of generating entangled photons. This is the most important component of the protocol. Although generating entanglement might be trivial for some quantum systems, we specifically care about the generation of entangled photons. This is because photons are the most convenient carriers of quantum information over long distances, either via transmission on optical fibers (such as those that form the backbone of the Internet) or by free-space optical links (which is how satellites communicate with earth bound transmitter and each other). This task however is highly non-trivial and has been studied extensively.</p>
+<p>The type of entanglement is dependent on how the qubit is defined. For example, if we define the qubit in terms of the ‘presence’ or ‘absence’ of a photon such as
+$$\ket{\bar{0}}= \ket{0}; \quad \ket{\bar{1}}= \ket{1} $$
+then the entanglement generation source is a device that generates entangled photons in the form of</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e66f5477-b5e6-4e94-8eb3-32e55c41113e">
+<span class="eqno">(1)<a class="headerlink" href="#equation-e66f5477-b5e6-4e94-8eb3-32e55c41113e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\begin{split}  
+\ket{\Psi^+} = \frac{1}{\sqrt{2}}\left(\ket{0}\ket{0} + \ket{1}\ket{1}\right) \\
+\ket{\Psi^-} = \frac{1}{\sqrt{2}}\left(\ket{0}\ket{0} - \ket{1}\ket{1}\right) \\
+\ket{\Phi^+} = \frac{1}{\sqrt{2}}\left(\ket{0}\ket{1} + \ket{1}\ket{0}\right) \\ 
+\ket{\Phi^-} = \frac{1}{\sqrt{2}}\left(\ket{0}\ket{1} - \ket{1}\ket{0}\right)
+\end{split}
+\end{equation}\]</div>
+<p>where $\ket{0}$ and $\ket{1}$ are the states of the photon in the ‘presence’ and ‘absence’ basis respectively.</p>
+<p>In contrast if we define the qubit in terms of the polarization of the photon, then the qubits are defined as
+$$\ket{\bar{0}}=\ket{0,1}\equiv\ket{H}; \quad \ket{\bar{1}}=\ket{1,0}\equiv\ket{V} $$
+Then the entanglement generation source is a device that generates entangled photons in the form of</p>
+<div class="amsmath math notranslate nohighlight" id="equation-961bef49-3243-47b2-9a26-9ec43583695b">
+<span class="eqno">(2)<a class="headerlink" href="#equation-961bef49-3243-47b2-9a26-9ec43583695b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\begin{split}
+\ket{\Psi^+} = \frac{1}{\sqrt{2}}\left(\ket{H}\ket{H} + \ket{V}\ket{V}\right) \\
+\ket{\Psi^-} = \frac{1}{\sqrt{2}}\left(\ket{H}\ket{H} - \ket{V}\ket{V}\right) \\
+\ket{\Phi^+} = \frac{1}{\sqrt{2}}\left(\ket{H}\ket{V} + \ket{V}\ket{H}\right) \\
+\ket{\Phi^-} = \frac{1}{\sqrt{2}}\left(\ket{H}\ket{V} - \ket{V}\ket{H}\right)
+\end{split}
+\end{equation}\]</div>
+<p>where $\ket{H}$ and $\ket{V}$ are the states of the photon in the horizontal and vertical polarization basis respectively. This forms part of the more general ‘dual-rail’ encoding of the qubit in a photon, where the qubit is encoded in the presence of a photon in <em><strong>one of two different modes</strong></em>.</p>
+<p>Dual rail encodings are the most common way to encode qubits in photons - they can refer modes which are disticnt in time of arrival, frequency, polarization, spatial characteristics etc. For the rest of this tutorial, we shall assume that the entangled qubits are encoded in the dual-rail encoding of the photon. We shall do a deep dive into the construction of such a source in the next section.</p>
+</section>
+<section id="quantum-and-classical-channels-for-information-transfer">
+<h3>Quantum and Classical Channels for Information Transfer<a class="headerlink" href="#quantum-and-classical-channels-for-information-transfer" title="Permalink to this heading">#</a></h3>
+<p>The final component of the protocol is the quantum and classical channels that are used to transfer information between the parties. The quantum channels are used in the process for C to send the qubits to A and B, i.e. to send the entangled photons from the midpoint source to the quantum memories of the end parties. The classical channels are used by all parties to communicate information either about the arrival of a photon (from C to A and B) and also about the success or failure of the entanglement generation process between the parties (from A and B to each other).</p>
+<p>Quantum channels that we shall consider here form a specific subset of the general concept of quantum channels that you may have seen in the previous tutorials. Our quantum channel is one that is capable of sending a single photonic qubit from one party to another. These are generally refered to as ‘bosonic pure loss channels’ in the literature. We shall see how to work with such a channel in the next section.</p>
+<p>The classical channels that we shall consider simply a classical bit channel that can send a string of bits from one party to another. In most quantum communication protocols, this is assumed to be a perfect channel, i.e. the bits are sent without any errors. We shall also assume this for our protocol considerations.</p>
+</section>
+</section>
+<section id="understanding-the-construction-of-a-entanglement-generation-source">
+<h2>Understanding the Construction of a Entanglement Generation Source<a class="headerlink" href="#understanding-the-construction-of-a-entanglement-generation-source" title="Permalink to this heading">#</a></h2>
+<p>Photonic entanglement generation sources rely on nonlinear interactions of a pump photon in a specific type of material, generally referred to as a nonlinear crystal. The pump photon is generally a high energy photon (i.e. a photon with a high frequency) that is converted into two lower energy photons (i.e. photons with lower frequencies). The process is generally referred to as ‘spontaneous parametric downconversion’ (SPDC). We usuially refer to the pump photon as the ‘pump’ and the two lower energy photons as the ‘signal’ and ‘idler’ photons. The process is shown in the figure below.</p>
+<p><img alt="SPDC" src="_images/MPS_SPDC_Process.png" />
+<strong>Figure</strong>: Diagram of the SPDC process with the necessary physical constraints visualized.</p>
+<p>The generated photons satisfy the energy conservation law, i.e. the sum of the frequencies of the generated photons is equal to the frequency of the pump photon. In addition, the net momentum of the generated photons is equal to the momentum of the pump photon. This is generally referred to as ‘phase matching’ and is a key requirement for the generation of entangled photons. We may succinctly write this as
+$$\omega_p = \omega_s + \omega_i; \quad \vec{k}_p = \vec{k}_s + \vec{k}_i$$
+where $\omega_p$ is the frequency of the pump photon, $\omega_s$ and $\omega_i$ are the frequencies of the signal and idler photons respectively, and $\vec{k}_p$, $\vec{k}_s$ and $\vec{k}_i$ are the wavevectors of the pump, signal and idler photons respectively. The nonlinear process relies on differeing indices of refraction for the pump, signal and idler photons. The net range of frequencies that can be generated by the SPDC process is limited by the bandwidth of the nonlinear crystal, and is generally referred to as the <strong>phase-matching bandwidth</strong>. Alternate processes such as ‘spontaneous four-wave mixing’ (SFWM) can also be used to generate entangled photons; for this tutorial we shall focus on SPDC.</p>
+<p>To go from a single SPDC process, to a source of entangled polarization encoded photonic qubits, we must introduce some mechanism to erase path information of the photons. The general SPDC based polarization entaglement source consists of wo separate nonlinear crystals. By placing the crystals close to one another, we ‘erase’ information about which crystal the photon was generated in. Thus if the photon pair generated in the first crystal is in the state $ \ket{H}\ket{V} $, then the photon pair generated in the second crystal is in the state $\ket{V}\ket{H}$. The relative polarization of the pump, signal and idler photons depend on the type of SPDC process that is used. For now let us only consider the simple case where we seek to generate entanglement of the form $\ket{\Psi^+} = (\ket{H,V}+\ket{V,H})/\sqrt{2} $.</p>
+<p><img alt="SPDC" src="_images/MPS_SPDC_Sources.png" />
+<strong>Figure</strong>: Visualizations of typical SPDC based polarization entanglement sources - (a) based on subsequent down-conversions, (b) based on a Sagnac loop interferometer, (c) based on repeated down-conversion interactions. The three sources shown in (a)-(c) can be visulaized to be a single ‘black box’ source in (d) generating the specified state. (Image adapted from <a href="https://doi.org/10.1103/PhysRevA.60.R773"> (a) Kwiat et. al 1999</a>, <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.73.012316">(b) Kim et. al 2006 </a>, <a href="https://doi.org/10.1103/PhysRevA.61.042304">(c) Kok and Braunstein et. al 2000</a>, <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">(d) Dhara et. al 2022</a>)</p>
+<p>The general output state of the SPDC process is given (in the Fock basis) as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a5f47432-c14b-4dcd-a36a-c10f0fd06332">
+<span class="eqno">(3)<a class="headerlink" href="#equation-a5f47432-c14b-4dcd-a36a-c10f0fd06332" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\ket{\Psi^\pm} = \sum_{n=0}^{\infty} \sum_{k}^{n} \sqrt{\frac{p(n)}{n+1}}\ket{n-k,k,k,n-k}
+\end{equation}\]</div>
+<p>where $p(n)=(n+1) N_s^n/(N_s+1)^{n+2}$ with the modes being ordered as : Horizontal 1, Vertical 1, Horizontal 2, Vertical 2. The first pair of modes (Horizontal and Vertical 1 ) are cosnidered to be sent to Alice and the second pair of modes (Horizontal and Vertical 2) are considered to be sent to Bob. $N_s$ istypically called the mean-photon number per mode in the source - we shall work in the regime where $N_s\lesssim 0.2$ to ensure that only terms upto $p(2)$ constibute to the state.</p>
+<p>Expanding the state out in the Fock basis for upto $n=2$, we get</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4ef37784-a028-4082-924f-8f3eecd234cd">
+<span class="eqno">(4)<a class="headerlink" href="#equation-4ef37784-a028-4082-924f-8f3eecd234cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\ket{\Psi^\pm} = N_0 \left[ \sqrt{p(0)} \ket{0,0,0,0} + \sqrt{\frac{p(1)}{2}} (\ket{1,0,0,1} + \ket{0,1,1,0}) + \sqrt{\frac{p(2)}{3}} (\ket{2,0,0,2} + \ket{0,2,2,0} + \ket{1,1,1,1}) \right]
+\end{equation}\]</div>
+<p>where $N_0$ is a normalization constant. In this equation, $p(0)$ represents the probability of generating a vacuum state in all four modes -indicating that the pump photons is not downverted. Correspondingly $p(1)$ represents the probability of generating a single pair of photons in one of the modes and vacuum in the rest, and $p(2)$ represents the probability of generating two photons pairs in the modes and vacuum in the rest. The terms corrsponding to $p(1)$ are the useful terms as they signify the generation of entangled photons in the polarization basis. On the other hand, the terms corresponding to $p(2)$ are the ‘noise’ terms as the terms are not in the polarization qubit basis defined earlier.</p>
+<p>Since $p(n)$ is a geometric series we always have $p(0)&gt;p(1)&gt;p(2)&gt;…$. This always means that the proportion of ‘vacuum’ (no downconverted photons) will exceed both the single photon and two photon terms. This is a key limitation of SPDC based entanglement generation sources. The ratio of the single photon term to the vacuum term is typically referred to as the ‘brightness’ of the source.</p>
+<p>Furthermore, the terms corresponding to $p(2)$ contribute to noise. If the communication system was perfect and photons weren’t lost then the user could tell apart between the cases where they received a single photon and two photons. However, in the presence of loss, this is not so simple. The two-pair terms after losing a photon cannot be discriminated from the single pair terms. This is a key limitation of SPDC based entanglement generation sources. We usually will optimize $N_s$ to maximize the brightness of the source while keeping the noise low. This can be evaluated by looking at the fidelity of the generated state with the ideal state $\ket{\Psi^+}$.</p>
+<p>We note the following features of the source as discussed above:</p>
+<ol class="arabic simple">
+<li><p>The source generates entangled photons in the polarization basis.</p></li>
+<li><p>The source generates a large number of vacuum terms, which are useless for the protocol.</p></li>
+<li><p>The source generates a small but significant number of two-pair terms, which are useless for the protocol and only cause a detrimental effect.</p></li>
+<li><p>The source is <em>inherently probabilistic</em> - i.e. it is not guaranteed that the source will generate a photon pair every time. This is a key limitation of SPDC based entanglement generation sources.</p></li>
+</ol>
+<p>We shall now look at how to build a source that seeks to alleviate some of the issues with SPDC based entanglement generation sources.</p>
+<p>For more details on SPDC based entanglement generation sources, please refer to the following references:</p>
+<ul class="simple">
+<li><p>Bouwmeester, D., Pan, J.-W., Mattle, K., Eibl, M., Weinfurter, H., &amp; Zeilinger, A. (1997).<a class="reference external" href="https://doi.org/10.1038/37539">Experimental quantum teleportation. Nature, 390(6660), 575–579.</a></p></li>
+<li><p>Kok, P., &amp; Braunstein, S. L. (2000). Postselected versus nonpostselected quantum teleportation using parametric down-conversion. <a class="reference external" href="https://doi.org/10.1103/PhysRevA.61.042304">Physical Review. A, 61(4), 042304.</a></p></li>
+<li><p>Kwiat, P. G., Waks, E., White, A. G., Appelbaum, I., &amp; Eberhard, P. H. (1999). Ultrabright source of polarization-entangled photons. <a class="reference external" href="https://doi.org/10.1103/PhysRevA.60.R773">Physical Review. A, 60(2), R773–R776.</a></p></li>
+<li><p>Wong, F. N. C., Shapiro, J. H., &amp; Kim, T. (2006). Efficient generation of polarization-entangled photons in a nonlinear crystal.<a class="reference external" href="https://doi.org/10.1134/S1054660X06110053">Laser Physics, 16(11), 1517–1524.</a></p></li>
+<li><p>Kim, T., Fiorentino, M., &amp; Wong, F. N. C. (2006). Phase-stable source of polarization-entangled photons using a polarization Sagnac interferometer. <a class="reference external" href="https://doi.org/10.1103/PhysRevA.73.012316">Physical Review. A, 73(1), 012316.</a></p></li>
+</ul>
+<section id="tutorial-evaluating-the-quality-of-an-spdc-based-entanglement-generation-source">
+<h3>Tutorial: Evaluating the quality of an SPDC based entanglement generation source<a class="headerlink" href="#tutorial-evaluating-the-quality-of-an-spdc-based-entanglement-generation-source" title="Permalink to this heading">#</a></h3>
+<p>Here we see how to evaluate the proportion of the various components in the state generated by the SPDC source discussed in the above section. We shall use the following parameters for the source:</p>
+<ul class="simple">
+<li><p>$N_s$: Sweep from 1e-4 to 0.2 in logarithmic steps</p></li>
+</ul>
+<p>Below is an example program that evaluates the proportion of the various components. We have shown an example using the dedined functions <code class="docutils literal notranslate"><span class="pre">distribution_function</span></code> and <code class="docutils literal notranslate"><span class="pre">normalization</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distribution_function</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">Ns</span><span class="o">**</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="p">((</span><span class="n">Ns</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">normalization</span><span class="p">(</span><span class="n">Ns</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">distribution_function</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="n">range_Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">normalization</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">)</span>
+<span class="n">vacuum_comp</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
+<span class="n">bell_pair</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
+<span class="n">two_pair</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">vacuum_comp</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vacuum&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">bell_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bell Pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">two_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Two Pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of occurence&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/81b534ac17bebadaf55984a87649a780f22b2d93eb5f2c19fd647b939a07f736.png" src="_images/81b534ac17bebadaf55984a87649a780f22b2d93eb5f2c19fd647b939a07f736.png" />
+</div>
+</div>
+<p>As highlighted, above, as we increase $N_s$, the proportion of the vacuum terms decreases, while the proportion of the two-pair terms increases. This is a key limitation of SPDC based entanglement generation sources. We can alternatively visualize this by plotting the proportion of the Bell pair and noise term to the vacuum term as a function of $N_s$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">range_Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">norm</span> <span class="o">=</span> <span class="n">normalization</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">)</span>
+<span class="n">vacuum_comp</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
+<span class="n">bell_pair</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
+<span class="n">two_pair</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
+
+<span class="n">prop_bell_pair</span> <span class="o">=</span> <span class="n">bell_pair</span><span class="o">/</span><span class="n">vacuum_comp</span>
+<span class="n">prop_two_pair</span> <span class="o">=</span> <span class="n">two_pair</span><span class="o">/</span><span class="n">vacuum_comp</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">prop_bell_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bell Pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">prop_two_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Two Pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ratio of probability of occurence&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8be1c979300ea70c099a7e692f3e3f1ae0cc2d2d0e5bc8b70a11bc813a86450d.png" src="_images/8be1c979300ea70c099a7e692f3e3f1ae0cc2d2d0e5bc8b70a11bc813a86450d.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="building-a-heralded-entanglement-generation-source">
+<h2>Building a Heralded Entanglement Generation Source<a class="headerlink" href="#building-a-heralded-entanglement-generation-source" title="Permalink to this heading">#</a></h2>
+<section id="motivation-and-main-theoretical-idea">
+<h3>Motivation and Main Theoretical Idea<a class="headerlink" href="#motivation-and-main-theoretical-idea" title="Permalink to this heading">#</a></h3>
+<p>The key limitation of SPDC based entanglement generation sources is that they are inherently probabilistic and the presence of noise terms like $\ket{2,0,0,2} \ket{0,2,2,0} \ket{1,1,1,1}$. We shall now look at a few strategies on how to build a source that seeks to alleviate some of the issues with SPDC based entanglement generation sources.</p>
+<p>The first idea would be to use single photons heralded by a detector. This is a very common strategy in quantum optics and is used in a variety of applications. The idea is to use a single photon detector to herald the presence of a single photon. This is done by placing the detector in one of the modes of the SPDC source. The detector is then used to herald the presence of a single photon in the other mode. A multitude of single photons generated in such a manner can then be used to generate entanglement by using a linear photonic circuit.
+The second idea would be to use the existing SPDC based source and perform post-selection on the generated photons. Specifically, we need an auxilliary system that can herald the presence of the required Bell pair terms (i.e. $\ket{1,0,0,1} + \ket{0,1,1,0}$). The system must also be capable of reproducing the photonic states in the required Bell pair terms with a high probability. This is a non-trivial task that could be achieved by certain types of quantum memories or a some complicated measurement scheme. We shall not delve into the details of this scheme here except noting that this is quite complicated to achieve in practice.</p>
+<p>The final idea would be to use a pair of existing SPDC  based sources and perform post-selection on the output photons by performing a joint measurement. As you may already be familiar, the Bell state projection measurement is a joint measurement on two qubits that projects them onto one of the four Bell states. This can be achieved with the linear optical circuits comprising of beamsplitters and detectors. A ‘succesful’ Bell state measurement, (ideally) projects the umeasured photons in the state $\ket{\Psi^+}$. Furthermore, since the measurement is heralded, we <em>know</em> when entanglement is generated. This is the basis of the ‘cascaded heralded source’ proposed in the <a class="reference external" href="https://doi.org/10.1103/PhysRevApplied.17.034071."><strong>following paper</strong></a>.</p>
+<p><img alt="SPDC" src="_images/MPS_Cascaded_Source.png" />
+<strong>Fig.</strong>: Diagram of the  cascaded source construction. (Image adapted from <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">Dhara et. al 2022</a>)</p>
+<p>The cascaded source shown in the figure above comprises of a pair of SPDC sources, each of which generates a pair of photons. The photons are then sent through a linear optical circuit that performs a Bell state measurement. The measurement is heralded by the detection of a pair of photons in a few specific modes. If the measurement is successful, then the photons are expected to be projected into the state $\ket{\Psi^+}$ - certainly this is so if the the SPDC sources generated Bell-pairs natively. If the measurement is not successful, then the photons are discarded. However, given the probabilistic nature of the SPDC sources, the output state must be computed from the entire state being conditioned  on the measurement being successful. We shall not delve into the details of this computation here, and refer the reader to the original paper for the details. However, we can write the form of the quantum state that is generated by the cascaded source as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6601f574-459a-40be-8fda-30b49c4ecd4a">
+<span class="eqno">(5)<a class="headerlink" href="#equation-6601f574-459a-40be-8fda-30b49c4ecd4a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\ket{S}=\frac{1}{\sqrt{2}}\left[\frac{\ket{1,0,0,1}+ (-1)^{m_1} \ket{0,1,1,0}}{\sqrt{2}} + (-1)^{m_2} \frac{\ket{0,0,1,1}+ (-1)^{m_1} \ket{1,1,0,0}}{\sqrt{2}} \right]
+\end{equation}\]</div>
+<p>where $m_1,m_2$ are dependent on the click patterns in the Bell state measurement. Paying close attention to the state, we have the necessary Bell pair terms that we need for the protocol and gotten rid of the vacuum and two-pair terms. However, we have introduced a new term $\ket{0,0,1,1}+ (-1)^{m_1} \ket{1,1,0,0}$ that is not in the polarization basis. However of a quantum communication protocol, this term is something that can be dealt with in the following fashion.</p>
+<p>Consider that A and B receive the $\ket{0,0,1,1}+ (-1)^{m_1} \ket{1,1,0,0}$ term. If they measure their photons, they notice that  either (1) Alice signals the presence of a photon and Bob does not i.e. $\ket{1,1,0,0}$, or (2) Bob signals the presence of a photon and Alice does not. In either case, they know that the other party has not received a photon. Thus they can simply discard the state and try again. This is a key feature of the ‘undesired term’ that gives the cascaded source its edge. Note that all of the above is true when we assume that Alice and Bob do not receive stray ‘noise’ photons from elsewhere.</p>
+</section>
+<section id="tutorial-evaluating-the-quality-of-a-cascaded-entanglement-generation-source">
+<h3>Tutorial: Evaluating the Quality of a Cascaded Entanglement Generation Source<a class="headerlink" href="#tutorial-evaluating-the-quality-of-a-cascaded-entanglement-generation-source" title="Permalink to this heading">#</a></h3>
+<p>Below we shall look at how to evaluate the quality of a cascaded entanglement generation source. We want to incorporate the following non-idealities in the source:</p>
+<ul class="simple">
+<li><p>Loss in the SPDC sources being coupled to the detector</p></li>
+<li><p>Loss in the undetected output modes of the SPDC sources</p></li>
+<li><p>Detector dark clicks</p></li>
+</ul>
+<p>Rather than deriving what the state of the cascaded source looks like after inclusion of all these non-linearities we use the <code class="docutils literal notranslate"><span class="pre">casc_src_density_matrix</span></code> function that will return the density matrix of the state. The function returns th entire 36 x 36 density matrix of the state. For the fidleity with the state $\ket{\Psi^+}$, we need to consider the 4 x 4 submatrix corresponding to the Bell pair terms. The relevant submatrix corresponds to the position {[10,10],[10,20],[20,10],[20,20]} in the density matrix.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Initialize the system</span>
+<span class="n">fid_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">prob_success_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">range_Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Ordering of parameters: Ns, eta_Alice,eta_Bob,eta_detectors,prob_dark_click,visibility</span>
+<span class="c1"># Modify the parameters below to see how the performance changes</span>
+<span class="n">eta_A</span><span class="o">=</span><span class="n">eta_B</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">eta_detectors</span><span class="o">=</span><span class="mf">0.9</span>
+<span class="n">prob_dark_click</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">;</span>
+<span class="n">visibility</span><span class="o">=</span><span class="mf">0.85</span>
+
+<span class="k">for</span> <span class="n">Ns</span> <span class="ow">in</span> <span class="n">range_Ns</span><span class="p">:</span>
+    <span class="n">matrix</span><span class="o">=</span><span class="n">cascaded_source_density_matrix</span><span class="p">(</span><span class="n">Ns</span><span class="p">,</span><span class="n">eta_A</span><span class="p">,</span><span class="n">eta_B</span><span class="p">,</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">)</span>
+    <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">prob_success_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">norm</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">fid_array</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">19</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">))</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)&#39;</span>\
+             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">prob_success_array</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of success&quot;</span><span class="p">)</span>
+<span class="c1">#axs[0].set_ylim([1e-12,1e-3])   </span>
+
+<span class="c1">###</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">fid_array</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fidelity (after filtering)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>  
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1d9c4d4690061f0aeccb1d92095f4405b2f5c8f694f05587b09317e8e24d6da2.png" src="_images/1d9c4d4690061f0aeccb1d92095f4405b2f5c8f694f05587b09317e8e24d6da2.png" />
+</div>
+</div>
+</section>
+<section id="multiplexing-sources">
+<h3>Multiplexing Sources<a class="headerlink" href="#multiplexing-sources" title="Permalink to this heading">#</a></h3>
+<p>We have hence shown that the cascaded source operates in a ‘heralded’ fashion to generate photonic states that are ‘better’ than the SPDC source. However, the price ot pay is that the overall probablity of generating a photon pair is worse. We not only need to consider that two terms in the SPDC source are both $\ket{\Psi^\pm}$ which is propostional to $p(1)^2$ but also that the Bell state measurement is successful, which is an additional factor of $1/2$. Since for $N_s&lt;0.2$, $p(1)\ll 1$ it is no surpirse that the cascaded source is not very bright. However since the source is heralded, we can multiplex multiple sources together to generate entanglement at a higher rate. This is the basis of the ‘multiplexed heralded source’ proposed in extension to the original source design.</p>
+<p><img alt="Muxed_Cascaded_Source" src="_images/MPS_Muxed_Cascaded_Source.png" />
+<strong>Fig.</strong>:Diagram of the multiplexed casacded source construction (the physical multiplexing shown here is simply a depiction; Image adapted from  <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">Dhara et. al 2022</a>)</p>
+<p>As shown in the figure above, we consider $M$ such sources multiplexed together so that atleast one of them succeeds. Each source is conneected to a local controller that switches the successfully generated photon pairs out. If the the probability of generating a single pair is $p_{\mathrm{single}}$, then the multiplexed source succeeds with probability $$p_{\mathrm{multi}} (M) = 1-(1-p_{\mathrm{single}})^M \approx 1- (1- M\times p_{\mathrm{single}})= M\times p_{\mathrm{single}},$$
+the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we can choose $M$ to be large enough to ensure that the multiplexed source is ‘near deterministic’, i.e., $p_{\mathrm{multi}} (M) \approx 1$.</p>
+<p>A big challenge is that even with the best hardware and near perfect operation, $M$ turns out to be around $10000$! This is not practical for any real world implementation using spatially separate sources. One alternative is to consider a source that is integrated on a chip, where the multiplexing can be done on the chip itself. Alternatively, we can consider the use of frequency multiplexing to multiplex the sources together. This is the basis of the ‘frequency multiplexed heralded source’ also popularly called the ‘zero added loss multiplexing’ (ZALM) source proposed in <a class="reference external" href="http://dx.doi.org/10.1103/PhysRevApplied.19.054029">Chen et. al 2023</a>. We ignore the details of how frequency multiplexing is achieved in the ZALM source here, but the interested reader can refer to the original paper for more details. For all practical purposes, we can consider the ZALM source to generate the state $\ket{S}$ with high probability with additional information about the frequency of the output photons.</p>
+</section>
+<section id="tutorial-evaluating-the-quality-of-a-multiplexed-cascaded-entanglement-generation-source">
+<h3>Tutorial: Evaluating the Quality of a Multiplexed Cascaded Entanglement Generation Source<a class="headerlink" href="#tutorial-evaluating-the-quality-of-a-multiplexed-cascaded-entanglement-generation-source" title="Permalink to this heading">#</a></h3>
+<p>Below we shall look at how to evaluate the quality of a multiplexed cascaded entanglement generation source. We want to incorporate the same non-idealities in the source as before. We will once again use the <code class="docutils literal notranslate"><span class="pre">casc_src_density_matrix</span></code> function. We will use the formula specified above to compute the probability of success of the multiplexed source. We can implement the various kinds of multiplexing by simply changing the output loss scaling factor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Initialize the system</span>
+<span class="n">range_Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">range_M</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">]</span>  
+<span class="n">fid_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)))</span>
+<span class="n">prob_success_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)))</span>
+
+<span class="c1"># Ordering of parameters: Ns, eta_Alice,eta_Bob,eta_detectors,prob_dark_click,visibility</span>
+<span class="c1"># Modify the parameters below to see how the performance changes</span>
+<span class="n">eta_A</span><span class="o">=</span><span class="n">eta_B</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">eta_detectors</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">prob_dark_click</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">;</span>
+<span class="n">visibility</span><span class="o">=</span><span class="mf">0.85</span>
+
+<span class="n">mult_loss</span><span class="o">=</span><span class="mf">0.9</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="n">i1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)):</span>
+        <span class="n">det_loss</span> <span class="o">=</span> <span class="n">eta_detectors</span><span class="o">*</span><span class="n">mult_loss</span><span class="o">**</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">])</span>
+        <span class="n">matrix</span><span class="o">=</span><span class="n">cascaded_source_density_matrix</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">[</span><span class="n">i1</span><span class="p">],</span><span class="n">eta_A</span><span class="p">,</span><span class="n">eta_B</span><span class="p">,</span><span class="n">det_loss</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">)</span>
+        <span class="n">norm</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+        <span class="n">prob_success_array</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">norm</span><span class="o">*</span><span class="mi">4</span><span class="p">))</span><span class="o">**</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span>
+        <span class="n">fid_array</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">19</span><span class="p">])</span><span class="o">/</span><span class="n">norm</span>
+
+
+<span class="c1"># Plotting the results</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)&#39;</span>\
+             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">))</span>
+
+<span class="c1"># Plotting the probability of success</span>
+<span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">prob_success_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;M=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of success&quot;</span><span class="p">)</span>
+<span class="c1">#axs[0].set_ylim([1e-12,1e-3])   </span>
+
+<span class="c1"># Plotting the fidelity</span>
+<span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)):</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">fid_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;M=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fidelity (after filtering)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>  
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/18245d4f170cd2ab7320a613d59b9bc8781a29d7286ee258dac006d148d27a33.png" src="_images/18245d4f170cd2ab7320a613d59b9bc8781a29d7286ee258dac006d148d27a33.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="quantum-memories-sneak-peek">
+<h2>Quantum Memories: Sneak Peek<a class="headerlink" href="#quantum-memories-sneak-peek" title="Permalink to this heading">#</a></h2>
+<p>As highlighted above, in the context of the protocol, we require quantum memories that not only can can store quantum information for a long time but are also also be able to interact with photons. The latter requirement is necessary for the memories to be able to store entangled photons coming from the midpoint source at C. Furthermore, we require that the end parties A and B <strong>know</strong> when their share of the entangled photon pair is successfully stored in their memories.</p>
+<p>One implementation of this is to use a Duan-Kimble scheme for loading polarization encode photons into a quantum memory. The scheme is shown in the figure below.</p>
+<p><img alt="DK_Scheme" src="_images/MPS_DK_Scheme.png" />
+<strong>Fig.</strong>: Duan Kimble scheme for the teleportation of the state of a single photonic qubit into a quantum memory. (Image adapted from  <a href="https://doi.org/10.1038/s41534-020-00337-3">Chen et. al 2021</a>)</p>
+<p>The Duan-Kimble scheme relies on being able to perform a controlled phase-rotation of a polarization qubit based on the state of a quantum memory. Incoming photons separated based on their polarization using a polarizing beam splitter. One of the polarization (let us say $V$) is simply reflected of a mirror. The $H$ polarized photon is made to interact with a cavity that is coupled to a quantum memory. The cavity is designed such that the $H$ polarized photon experiences a phase shift of $\pi$ when it interacts with the cavity if and only if the memory is in the $\ket{1}_M$ state. Otherwise it is simply reflected out of the cavity. The two photons are then recombined using the same polarizing beam splitter. As per the conditional interaction specified above, the memory implements the state transformation</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fb20bec9-eb1d-464a-93e7-69dbca959366">
+<span class="eqno">(6)<a class="headerlink" href="#equation-fb20bec9-eb1d-464a-93e7-69dbca959366" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{\ket{0}_M +\ket{1}_M}{\sqrt{2}} \otimes (\alpha \ket{H} +\beta \ket{V}) \rightarrow \ket{0}_M \otimes (\alpha \ket{H} + \beta \ket{V}) + \ket{1}_M \otimes (-\alpha \ket{H} + \beta \ket{V})
+\end{equation}\]</div>
+<p>This can be used to perform a CPHASE gate based single qubit teleportation as shown below. The detection of the photon in the $\ket{A}$ or $\ket{D}$ modes heralds the successful teleportation of the state $\alpha \ket{H} + \beta{V}$ to the memory upto some phase rotation.</p>
+<p>Another way to load the photonic qubit on the memory, is to have a memory emit a photonic qubit and interact the incoming qubit (from C) with the generated qubit on a photonic Bell state measurement circuit. This is done by initializing the memory in the $(\ket{0}_M+\ket{1}_M)/\sqrt{2}$ state and applying conditional pulses as shown below to generate the state $(\ket{0}_M \ket{0,1} + \ket{1}_M \ket{1,0})/\sqrt{2}$ which is the Bell state $\ket{\Psi^+}$ between the memory and the photon.</p>
+<p><img alt="MPS_Emission_Scheme" src="_images/MPS_Emission_Scheme.png" />
+<strong>Fig.</strong>: Emission of a photonic qubit from a quantum memory.</p>
+</section>
+<section id="building-and-simulating-a-midpoint-source-protocol-from-the-components">
+<h2>Building and Simulating a Midpoint Source Protocol from the Components<a class="headerlink" href="#building-and-simulating-a-midpoint-source-protocol-from-the-components" title="Permalink to this heading">#</a></h2>
+<p>Now that we have looked the various components of the protocol, we can start envisioning how to build and simulate it. Specifically we have already seen the following in action</p>
+<ul class="simple">
+<li><p>The SPDC source and the state it generates</p></li>
+<li><p>The improved cascaded source, and its multiplexed counter-part and the states they generate</p></li>
+<li><p>The quantum memories and their interaction with the incoming photon</p></li>
+</ul>
+<p>The entire detailed layout of the protocol is given in the figure below. Rather than derive the states from first principles we shall use the functions <code class="docutils literal notranslate"><span class="pre">cascaded_source_density_matrix</span></code> and <code class="docutils literal notranslate"><span class="pre">cascaded_source_swapped_state</span></code> to evaluate our protocols. These functions return the density matrix of the state generated by the cascaded source and the state of the quantum memories after the state jas been loaded on the memories respectively. The functions take the following parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cascaded_source_density</span> <span class="pre">matrix</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ns</span></code>: Mean photon number per mode in the SPDC sources (usually between 1e-4 and 0.2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eAs</span></code>,<code class="docutils literal notranslate"><span class="pre">eBs</span></code>: Efficiency of the source coupled out to Alice’s and Bob’s transmission side respectively</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eD</span></code>: Internal efficiency of the detectors in the cascaded source</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pd</span></code>: Dark count probability of the detectors in the cascaded source (per mode; usually between 0 and 1e-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VisF</span></code>: Visibility of the Bell state measurement in the cascaded source (usually between 0 and 1)</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cascaded_source_swapped_state</span></code></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Ns</span></code>: Mean photon number per mode in the SPDC sources (usually between 1e-4 and 0.2)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eAm</span></code>,<code class="docutils literal notranslate"><span class="pre">eBm</span></code>: Efficiency of Alice’s and Bob’s memory coupled to the swaps respectively (we will keep this to be one for the time being)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eAs</span></code>,<code class="docutils literal notranslate"><span class="pre">eBs</span></code>: Efficiency of the source coupled out to Alice’s and Bob’s swaps respectively</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eD</span></code>: Internal efficiency of the detectors in the cascaded source</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pd_Charlie</span></code>: Dark count probability of the detectors in the cascaded source (per mode; usually between 0 and 1e-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Pd_Alice</span></code>,<code class="docutils literal notranslate"><span class="pre">Pd_Bob</span></code>: Dark count probability of the detectors in Alice’s and Bob’s swaps respectively (per mode; usually between 0 and 1e-1)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VisF</span></code>: Visibility of the Bell state measurements lumped together (usually between 0 and 1)</p></li>
+</ul>
+</li>
+</ul>
+<section id="tutorial-evaluating-the-quality-of-the-midpoint-source-protocol">
+<h3>Tutorial: Evaluating the Quality of the Midpoint Source Protocol<a class="headerlink" href="#tutorial-evaluating-the-quality-of-the-midpoint-source-protocol" title="Permalink to this heading">#</a></h3>
+<p>Below we shall look at how to evaluate the quality of the midpoint source protocol. We want to incorporate the same non-idealities in the source as before. We will use the formula specified above to compute the probability of success of the multiplexed source. We can implement the various kinds of multiplexing by simply changing the output loss scaling factor for the source.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Initialize the parameters of the system</span>
+<span class="n">range_Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="n">math</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">mux_size</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">loss_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">eta_range</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="o">-</span><span class="n">loss_range</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">eta_detectors</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">prob_dark_click</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">;</span>
+<span class="n">visibility</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">memory_loss</span><span class="o">=</span><span class="mi">1</span>
+
+<span class="c1"># Initialize the arrays to store the results</span>
+<span class="n">source_prob_success_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">)))</span>
+<span class="n">swapped_state_fidelity_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">)))</span>
+<span class="n">swapped_state_prob_success_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">),</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">)))</span>
+<span class="n">opti_swap_prob_success_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">opti_swap_fidelity_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">opti_Ns</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">),</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="c1"># Loop over the parameters</span>
+<span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">eta_range</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i1</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">)):</span>
+        <span class="c1"># Calculate the density matrix of the source</span>
+        <span class="n">matrix</span><span class="o">=</span><span class="n">cascaded_source_density_matrix</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">[</span><span class="n">i1</span><span class="p">],</span><span class="n">eta_range</span><span class="p">[</span><span class="n">i2</span><span class="p">],</span><span class="n">eta_range</span><span class="p">[</span><span class="n">i2</span><span class="p">],</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">)</span>
+        <span class="n">norm_source</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="c1"># Multiply by 4 to account for the 4 possible outcomes of the swaps</span>
+        <span class="n">source_prob_success_array</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="p">(</span><span class="n">norm_source</span><span class="o">*</span><span class="mi">4</span><span class="p">))</span><span class="o">**</span><span class="n">mux_size</span>
+
+        <span class="c1"># Calculate the density matrix of the swapped state</span>
+        <span class="c1"># (Ns, eAm, eBm, eAs, eBs, eD, Pd_Charlie, Pd_Alice, Pd_Bob, VisF=1, gA=0.5, gB=0.5):</span>
+        <span class="n">matrix</span><span class="o">=</span><span class="n">cascaded_source_swapped_state</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">[</span><span class="n">i1</span><span class="p">],</span><span class="n">memory_loss</span><span class="p">,</span><span class="n">memory_loss</span><span class="p">,</span><span class="n">eta_range</span><span class="p">[</span><span class="n">i2</span><span class="p">],</span><span class="n">eta_range</span><span class="p">[</span><span class="n">i2</span><span class="p">],</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">)</span>
+        <span class="n">norm_swap</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> 
+        <span class="n">swapped_state_prob_success_array</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="mi">64</span><span class="o">*</span><span class="n">source_prob_success_array</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span><span class="o">*</span><span class="n">norm_swap</span><span class="o">/</span><span class="n">norm_source</span> <span class="c1"># Multiply by 64 to account for the 4^3 possible outcomes of the 3 swaps</span>
+        <span class="n">swapped_state_fidelity_array</span><span class="p">[</span><span class="n">i1</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">norm_swap</span><span class="p">)</span>
+    <span class="c1"># Evaluate best possible swap fidelity and success probability</span>
+    <span class="n">arg_max</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">swapped_state_prob_success_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">swapped_state_fidelity_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">opti_swap_prob_success_array</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="n">swapped_state_prob_success_array</span><span class="p">[</span><span class="n">arg_max</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span>
+    <span class="n">opti_swap_fidelity_array</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="n">swapped_state_fidelity_array</span><span class="p">[</span><span class="n">arg_max</span><span class="p">,</span><span class="n">i2</span><span class="p">]</span>
+    <span class="n">opti_Ns</span><span class="p">[</span><span class="n">i2</span><span class="p">]</span><span class="o">=</span><span class="n">range_Ns</span><span class="p">[</span><span class="n">arg_max</span><span class="p">]</span>
+
+<span class="c1"># Plotting the results</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)&#39;</span>\
+             <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># Or equivalently,  &quot;plt.tight_layout()&quot;</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_swap_prob_success_array</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss (dB)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of success&quot;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_swap_fidelity_array</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss (dB)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fidelity&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.1</span><span class="p">])</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_Ns</span><span class="p">,</span><span class="s1">&#39;g:&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss (dB)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Optimal Ns&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85798cf9b9c0f2b264e250ec6e11449bec9923939427b4f2e2c149302c79c72b.png" src="_images/85798cf9b9c0f2b264e250ec6e11449bec9923939427b4f2e2c149302c79c72b.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Introduction.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3-1%20QuREBB_intro.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">QuREBB: Quantum Remote Entanglement Building Block Simulations</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-intro-to-midpoint-source-protocol">Brief Intro to Midpoint Source Protocol</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-protocol">Components of the Protocol</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-memories">Quantum Memories</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#entanglement-generation-source">Entanglement Generation Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-and-classical-channels-for-information-transfer">Quantum and Classical Channels for Information Transfer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-construction-of-a-entanglement-generation-source">Understanding the Construction of a Entanglement Generation Source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-an-spdc-based-entanglement-generation-source">Tutorial: Evaluating the quality of an SPDC based entanglement generation source</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-heralded-entanglement-generation-source">Building a Heralded Entanglement Generation Source</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation-and-main-theoretical-idea">Motivation and Main Theoretical Idea</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-a-cascaded-entanglement-generation-source">Tutorial: Evaluating the Quality of a Cascaded Entanglement Generation Source</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplexing-sources">Multiplexing Sources</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-a-multiplexed-cascaded-entanglement-generation-source">Tutorial: Evaluating the Quality of a Multiplexed Cascaded Entanglement Generation Source</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-memories-sneak-peek">Quantum Memories: Sneak Peek</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-and-simulating-a-midpoint-source-protocol-from-the-components">Building and Simulating a Midpoint Source Protocol from the Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial-evaluating-the-quality-of-the-midpoint-source-protocol">Tutorial: Evaluating the Quality of the Midpoint Source Protocol</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dirk Englund, Hyeongrak Choi, Prajit Dhara
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
