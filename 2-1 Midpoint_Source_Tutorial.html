@@ -1,184 +1,107 @@
-
-
 <!DOCTYPE html>
-
-
-<html lang="en" data-content_root="" >
-
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Midpoint Source Protocol for Quantum Links &#8212; CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations</title>
-  
-  
-  
-  <script data-cfasync="false">
+<html data-content_root="" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="Docutils 0.18.1: http://docutils.sourceforge.net/" name="generator"/>
+<title>Midpoint Source Protocol for Quantum Links — CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations</title>
+<script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
   </script>
-  
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-
-  
-  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
-  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
-
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+<!-- Loaded before other Sphinx assets -->
+<link href="_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link href="_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link href="_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" rel="preload" type="font/woff2"/>
+<link as="font" crossorigin="" href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" rel="preload" type="font/woff2"/>
+<link href="_static/pygments.css" rel="stylesheet" type="text/css"/>
+<link href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" rel="stylesheet" type="text/css"/>
+<link href="_static/togglebutton.css" rel="stylesheet" type="text/css"/>
+<link href="_static/copybutton.css" rel="stylesheet" type="text/css"/>
+<link href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" rel="stylesheet" type="text/css"/>
+<link href="_static/sphinx-thebe.css" rel="stylesheet" type="text/css"/>
+<link href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" rel="stylesheet" type="text/css"/>
+<!-- Pre-loaded scripts that we'll load fully later -->
+<link as="script" href="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" rel="preload"/>
+<link as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" rel="preload"/>
+<script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
+<script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+<script src="_static/jquery.js"></script>
+<script src="_static/underscore.js"></script>
+<script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+<script src="_static/doctools.js"></script>
+<script src="_static/clipboard.min.js"></script>
+<script src="_static/copybutton.js"></script>
+<script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+<script>let toggleHintShow = 'Click to show';</script>
+<script>let toggleHintHide = 'Click to hide';</script>
+<script>let toggleOpenOnPrint = 'true';</script>
+<script src="_static/togglebutton.js"></script>
+<script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+<script src="_static/design-tabs.js"></script>
+<script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"ket": ["\\left|{#1}\\right\\rangle", 1], "bra": ["\\left\\langle{#1}\\right|", 1], "braket": ["\\left\\langle{#1}\\middle|{#2}\\right\\rangle", 2], "adagger": ["\\hat{a}^{\\dagger}"], "ahat": ["\\hat{a}"], "bdagger": ["\\hat{b}^{\\dagger}"], "bhat": ["\\hat{b}"], "cdagger": ["\\hat{c}^{\\dagger}"], "chat": ["\\hat{c}"], "ddagger": ["\\hat{d}^{\\dagger}"], "dhat": ["\\hat{d}"], "edagger": ["\\hat{e}^{\\dagger}"], "ehat": ["\\hat{e}"], "fdagger": ["\\hat{f}^{\\dagger}"], "fhat": ["\\hat{f}"], "gdagger": ["\\hat{g}^{\\dagger}"], "ghat": ["\\hat{g}"], "hdagger": ["\\hat{h}^{\\dagger}"], "hhat": ["\\hat{h}"], "gtwo": ["g^{(2)}"], "H": ["\\ket{H}"], "V": ["\\ket{V}"], "D": ["\\ket{D}"], "AD": ["\\ket{AD}"]}}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '2-1 Midpoint_Source_Tutorial';</script>
-    <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="QuREBB: Quantum Remote Entanglement Building Block Simulations" href="3-1%20QuREBB_intro.html" />
-    <link rel="prev" title="CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations" href="Introduction.html" />
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
-  </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
-  
-  
-  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
-  
-  <div id="pst-scroll-pixel-helper"></div>
-
-  
-  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
+<script async="async" src="_static/sphinx-thebe.js"></script>
+<script>window.MathJax = {"tex": {"macros": {"ket": ["\\left|{#1}\\right\\rangle", 1], "bra": ["\\left\\langle{#1}\\right|", 1], "braket": ["\\left\\langle{#1}\\middle|{#2}\\right\\rangle", 2], "adagger": ["\\hat{a}^{\\dagger}"], "ahat": ["\\hat{a}"], "bdagger": ["\\hat{b}^{\\dagger}"], "bhat": ["\\hat{b}"], "cdagger": ["\\hat{c}^{\\dagger}"], "chat": ["\\hat{c}"], "ddagger": ["\\hat{d}^{\\dagger}"], "dhat": ["\\hat{d}"], "edagger": ["\\hat{e}^{\\dagger}"], "ehat": ["\\hat{e}"], "fdagger": ["\\hat{f}^{\\dagger}"], "fhat": ["\\hat{f}"], "gdagger": ["\\hat{g}^{\\dagger}"], "ghat": ["\\hat{g}"], "hdagger": ["\\hat{h}^{\\dagger}"], "hhat": ["\\hat{h}"], "gtwo": ["g^{(2)}"], "H": ["\\ket{H}"], "V": ["\\ket{V}"], "D": ["\\ket{D}"], "AD": ["\\ket{AD}"]}}}</script>
+<script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script>DOCUMENTATION_OPTIONS.pagename = '2-1 Midpoint_Source_Tutorial';</script>
+<link href="genindex.html" rel="index" title="Index"/>
+<link href="search.html" rel="search" title="Search"/>
+<link href="3-1%20QuREBB_intro.html" rel="next" title="QuREBB: Quantum Remote Entanglement Building Block Simulations"/>
+<link href="Introduction.html" rel="prev" title="CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="en" name="docsearch:language"/>
+<link href="_static/styles/chattutor.css" rel="stylesheet" type="text/css"/></head>
+<body data-bs-root-margin="0px 0px -60%" data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-default-mode="" data-offset="180">
+<a class="skip-link" href="#main-content" id="pst-skip-link">Skip to main content</a>
+<div id="pst-scroll-pixel-helper"></div>
+<button class="btn rounded-pill" id="pst-back-to-top" type="button">
+<i class="fa-solid fa-arrow-up"></i>
     Back to top
   </button>
-
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
-<form class="bd-search d-flex align-items-center"
-      action="search.html"
-      method="get">
-  <i class="fa-solid fa-magnifying-glass"></i>
-  <input type="search"
-         class="form-control"
-         name="q"
-         id="search-input"
-         placeholder="Search this book..."
-         aria-label="Search this book..."
-         autocomplete="off"
-         autocorrect="off"
-         autocapitalize="off"
-         spellcheck="false"/>
-  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+<input class="sidebar-toggle" id="__primary" name="__primary" type="checkbox"/>
+<label class="overlay overlay-primary" for="__primary"></label>
+<input class="sidebar-toggle" id="__secondary" name="__secondary" type="checkbox"/>
+<label class="overlay overlay-secondary" for="__secondary"></label>
+<div class="search-button__wrapper">
+<div class="search-button__overlay"></div>
+<div class="search-button__search-container">
+<form action="search.html" class="bd-search d-flex align-items-center" method="get">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input aria-label="Search this book..." autocapitalize="off" autocomplete="off" autocorrect="off" class="form-control" id="search-input" name="q" placeholder="Search this book..." spellcheck="false" type="search"/>
+<span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
-  </div>
-
-  <header>
-  
-    <div class="bd-header navbar navbar-expand-lg bd-navbar">
-    </div>
-  
-  </header>
-
-  <div class="bd-container">
-    <div class="bd-container__inner bd-page-width">
-      
-      
-      
-        
-      
-      <div class="bd-sidebar-primary bd-sidebar">
-        
-
-  
-  <div class="sidebar-header-items sidebar-primary__section">
-    
-    
-    
-    
-  </div>
-  
-    <div class="sidebar-primary-items__start sidebar-primary__section">
-        <div class="sidebar-primary-item">
-
-  
-
+</div>
+<header>
+<div class="bd-header navbar navbar-expand-lg bd-navbar">
+</div>
+</header>
+<div class="bd-container">
+<div class="bd-container__inner bd-page-width">
+<div class="bd-sidebar-primary bd-sidebar">
+<div class="sidebar-header-items sidebar-primary__section">
+</div>
+<div class="sidebar-primary-items__start sidebar-primary__section">
+<div class="sidebar-primary-item">
 <a class="navbar-brand logo" href="Introduction.html">
-  
-  
-  
-  
-  
-    
-    
-      
-    
-    
-    <img src="_static/3protocols.png" class="logo__image only-light" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>
-    <script>document.write(`<img src="_static/3protocols.png" class="logo__image only-dark" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>`);</script>
-  
-  
+<img alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home" class="logo__image only-light" src="_static/3protocols.png"/>
+<script>document.write(`<img src="_static/3protocols.png" class="logo__image only-dark" alt="CQN Winter School 2024 - Exploring and Designing Quantum Networks via Digital Twin Simulations - Home"/>`);</script>
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item navbar-nav active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="Introduction.html">
+<div class="sidebar-primary-item"><nav aria-label="Main" class="bd-links" id="bd-docs-nav">
+<div class="bd-toc-item navbar-nav active">
+<ul class="nav bd-sidenav bd-sidenav__home-link">
+<li class="toctree-l1">
+<a class="reference internal" href="Introduction.html">
                     CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations
                 </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Midpoint Source Protocol</span></p>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Midpoint Source Protocol</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Midpoint Source Protocol for Quantum Links</a></li>
 </ul>
@@ -187,208 +110,96 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="3-1%20QuREBB_intro.html">QuREBB: Quantum Remote Entanglement Building Block Simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="3-2%20QuREBB_example.html">Example Notebook:</a></li>
 </ul>
-
-    </div>
+</div>
 </nav></div>
-    </div>
-  
-  
-  <div class="sidebar-primary-items__end sidebar-primary__section">
-  </div>
-  
-  <div id="rtd-footer-container"></div>
-
-
-      </div>
-      
-      <main id="main-content" class="bd-main">
-        
-        
-
+</div>
+<div class="sidebar-primary-items__end sidebar-primary__section">
+</div>
+<div id="rtd-footer-container"></div>
+</div>
+<main class="bd-main" id="main-content">
 <div class="sbt-scroll-pixel-helper"></div>
-
-          <div class="bd-content">
-            <div class="bd-article-container">
-              
-              <div class="bd-header-article">
+<div class="bd-content">
+<div class="bd-article-container">
+<div class="bd-header-article">
 <div class="header-article-items header-article__inner">
-  
-    <div class="header-article-items__start">
-      
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <span class="fa-solid fa-bars"></span>
+<div class="header-article-items__start">
+<div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" for="__primary" title="Toggle primary sidebar">
+<span class="fa-solid fa-bars"></span>
 </label></div>
-      
-    </div>
-  
-  
-    <div class="header-article-items__end">
-      
-        <div class="header-article-item">
-
+</div>
+<div class="header-article-items__end">
+<div class="header-article-item">
 <div class="article-header-buttons">
-
-
-
-
-
 <div class="dropdown dropdown-launch-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
-    <i class="fas fa-rocket"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://mybinder.org/v2/gh/pr4jitd/2024.CQNSchool.DigitalTwin/main?urlpath=tree/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<button aria-expanded="false" aria-label="Launch interactive content" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fas fa-rocket"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://mybinder.org/v2/gh/pr4jitd/2024.CQNSchool.DigitalTwin/main?urlpath=tree/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank" title="Launch onBinder">
 <span class="btn__icon-container">
-  
-    <img src="_static/images/logo_binder.svg">
-  </span>
+<img src="_static/images/logo_binder.svg"/>
+</span>
 <span class="btn__text-container">Binder</span>
 </a>
 </li>
-      
-      
-      
-      
-      <li><a href="https://colab.research.google.com/github/pr4jitd/2024.CQNSchool.DigitalTwin/blob/main/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank"
-   class="btn btn-sm dropdown-item"
-   title="Launch onColab"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<li><a class="btn btn-sm dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://colab.research.google.com/github/pr4jitd/2024.CQNSchool.DigitalTwin/blob/main/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank" title="Launch onColab">
 <span class="btn__icon-container">
-  
-    <img src="_static/images/logo_colab.png">
-  </span>
+<img src="_static/images/logo_colab.png"/>
+</span>
 <span class="btn__text-container">Colab</span>
 </a>
 </li>
-      
-  </ul>
+</ul>
 </div>
-
-
-
-
-
-
 <div class="dropdown dropdown-source-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
-    <i class="fab fa-github"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin" target="_blank"
-   class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<button aria-expanded="false" aria-label="Source repositories" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fab fa-github"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm btn-source-repository-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin" target="_blank" title="Source repository">
 <span class="btn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
+<i class="fab fa-github"></i>
+</span>
 <span class="btn__text-container">Repository</span>
 </a>
 </li>
-      
-      
-      
-      
-      <li><a href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin/issues/new?title=Issue%20on%20page%20%2F2-1 Midpoint_Source_Tutorial.html&body=Your%20issue%20content%20here." target="_blank"
-   class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<li><a class="btn btn-sm btn-source-issues-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="https://github.com/pr4jitd/2024.CQNSchool.DigitalTwin/issues/new?title=Issue%20on%20page%20%2F2-1 Midpoint_Source_Tutorial.html&amp;body=Your%20issue%20content%20here." target="_blank" title="Open an issue">
 <span class="btn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
+<i class="fas fa-lightbulb"></i>
+</span>
 <span class="btn__text-container">Open issue</span>
 </a>
 </li>
-      
-  </ul>
+</ul>
 </div>
-
-
-
-
-
-
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
-    <i class="fas fa-download"></i>
-  </button>
-  <ul class="dropdown-menu">
-      
-      
-      
-      <li><a href="_sources/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank"
-   class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
-   data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<button aria-expanded="false" aria-label="Download this page" class="btn dropdown-toggle" data-bs-toggle="dropdown" type="button">
+<i class="fas fa-download"></i>
+</button>
+<ul class="dropdown-menu">
+<li><a class="btn btn-sm btn-download-source-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" href="_sources/2-1 Midpoint_Source_Tutorial.ipynb" target="_blank" title="Download source file">
 <span class="btn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
+<i class="fas fa-file"></i>
+</span>
 <span class="btn__text-container">.ipynb</span>
 </a>
 </li>
-      
-      
-      
-      
-      <li>
-<button onclick="window.print()"
-  class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
-  data-bs-placement="left" data-bs-toggle="tooltip"
->
-  
-
+<li>
+<button class="btn btn-sm btn-download-pdf-button dropdown-item" data-bs-placement="left" data-bs-toggle="tooltip" onclick="window.print()" title="Print to PDF">
 <span class="btn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
+<i class="fas fa-file-pdf"></i>
+</span>
 <span class="btn__text-container">.pdf</span>
 </button>
 </li>
-      
-  </ul>
+</ul>
 </div>
-
-
-
-
-<button onclick="toggleFullScreen()"
-  class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
-  data-bs-placement="bottom" data-bs-toggle="tooltip"
->
-  
-
+<button class="btn btn-sm btn-fullscreen-button" data-bs-placement="bottom" data-bs-toggle="tooltip" onclick="toggleFullScreen()" title="Fullscreen mode">
 <span class="btn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
+<i class="fas fa-expand"></i>
+</span>
 </button>
-
-
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -398,8 +209,6 @@ document.write(`
   </button>
 `);
 </script>
-
-
 <script>
 document.write(`
   <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
@@ -407,29 +216,23 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" data-bs-placement="bottom" data-bs-toggle="tooltip" for="__secondary" title="Toggle secondary sidebar">
+<span class="fa-solid fa-list"></span>
 </label>
 </div></div>
-      
-    </div>
-  
 </div>
 </div>
-              
-              
-
-<div id="jb-print-docs-body" class="onlyprint">
-    <h1>Midpoint Source Protocol for Quantum Links</h1>
-    <!-- Table of contents -->
-    <div id="print-main-content">
-        <div id="jb-print-toc">
-            
-            <div>
-                <h2> Contents </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+</div>
+<div class="onlyprint" id="jb-print-docs-body">
+<h1>Midpoint Source Protocol for Quantum Links</h1>
+<!-- Table of contents -->
+<div id="print-main-content">
+<div id="jb-print-toc">
+<div>
+<h2> Contents </h2>
+</div>
+<nav aria-label="Page">
+<ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-intro-to-midpoint-source-protocol">Brief Intro to Midpoint Source Protocol</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-protocol">Components of the Protocol</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-memories">Quantum Memories</a></li>
@@ -454,17 +257,13 @@ document.write(`
 </ul>
 </li>
 </ul>
-            </nav>
-        </div>
-    </div>
+</nav>
 </div>
-
-              
-                
+</div>
+</div>
 <div id="searchbox"></div>
-                <article class="bd-article">
-                  
-  <section id="midpoint-source-protocol-for-quantum-links">
+<article class="bd-article">
+<section id="midpoint-source-protocol-for-quantum-links">
 <h1>Midpoint Source Protocol for Quantum Links<a class="headerlink" href="#midpoint-source-protocol-for-quantum-links" title="Permalink to this heading">#</a></h1>
 <p>This notebook is a demonstration of the Midpoint Source Protocol for Quantum Links. We shall take a step away from the QuREBB framework and use some bespoke code for the evaluation of the protocol.</p>
 <p>This tutotial will guide you through the basics of components that go into the protocol and how they are used for the evaluation of a midpoint source protocol. The tutoril is structured as follows:</p>
@@ -498,7 +297,7 @@ document.write(`
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">dependencies_midpoint</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named 'numpy'
 </pre></div>
 </div>
 </div>
@@ -519,7 +318,7 @@ document.write(`
 <li><p>If either A or B have signalled failure, they abort the protocol and try again.</p></li>
 </ol>
 <p>The flow of the protocol is shown in the figure below. One might note that this is quite straightforward and does not require any fancy quantum operations. However, the devil is in the details. We shall see the various requirement for the protocol to work in the next section.</p>
-<p><img alt="SPDC" src="_images/MPS_Protocol_Diag.png" />
+<p><img alt="SPDC" src="_images/MPS_Protocol_Diag.png"/>
 <strong>Figure</strong>: Overview of the midpoint source protocol.</p>
 </section>
 <section id="components-of-the-protocol">
@@ -593,13 +392,13 @@ Then the entanglement generation source is a device that generates entangled pho
 <section id="understanding-the-construction-of-a-entanglement-generation-source">
 <h2>Understanding the Construction of a Entanglement Generation Source<a class="headerlink" href="#understanding-the-construction-of-a-entanglement-generation-source" title="Permalink to this heading">#</a></h2>
 <p>Photonic entanglement generation sources rely on nonlinear interactions of a pump photon in a specific type of material, generally referred to as a nonlinear crystal. The pump photon is generally a high energy photon (i.e. a photon with a high frequency) that is converted into two lower energy photons (i.e. photons with lower frequencies). The process is generally referred to as ‘spontaneous parametric downconversion’ (SPDC). We usuially refer to the pump photon as the ‘pump’ and the two lower energy photons as the ‘signal’ and ‘idler’ photons. The process is shown in the figure below.</p>
-<p><img alt="SPDC" src="_images/MPS_SPDC_Process.png" />
+<p><img alt="SPDC" src="_images/MPS_SPDC_Process.png"/>
 <strong>Figure</strong>: Diagram of the SPDC process with the necessary physical constraints visualized.</p>
 <p>The generated photons satisfy the energy conservation law, i.e. the sum of the frequencies of the generated photons is equal to the frequency of the pump photon. In addition, the net momentum of the generated photons is equal to the momentum of the pump photon. This is generally referred to as ‘phase matching’ and is a key requirement for the generation of entangled photons. We may succinctly write this as
 $$\omega_p = \omega_s + \omega_i; \quad \vec{k}_p = \vec{k}_s + \vec{k}_i$$
 where $\omega_p$ is the frequency of the pump photon, $\omega_s$ and $\omega_i$ are the frequencies of the signal and idler photons respectively, and $\vec{k}_p$, $\vec{k}_s$ and $\vec{k}_i$ are the wavevectors of the pump, signal and idler photons respectively. The nonlinear process relies on differeing indices of refraction for the pump, signal and idler photons. The net range of frequencies that can be generated by the SPDC process is limited by the bandwidth of the nonlinear crystal, and is generally referred to as the <strong>phase-matching bandwidth</strong>. Alternate processes such as ‘spontaneous four-wave mixing’ (SFWM) can also be used to generate entangled photons; for this tutorial we shall focus on SPDC.</p>
 <p>To go from a single SPDC process, to a source of entangled polarization encoded photonic qubits, we must introduce some mechanism to erase path information of the photons. The general SPDC based polarization entaglement source consists of wo separate nonlinear crystals. By placing the crystals close to one another, we ‘erase’ information about which crystal the photon was generated in. Thus if the photon pair generated in the first crystal is in the state $ \ket{H}\ket{V} $, then the photon pair generated in the second crystal is in the state $\ket{V}\ket{H}$. The relative polarization of the pump, signal and idler photons depend on the type of SPDC process that is used. For now let us only consider the simple case where we seek to generate entanglement of the form $\ket{\Psi^+} = (\ket{H,V}+\ket{V,H})/\sqrt{2} $.</p>
-<p><img alt="SPDC" src="_images/MPS_SPDC_Sources.png" />
+<p><img alt="SPDC" src="_images/MPS_SPDC_Sources.png"/>
 <strong>Figure</strong>: Visualizations of typical SPDC based polarization entanglement sources - (a) based on subsequent down-conversions, (b) based on a Sagnac loop interferometer, (c) based on repeated down-conversion interactions. The three sources shown in (a)-(c) can be visulaized to be a single ‘black box’ source in (d) generating the specified state. (Image adapted from <a href="https://doi.org/10.1103/PhysRevA.60.R773"> (a) Kwiat et. al 1999</a>, <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.73.012316">(b) Kim et. al 2006 </a>, <a href="https://doi.org/10.1103/PhysRevA.61.042304">(c) Kok and Braunstein et. al 2000</a>, <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">(d) Dhara et. al 2022</a>)</p>
 <p>The general output state of the SPDC process is given (in the Fock basis) as</p>
 <div class="amsmath math notranslate nohighlight" id="equation-a5f47432-c14b-4dcd-a36a-c10f0fd06332">
@@ -652,23 +451,23 @@ where $\omega_p$ is the frequency of the pump photon, $\omega_s$ and $\omega_i$ 
 <span class="n">bell_pair</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
 <span class="n">two_pair</span> <span class="o">=</span> <span class="n">distribution_function</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">vacuum_comp</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vacuum&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">bell_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bell Pair&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">two_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Two Pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">vacuum_comp</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Vacuum"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">bell_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Bell Pair"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">two_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Two Pair"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of occurence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Mean Photon Number per Mode (Ns)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Probability of occurence"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/81b534ac17bebadaf55984a87649a780f22b2d93eb5f2c19fd647b939a07f736.png" src="_images/81b534ac17bebadaf55984a87649a780f22b2d93eb5f2c19fd647b939a07f736.png" />
+<img alt="_images/81b534ac17bebadaf55984a87649a780f22b2d93eb5f2c19fd647b939a07f736.png" src="_images/81b534ac17bebadaf55984a87649a780f22b2d93eb5f2c19fd647b939a07f736.png"/>
 </div>
 </div>
 <p>As highlighted, above, as we increase $N_s$, the proportion of the vacuum terms decreases, while the proportion of the two-pair terms increases. This is a key limitation of SPDC based entanglement generation sources. We can alternatively visualize this by plotting the proportion of the Bell pair and noise term to the vacuum term as a function of $N_s$.</p>
@@ -683,21 +482,21 @@ where $\omega_p$ is the frequency of the pump photon, $\omega_s$ and $\omega_i$ 
 <span class="n">prop_bell_pair</span> <span class="o">=</span> <span class="n">bell_pair</span><span class="o">/</span><span class="n">vacuum_comp</span>
 <span class="n">prop_two_pair</span> <span class="o">=</span> <span class="n">two_pair</span><span class="o">/</span><span class="n">vacuum_comp</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">prop_bell_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Bell Pair&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">prop_two_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Two Pair&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">prop_bell_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Bell Pair"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span><span class="n">prop_two_pair</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s2">"Two Pair"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Ratio of probability of occurence&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Mean Photon Number per Mode (Ns)"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Ratio of probability of occurence"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/8be1c979300ea70c099a7e692f3e3f1ae0cc2d2d0e5bc8b70a11bc813a86450d.png" src="_images/8be1c979300ea70c099a7e692f3e3f1ae0cc2d2d0e5bc8b70a11bc813a86450d.png" />
+<img alt="_images/8be1c979300ea70c099a7e692f3e3f1ae0cc2d2d0e5bc8b70a11bc813a86450d.png" src="_images/8be1c979300ea70c099a7e692f3e3f1ae0cc2d2d0e5bc8b70a11bc813a86450d.png"/>
 </div>
 </div>
 </section>
@@ -710,7 +509,7 @@ where $\omega_p$ is the frequency of the pump photon, $\omega_s$ and $\omega_i$ 
 <p>The first idea would be to use single photons heralded by a detector. This is a very common strategy in quantum optics and is used in a variety of applications. The idea is to use a single photon detector to herald the presence of a single photon. This is done by placing the detector in one of the modes of the SPDC source. The detector is then used to herald the presence of a single photon in the other mode. A multitude of single photons generated in such a manner can then be used to generate entanglement by using a linear photonic circuit.
 The second idea would be to use the existing SPDC based source and perform post-selection on the generated photons. Specifically, we need an auxilliary system that can herald the presence of the required Bell pair terms (i.e. $\ket{1,0,0,1} + \ket{0,1,1,0}$). The system must also be capable of reproducing the photonic states in the required Bell pair terms with a high probability. This is a non-trivial task that could be achieved by certain types of quantum memories or a some complicated measurement scheme. We shall not delve into the details of this scheme here except noting that this is quite complicated to achieve in practice.</p>
 <p>The final idea would be to use a pair of existing SPDC  based sources and perform post-selection on the output photons by performing a joint measurement. As you may already be familiar, the Bell state projection measurement is a joint measurement on two qubits that projects them onto one of the four Bell states. This can be achieved with the linear optical circuits comprising of beamsplitters and detectors. A ‘succesful’ Bell state measurement, (ideally) projects the umeasured photons in the state $\ket{\Psi^+}$. Furthermore, since the measurement is heralded, we <em>know</em> when entanglement is generated. This is the basis of the ‘cascaded heralded source’ proposed in the <a class="reference external" href="https://doi.org/10.1103/PhysRevApplied.17.034071."><strong>following paper</strong></a>.</p>
-<p><img alt="SPDC" src="_images/MPS_Cascaded_Source.png" />
+<p><img alt="SPDC" src="_images/MPS_Cascaded_Source.png"/>
 <strong>Fig.</strong>: Diagram of the  cascaded source construction. (Image adapted from <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">Dhara et. al 2022</a>)</p>
 <p>The cascaded source shown in the figure above comprises of a pair of SPDC sources, each of which generates a pair of photons. The photons are then sent through a linear optical circuit that performs a Bell state measurement. The measurement is heralded by the detection of a pair of photons in a few specific modes. If the measurement is successful, then the photons are expected to be projected into the state $\ket{\Psi^+}$ - certainly this is so if the the SPDC sources generated Bell-pairs natively. If the measurement is not successful, then the photons are discarded. However, given the probabilistic nature of the SPDC sources, the output state must be computed from the entire state being conditioned  on the measurement being successful. We shall not delve into the details of this computation here, and refer the reader to the original paper for the details. However, we can write the form of the quantum state that is generated by the cascaded source as</p>
 <div class="amsmath math notranslate nohighlight" id="equation-6601f574-459a-40be-8fda-30b49c4ecd4a">
@@ -750,23 +549,23 @@ The second idea would be to use the existing SPDC based source and perform post-
     <span class="n">fid_array</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">19</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">19</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span><span class="o">+</span><span class="n">matrix</span><span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">19</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">norm</span><span class="p">))</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)&#39;</span>\
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)'</span>\
              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">))</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">prob_success_array</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of success&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Mean Photon Number per Mode (Ns)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Probability of success"</span><span class="p">)</span>
 <span class="c1">#axs[0].set_ylim([1e-12,1e-3])   </span>
 
 <span class="c1">###</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">fid_array</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">fid_array</span><span class="p">,</span><span class="s1">'r--'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fidelity (after filtering)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Mean Photon Number per Mode (Ns)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Fidelity (after filtering)"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>  
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -774,14 +573,14 @@ The second idea would be to use the existing SPDC based source and perform post-
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/1d9c4d4690061f0aeccb1d92095f4405b2f5c8f694f05587b09317e8e24d6da2.png" src="_images/1d9c4d4690061f0aeccb1d92095f4405b2f5c8f694f05587b09317e8e24d6da2.png" />
+<img alt="_images/1d9c4d4690061f0aeccb1d92095f4405b2f5c8f694f05587b09317e8e24d6da2.png" src="_images/1d9c4d4690061f0aeccb1d92095f4405b2f5c8f694f05587b09317e8e24d6da2.png"/>
 </div>
 </div>
 </section>
 <section id="multiplexing-sources">
 <h3>Multiplexing Sources<a class="headerlink" href="#multiplexing-sources" title="Permalink to this heading">#</a></h3>
 <p>We have hence shown that the cascaded source operates in a ‘heralded’ fashion to generate photonic states that are ‘better’ than the SPDC source. However, the price ot pay is that the overall probablity of generating a photon pair is worse. We not only need to consider that two terms in the SPDC source are both $\ket{\Psi^\pm}$ which is propostional to $p(1)^2$ but also that the Bell state measurement is successful, which is an additional factor of $1/2$. Since for $N_s&lt;0.2$, $p(1)\ll 1$ it is no surpirse that the cascaded source is not very bright. However since the source is heralded, we can multiplex multiple sources together to generate entanglement at a higher rate. This is the basis of the ‘multiplexed heralded source’ proposed in extension to the original source design.</p>
-<p><img alt="Muxed_Cascaded_Source" src="_images/MPS_Muxed_Cascaded_Source.png" />
+<p><img alt="Muxed_Cascaded_Source" src="_images/MPS_Muxed_Cascaded_Source.png"/>
 <strong>Fig.</strong>:Diagram of the multiplexed casacded source construction (the physical multiplexing shown here is simply a depiction; Image adapted from  <a href="https://doi.org/10.1103/PhysRevApplied.17.034071">Dhara et. al 2022</a>)</p>
 <p>As shown in the figure above, we consider $M$ such sources multiplexed together so that atleast one of them succeeds. Each source is conneected to a local controller that switches the successfully generated photon pairs out. If the the probability of generating a single pair is $p_{\mathrm{single}}$, then the multiplexed source succeeds with probability $$p_{\mathrm{multi}} (M) = 1-(1-p_{\mathrm{single}})^M \approx 1- (1- M\times p_{\mathrm{single}})= M\times p_{\mathrm{single}},$$
 the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we can choose $M$ to be large enough to ensure that the multiplexed source is ‘near deterministic’, i.e., $p_{\mathrm{multi}} (M) \approx 1$.</p>
@@ -818,29 +617,29 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 
 <span class="c1"># Plotting the results</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)&#39;</span>\
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)'</span>\
              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">))</span>
 
 <span class="c1"># Plotting the probability of success</span>
 <span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)):</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">prob_success_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;M=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]))</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">prob_success_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">"M=</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of success&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Mean Photon Number per Mode (Ns)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Probability of success"</span><span class="p">)</span>
 <span class="c1">#axs[0].set_ylim([1e-12,1e-3])   </span>
 
 <span class="c1"># Plotting the fidelity</span>
 <span class="k">for</span> <span class="n">i2</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">range_M</span><span class="p">)):</span>
-    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">fid_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;M=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]))</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_Ns</span><span class="p">,</span> <span class="n">fid_array</span><span class="p">[:,</span><span class="n">i2</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s2">"M=</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">range_M</span><span class="p">[</span><span class="n">i2</span><span class="p">]))</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Mean Photon Number per Mode (Ns)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fidelity (after filtering)&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Mean Photon Number per Mode (Ns)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Fidelity (after filtering)"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.0</span><span class="p">])</span>  
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -848,7 +647,7 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/18245d4f170cd2ab7320a613d59b9bc8781a29d7286ee258dac006d148d27a33.png" src="_images/18245d4f170cd2ab7320a613d59b9bc8781a29d7286ee258dac006d148d27a33.png" />
+<img alt="_images/18245d4f170cd2ab7320a613d59b9bc8781a29d7286ee258dac006d148d27a33.png" src="_images/18245d4f170cd2ab7320a613d59b9bc8781a29d7286ee258dac006d148d27a33.png"/>
 </div>
 </div>
 </section>
@@ -857,7 +656,7 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 <h2>Quantum Memories: Sneak Peek<a class="headerlink" href="#quantum-memories-sneak-peek" title="Permalink to this heading">#</a></h2>
 <p>As highlighted above, in the context of the protocol, we require quantum memories that not only can can store quantum information for a long time but are also also be able to interact with photons. The latter requirement is necessary for the memories to be able to store entangled photons coming from the midpoint source at C. Furthermore, we require that the end parties A and B <strong>know</strong> when their share of the entangled photon pair is successfully stored in their memories.</p>
 <p>One implementation of this is to use a Duan-Kimble scheme for loading polarization encode photons into a quantum memory. The scheme is shown in the figure below.</p>
-<p><img alt="DK_Scheme" src="_images/MPS_DK_Scheme.png" />
+<p><img alt="DK_Scheme" src="_images/MPS_DK_Scheme.png"/>
 <strong>Fig.</strong>: Duan Kimble scheme for the teleportation of the state of a single photonic qubit into a quantum memory. (Image adapted from  <a href="https://doi.org/10.1038/s41534-020-00337-3">Chen et. al 2021</a>)</p>
 <p>The Duan-Kimble scheme relies on being able to perform a controlled phase-rotation of a polarization qubit based on the state of a quantum memory. Incoming photons separated based on their polarization using a polarizing beam splitter. One of the polarization (let us say $V$) is simply reflected of a mirror. The $H$ polarized photon is made to interact with a cavity that is coupled to a quantum memory. The cavity is designed such that the $H$ polarized photon experiences a phase shift of $\pi$ when it interacts with the cavity if and only if the memory is in the $\ket{1}_M$ state. Otherwise it is simply reflected out of the cavity. The two photons are then recombined using the same polarizing beam splitter. As per the conditional interaction specified above, the memory implements the state transformation</p>
 <div class="amsmath math notranslate nohighlight" id="equation-fb20bec9-eb1d-464a-93e7-69dbca959366">
@@ -866,7 +665,7 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 \end{equation}\]</div>
 <p>This can be used to perform a CPHASE gate based single qubit teleportation as shown below. The detection of the photon in the $\ket{A}$ or $\ket{D}$ modes heralds the successful teleportation of the state $\alpha \ket{H} + \beta{V}$ to the memory upto some phase rotation.</p>
 <p>Another way to load the photonic qubit on the memory, is to have a memory emit a photonic qubit and interact the incoming qubit (from C) with the generated qubit on a photonic Bell state measurement circuit. This is done by initializing the memory in the $(\ket{0}_M+\ket{1}_M)/\sqrt{2}$ state and applying conditional pulses as shown below to generate the state $(\ket{0}_M \ket{0,1} + \ket{1}_M \ket{1,0})/\sqrt{2}$ which is the Bell state $\ket{\Psi^+}$ between the memory and the photon.</p>
-<p><img alt="MPS_Emission_Scheme" src="_images/MPS_Emission_Scheme.png" />
+<p><img alt="MPS_Emission_Scheme" src="_images/MPS_Emission_Scheme.png"/>
 <strong>Fig.</strong>: Emission of a photonic qubit from a quantum memory.</p>
 </section>
 <section id="building-and-simulating-a-midpoint-source-protocol-from-the-components">
@@ -946,44 +745,43 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 
 <span class="c1"># Plotting the results</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
-<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)&#39;</span>\
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'Performance of the Cascaded Source </span><span class="se">\n</span><span class="s1"> </span><span class="se">\</span>
+<span class="s1">             Detector efficiency = </span><span class="si">{:2.2f}</span><span class="s1">, Dark Click Prob.=</span><span class="si">{:4.2e}</span><span class="s1">, Visibility=</span><span class="si">{:2.2f}</span><span class="s1">)'</span>\
              <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">eta_detectors</span><span class="p">,</span><span class="n">prob_dark_click</span><span class="p">,</span><span class="n">visibility</span><span class="p">))</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># Or equivalently,  &quot;plt.tight_layout()&quot;</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span> <span class="c1"># Or equivalently,  "plt.tight_layout()"</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_swap_prob_success_array</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"linear"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss (dB)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Probability of success&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Total Loss (dB)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Probability of success"</span><span class="p">)</span>
 
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_swap_fidelity_array</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_swap_fidelity_array</span><span class="p">,</span><span class="s1">'r--'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"linear"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss (dB)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Fidelity&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Total Loss (dB)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Fidelity"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.1</span><span class="p">])</span>
 
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_Ns</span><span class="p">,</span><span class="s1">&#39;g:&#39;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">loss_range</span><span class="p">,</span> <span class="n">opti_Ns</span><span class="p">,</span><span class="s1">'g:'</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"linear"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Total Loss (dB)&quot;</span><span class="p">)</span>
-<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Optimal Ns&quot;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Total Loss (dB)"</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Optimal Ns"</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/85798cf9b9c0f2b264e250ec6e11449bec9923939427b4f2e2c149302c79c72b.png" src="_images/85798cf9b9c0f2b264e250ec6e11449bec9923939427b4f2e2c149302c79c72b.png" />
+<img alt="_images/85798cf9b9c0f2b264e250ec6e11449bec9923939427b4f2e2c149302c79c72b.png" src="_images/85798cf9b9c0f2b264e250ec6e11449bec9923939427b4f2e2c149302c79c72b.png"/>
 </div>
 </div>
 </section>
 </section>
 </section>
-
-    <script type="text/x-thebe-config">
+<script type="text/x-thebe-config">
     {
         requestKernel: true,
         binderOptions: {
@@ -1001,52 +799,34 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
-
-                </article>
-              
-
-              
-              
-              
-              
-                <footer class="prev-next-footer">
-                  
+<script>kernelName = 'python3'</script>
+</article>
+<footer class="prev-next-footer">
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="Introduction.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="3-1%20QuREBB_intro.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">QuREBB: Quantum Remote Entanglement Building Block Simulations</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
+<a class="left-prev" href="Introduction.html" title="previous page">
+<i class="fa-solid fa-angle-left"></i>
+<div class="prev-next-info">
+<p class="prev-next-subtitle">previous</p>
+<p class="prev-next-title">CQN Winter School - Exploring and Designing Quantum Networks via Digital Twin Simulations</p>
 </div>
-                </footer>
-              
-            </div>
-            
-            
-              
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+</a>
+<a class="right-next" href="3-1%20QuREBB_intro.html" title="next page">
+<div class="prev-next-info">
+<p class="prev-next-subtitle">next</p>
+<p class="prev-next-title">QuREBB: Quantum Remote Entanglement Building Block Simulations</p>
+</div>
+<i class="fa-solid fa-angle-right"></i>
+</a>
+</div>
+</footer>
+</div>
+<div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+<div class="sidebar-secondary-item">
+<div class="page-toc tocsection onthispage">
+<i class="fa-solid fa-list"></i> Contents
   </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
+<nav class="bd-toc-nav page-toc">
+<ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brief-intro-to-midpoint-source-protocol">Brief Intro to Midpoint Source Protocol</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-protocol">Components of the Protocol</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quantum-memories">Quantum Memories</a></li>
@@ -1071,57 +851,94 @@ the latter simplification being true when $ p_{\mathrm{single}}\ll 1$. Thus we c
 </ul>
 </li>
 </ul>
-  </nav></div>
-
+</nav></div>
 </div></div>
-              
-            
-          </div>
-          <footer class="bd-footer-content">
-            
+</div>
+<footer class="bd-footer-content">
 <div class="bd-footer-content__inner container">
-  
-  <div class="footer-item">
-    
+<div class="footer-item">
 <p class="component-author">
 By Dirk Englund, Hyeongrak Choi, Prajit Dhara
 </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-
-  <p class="copyright">
+</div>
+<div class="footer-item">
+<p class="copyright">
     
       © Copyright 2022.
       <br/>
-    
-  </p>
-
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
-  <div class="footer-item">
-    
-  </div>
-  
+</p>
 </div>
-          </footer>
-        
-
-      </main>
+<div class="footer-item">
+</div>
+<div class="footer-item">
+</div>
+</div>
+</footer>
+<html><body><div>
+<div class="msger-expand">
+<div class="msger-header-title">
+<i class="fas fa-comment-alt"></i> ChatTutor
     </div>
-  </div>
-  
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<div class="msger-header-options">
+<span><i class="fas fa-solid fa-caret-up"></i></span>
+</div>
+</div>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<div class="msger minimized">
+<div class="msg-header-helper">
+<div class="msger-header">
+<div class="msger-header-title">
+<i class="fas fa-comment-alt"></i> ChatTutor
+        </div>
+<div class="button-div" id="themeBtnDiv">
+<button class="theme-button" id="themeBtn">Toggle theme</button>
+<button class="msger-minimize" id="minimizeBtn"><span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">cancel</span></button>
+</div>
+</div>
+</div>
+<main class="msger-chat">
+<div class="msg left-msg">
+<div class="msg-bgd">
+<div class="msg-bubble">
+<div class="msg-info">
+<div class="msg-info-name">assistant</div>
+</div>
+<div class="msg-text">Hello, what can i do to help you?</div>
+</div>
+</div>
+</div>
+<div class="clear-btn-container" id="clearContId">
+</div>
+<div id="scrollHelper" style="background-color: black;">
+<!-- Helper for keeping scrolling  -->
+</div>
+</main>
+<form class="msger-inputarea">
+<input class="msger-input" id="msgInput" placeholder="Enter your message..." type="text"/>
+<button class="msger-send-btn" id="sendBtn" type="submit">
+<span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">
+            send
+          </span>
+</button>
+<button class="clear-btn" id="clearBtnId">
+<span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">
+                delete_forever
+            </span>
+</button>
+<button class="stop-gen-btn" id="stopBtnId">
+<span class="material-symbols-outlined" style="font-size: 15px !important; padding: 0 !important; margin: 0 !important; vertical-align: middle">
+                stop_circle
+            </span>
+</button>
+</form>
+</div>
+</div></body></html></main>
+</div>
+</div>
+<!-- Scripts loaded after <body> so the DOM is not blocked -->
+<script src="_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
 <script src="_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
-
-  <footer class="bd-footer">
-  </footer>
-  </body>
+<footer class="bd-footer">
+</footer>
+<script src="_static/scripts/chattutor.js"></script></body>
 </html>
