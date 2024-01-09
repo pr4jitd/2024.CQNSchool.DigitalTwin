@@ -62,5 +62,6 @@ See the LICENSE.txt file for more details.
 ![Paper Availability](https://img.shields.io/badge/paper-available-orange)
 
 If you use ZALM in your resarch, please cite the original [ZALM paper](https://arxiv.org/abs/2206.03670) and [Cascaded Source paper](https://arxiv.org/abs/2107.14360)
+
 If you use QuREBB in your research, please cite the original [QuREBB paper](https://arxiv.org/abs/2310.19878) and github repository [Repository](https://github.com/QuTech-Delft/QuREBB)
 
