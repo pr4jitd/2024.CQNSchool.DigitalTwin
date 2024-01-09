@@ -9,12 +9,19 @@ options:
   numbered: true
   
 parts:
-  - caption: Midpoint Source Protocol
+  - caption: Introduction
     chapters:
-    - file: 2-1 Midpoint_Source_Tutorial.ipynb
+    - file: 1-1 QMech_Intro.ipynb
+    - file: 1-2 QKD_Tutorial.ipynb
   - caption: QuREBB - Quantum Remote Entanglement Building Block Simulations
     chapters: 
     - file: 3-1 QuREBB_intro.ipynb
     - file: 3-2 QuREBB_example.ipynb
+  - caption: Midpoint Source Protocol
+    chapters:
+    - file: 2-1 Midpoint_Source_Tutorial.ipynb
+  - caption: QuTiP Quickstart
+    chapters:
+    - file: 0-1 Intro_QuTiP
 
     
